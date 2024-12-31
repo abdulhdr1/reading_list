@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| The only productivity advice that actually worked for me. | https://x.com/Kartikayb77/status/1793289576192286872/photo/1 |
+| Why is it so hard to buy things that work well? | https://danluu.com/nothing-works/ |
