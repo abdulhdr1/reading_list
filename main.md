@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| A good ritual for senior leaders to audit their time. | https://x.com/kpaxs/status/1852727847288295791?s=12 |
+| Good advice on JSX conditionals | https://blog.thoughtspile.tech/2022/01/17/jsx-conditionals/ |
