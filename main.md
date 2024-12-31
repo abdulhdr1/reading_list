@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| God Mode | https://sahillavingia.com/god |
+| Strong opinions, loosely held | https://jeffgothelf.com/blog/strong-opinions-loosely-held/ |
