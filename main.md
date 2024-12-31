@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| I tried Ghostty and Wezterm. | https://x.com/melkeydev/status/1852466848824225842?s=12 |
+| A good ritual for senior leaders to audit their time. | https://x.com/kpaxs/status/1852727847288295791?s=12 |
