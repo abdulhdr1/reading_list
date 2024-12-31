@@ -1,2 +1,2 @@
 | Name | Link |
-| ✍️ New post: "Uncontrolled or controlled: A matter of perspective" | https://x.com/samselikoff/status/1854607060161135004?s=12 |
+| Stop Sucking and Live a Life of Abundance - Hymson Goldstein Pantiliat & Lohr, PLLC | https://scottsdale-lawyer.com/stop-sucking-and-live-a-life-of-abundance/ |
