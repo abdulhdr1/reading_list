@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| This is why therapy often backfires | https://x.com/oldbooksguy/status/1854174986031997259?s=12 |
+| ✍️ New post: "Uncontrolled or controlled: A matter of perspective" | https://x.com/samselikoff/status/1854607060161135004?s=12 |
