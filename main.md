@@ -1,2 +1,2 @@
 | Name | Link |
-| Why is it so hard to buy things that work well? | https://danluu.com/nothing-works/ |
+| Evolving my ergonomic setup (or, my laptop with extra steps) | nicole@web | https://www.ntietz.com/blog/evolving-ergo-setup/ |
