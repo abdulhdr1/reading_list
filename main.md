@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| Replacing Alexa with ChatGPT: Introducing a Home Assistant Plug-in for ChatGPT : r/ChatGPT | https://www.reddit.com/r/ChatGPT/comments/12l19lj/replacing_alexa_with_chatgpt_introducing_a_home/ |
+| JetKVM - Control any computer remotely | https://www.kickstarter.com/projects/jetkvm/jetkvm |
