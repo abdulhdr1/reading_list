@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| Evolving my ergonomic setup (or, my laptop with extra steps) | nicole@web | https://www.ntietz.com/blog/evolving-ergo-setup/ |
+| 02 teorias da localizacao | https://nedur.ufpr.br/wp-content/uploads/2020/08/02-teorias-da-localizacao.pdf |
