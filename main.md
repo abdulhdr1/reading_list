@@ -1,3 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
-| A great reminder that success comes from focused, deliberate action, not scattered efforts. | https://x.com/kpaxs/status/1858370193640079446?s=12 |
+| This is why therapy often backfires | https://x.com/oldbooksguy/status/1854174986031997259?s=12 |
