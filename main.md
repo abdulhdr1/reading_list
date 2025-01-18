@@ -1,2 +1,3 @@
 | Name        | Link           | 
 | ------------- | ------------ | 
+| Guillermo Rauch on X: "A huge % of the feedback I find myself giving to early stage founders boils down to: remove the friction between the user and the creation of the core "entity" or "resource" your company is facilitating (be it a 'search query', 'image generation', 'document', 'deployment'…) I" / X | https://x.com/rauchg/status/1879976926233915468 | 2025-01-18T12:26:59.687Z |
