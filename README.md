@@ -1,6 +1,11 @@
 
 |Name|Updated at|
 |-|-|
+| [This is a little guide to how market works.](https://x.com/evanjconrad/status/1877170430286639227?mx=2) | 20/01/2025 - 19:06|
+| [Enable JavaScript to use search](https://www.google.com/search?q=interplanetary+transport+network&rlz=1CDGOYI_enBR1073BR1073&oq=interplanetary+transport+network&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIHCAEQABiABDIICAIQABgWGB4yCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCAgGEAAYFhgeMg0IBxAAGIYDGIAEGIoFMg0ICBAAGIYDGIAEGIoFMgcICRAhGKAB0gEINzQ4NWowajeoAhSwAgHiAwQYASBf&hl=en-US&sourceid=chrome-mobile&ie=UTF-8) | 20/01/2025 - 18:23|
+| [Why use ECC?](https://danluu.com/why-ecc/) | 20/01/2025 - 17:31|
+| [I am rich and have no idea what to do with my life](https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/) | 20/01/2025 - 15:48|
+| [Guillermo Rauch on X: "A huge % of the feedback I find myself giving to early stage founders boils down to: remove the friction between the user and the creation of the core "entity" or "resource" your company is facilitating (be it a 'search query', 'image generation', 'document', 'deployment'…) I" / X](https://x.com/rauchg/status/1879976926233915468) | 20/01/2025 - 15:46|
 | [Why use ECC?](https://danluu.com/why-ecc/) | 20/01/2025 - 17:31|
 | [I am rich and have no idea what to do with my life](https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/) | 20/01/2025 - 15:48|
 | [Guillermo Rauch on X: "A huge % of the feedback I find myself giving to early stage founders boils down to: remove the friction between the user and the creation of the core "entity" or "resource" your company is facilitating (be it a 'search query', 'image generation', 'document', 'deployment'…) I" / X](https://x.com/rauchg/status/1879976926233915468) | 20/01/2025 - 15:46|
