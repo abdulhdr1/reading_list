@@ -1,6 +1,6 @@
 
 |Name|Updated at|
-|-||-|
+|-|-|
 | [I am rich and have no idea what to do with my life](https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/) | 2025-01-20T14:48:02.473Z|
 | [Guillermo Rauch on X: "A huge % of the feedback I find myself giving to early stage founders boils down to: remove the friction between the user and the creation of the core "entity" or "resource" your company is facilitating (be it a 'search query', 'image generation', 'document', 'deployment'…) I" / X](https://x.com/rauchg/status/1879976926233915468) | 2025-01-20T14:46:56.909Z|
 | [Software costs today are a rounding error...](https://x.com/nikunj/status/1877857853429457007?s=12) | 2025-01-16T20:39:10.530Z|
