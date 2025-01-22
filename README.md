@@ -1,6 +1,10 @@
 
 |Name|Updated at|
 |-|-|
+| [is anyone making ‘conceptual’ l-systems based on semantics / embedding spaces?](https://x.com/JungleSilicon/status/1873901301144166559) | 22/01/2025 - 23:07|
+| [How often is the build broken?](http://danluu.com/broken-builds/) | 22/01/2025 - 22:40|
+| [How do cars do in out-of-sample crash testing?](https://danluu.com/car-safety/) | 22/01/2025 - 22:26|
+| [What I wish I knew before I quit my job](https://michaeldrogalis.substack.com/p/what-i-wish-i-knew-before-i-quit) | 22/01/2025 - 21:12|
 | [This is a little guide to how market works.](https://x.com/evanjconrad/status/1877170430286639227?mx=2) | 20/01/2025 - 19:06|
 | [Enable JavaScript to use search](https://www.google.com/search?q=interplanetary+transport+network&rlz=1CDGOYI_enBR1073BR1073&oq=interplanetary+transport+network&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIHCAEQABiABDIICAIQABgWGB4yCAgDEAAYFhgeMggIBBAAGBYYHjIICAUQABgWGB4yCAgGEAAYFhgeMg0IBxAAGIYDGIAEGIoFMg0ICBAAGIYDGIAEGIoFMgcICRAhGKAB0gEINzQ4NWowajeoAhSwAgHiAwQYASBf&hl=en-US&sourceid=chrome-mobile&ie=UTF-8) | 20/01/2025 - 18:23|
 | [Why use ECC?](https://danluu.com/why-ecc/) | 20/01/2025 - 17:31|
