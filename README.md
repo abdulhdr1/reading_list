@@ -1,6 +1,8 @@
 
 |Name|Updated at|
 |-|-|
+| [Daniel Gross](https://dcgross.com/) | 23/01/2025 - 00:14|
+| [Nat Friedman](https://nat.org/) | 23/01/2025 - 00:12|
 | [is anyone making ‘conceptual’ l-systems based on semantics / embedding spaces?](https://x.com/JungleSilicon/status/1873901301144166559) | 22/01/2025 - 23:07|
 | [How often is the build broken?](http://danluu.com/broken-builds/) | 22/01/2025 - 22:40|
 | [How do cars do in out-of-sample crash testing?](https://danluu.com/car-safety/) | 22/01/2025 - 22:26|
