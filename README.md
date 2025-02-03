@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [Law of triviality - Wikipedia](https://en.wikipedia.org/wiki/Law_of_triviality) | 03/02/2025 - 23:06|
+| [Welcome to Socratica](https://toolbox.socratica.info/) | 03/02/2025 - 23:03|
+| [Investing and Advising](https://blog.pragmaticengineer.com/investing/) | 03/02/2025 - 22:07|
 | [Daniel Gross](https://dcgross.com/) | 23/01/2025 - 00:14|
 | [Nat Friedman](https://nat.org/) | 23/01/2025 - 00:12|
 | [is anyone making ‘conceptual’ l-systems based on semantics / embedding spaces?](https://x.com/JungleSilicon/status/1873901301144166559) | 22/01/2025 - 23:07|
