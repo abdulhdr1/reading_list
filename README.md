@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Take More Flights - near.blog](https://near.blog/take-more-flights/) | 04/02/2025 - 19:10|
 | [Law of triviality - Wikipedia](https://en.wikipedia.org/wiki/Law_of_triviality) | 03/02/2025 - 23:06|
 | [Welcome to Socratica](https://toolbox.socratica.info/) | 03/02/2025 - 23:03|
 | [Investing and Advising](https://blog.pragmaticengineer.com/investing/) | 03/02/2025 - 22:07|
