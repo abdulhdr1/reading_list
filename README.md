@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Nick on X: "i'm a bit afraid what will happen if gwern gets access to this, i can only assume we hit gwern fast takeoff foom shortly after and like 98% of all future science comes in the form of https://t.co/pC13TOaALn blog posts" / X](https://x.com/nickcammarata/status/1886910566247358465) | 05/02/2025 - 15:42|
 | [Take More Flights - near.blog](https://near.blog/take-more-flights/) | 04/02/2025 - 19:10|
 | [Law of triviality - Wikipedia](https://en.wikipedia.org/wiki/Law_of_triviality) | 03/02/2025 - 23:06|
 | [Welcome to Socratica](https://toolbox.socratica.info/) | 03/02/2025 - 23:03|
