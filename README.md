@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Andrej Karpathy on X: "Agency &gt; Intelligence I had this intuitively wrong for decades, I think due to a pervasive cultural veneration of intelligence, various entertainment/media, obsession with IQ etc. Agency is significantly more powerful and significantly more scarce. Are you hiring for agency? Are" / X](https://x.com/karpathy/status/1894099637218545984) | 27/02/2025 - 13:51|
 | [Three Observations](https://blog.samaltman.com/three-observations) | 09/02/2025 - 23:18|
 | [Mark Zuckerberg messages Facebook engineer](https://x.com/techemails/status/1888313183024074910?s=12) | 08/02/2025 - 21:48|
 | [The 1/8th Sleep - near.blog](https://near.blog/the-1-8th-sleep/) | 08/02/2025 - 13:54|
