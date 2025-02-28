@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) | 28/02/2025 - 20:27|
+| [Mckay Wrigley on X: "People are sleeping on Cursor + MCP. Cursor can become *much* more than an IDE - it could become a powerhouse productivity app. MCP servers for notes, email, CRMs, etc. There’s almost no reason why you can’t just build “MCP server for X” and then do the work with Cursor Agent." / X](https://x.com/mckaywrigley/status/1894855298910953785) | 28/02/2025 - 20:23|
+| [Taelin on X: "My take from GPT-4.5 is that humanity has designed an AGI architecture - it is just prohibitively expensive. This model is not great, because training a $1 billion transformer only gives us a 12.5% improvement over a $100 million one, in a paradigm where, apparently, utility" / X](https://x.com/VictorTaelin/status/1895486940184445392) | 28/02/2025 - 18:01|
 | [Andrej Karpathy on X: "Agency &gt; Intelligence I had this intuitively wrong for decades, I think due to a pervasive cultural veneration of intelligence, various entertainment/media, obsession with IQ etc. Agency is significantly more powerful and significantly more scarce. Are you hiring for agency? Are" / X](https://x.com/karpathy/status/1894099637218545984) | 27/02/2025 - 13:51|
 | [Three Observations](https://blog.samaltman.com/three-observations) | 09/02/2025 - 23:18|
 | [Mark Zuckerberg messages Facebook engineer](https://x.com/techemails/status/1888313183024074910?s=12) | 08/02/2025 - 21:48|
