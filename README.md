@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Fractal journaling and random revisit I use Obsidian’s unique note hotkey to write individual thoughts as they come up throughout the day. This automatically creates a note with the prefix `YYYY-MM-DD HHmm` to which I may append a title that describes the idea. Every few days I… pic.twitter.com/byjYFisGvR— kepano (@kepano) March 3, 2025](https://x.com/kepano/status/1896622716905726095) | 03/03/2025 - 22:23|
 | [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) | 28/02/2025 - 20:27|
 | [Mckay Wrigley on X: "People are sleeping on Cursor + MCP. Cursor can become *much* more than an IDE - it could become a powerhouse productivity app. MCP servers for notes, email, CRMs, etc. There’s almost no reason why you can’t just build “MCP server for X” and then do the work with Cursor Agent." / X](https://x.com/mckaywrigley/status/1894855298910953785) | 28/02/2025 - 20:23|
 | [Taelin on X: "My take from GPT-4.5 is that humanity has designed an AGI architecture - it is just prohibitively expensive. This model is not great, because training a $1 billion transformer only gives us a 12.5% improvement over a $100 million one, in a paradigm where, apparently, utility" / X](https://x.com/VictorTaelin/status/1895486940184445392) | 28/02/2025 - 18:01|
