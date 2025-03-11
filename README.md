@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Tanner Linsley on X: "We're right in the middle of "devinxi" (removing Vinxi from @Tan_Stack Start for just Vite + Nitro + h3), and we decided to give Start some awesome quality of life improvements while we're in the guts of it. Here's *some* of the lower hanging fruit (there's even more): - Jumping" / X](https://x.com/tannerlinsley/status/1898582800586228095) | 11/03/2025 - 14:26|
 | [The "Cursor for Writing" is Cursor pic.twitter.com/6g7vNxMeU9— Gary Sheng 🍄 is Vibe Coding (@garysheng) March 3, 2025](https://x.com/garysheng/status/1896648643333046750) | 04/03/2025 - 14:32|
 | [Fractal journaling and random revisit I use Obsidian’s unique note hotkey to write individual thoughts as they come up throughout the day. This automatically creates a note with the prefix `YYYY-MM-DD HHmm` to which I may append a title that describes the idea. Every few days I… pic.twitter.com/byjYFisGvR— kepano (@kepano) March 3, 2025](https://x.com/kepano/status/1896622716905726095) | 03/03/2025 - 22:23|
 | [Markov Chains explained visually](https://setosa.io/ev/markov-chains/) | 28/02/2025 - 20:27|
