@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [The most expensive thing you’ll ever pay for is not what you think: pic.twitter.com/tmNeNuvmr1— Codie Sanchez (@Codie_Sanchez) March 14, 2025](https://x.com/codie_sanchez/status/1900584537333395719?s=12) | 15/03/2025 - 14:44|
 | [most AI design tools fundamentally misunderstand how designers actually work pic.twitter.com/vzAN5qawRj— Lucas Crespo 📧 (@lucas__crespo) March 14, 2025](https://x.com/lucas__crespo/status/1900577340960170045?s=12) | 14/03/2025 - 18:46|
 | [Tanner Linsley on X: "We're right in the middle of "devinxi" (removing Vinxi from @Tan_Stack Start for just Vite + Nitro + h3), and we decided to give Start some awesome quality of life improvements while we're in the guts of it. Here's *some* of the lower hanging fruit (there's even more): - Jumping" / X](https://x.com/tannerlinsley/status/1898582800586228095) | 11/03/2025 - 14:26|
 | [The "Cursor for Writing" is Cursor pic.twitter.com/6g7vNxMeU9— Gary Sheng 🍄 is Vibe Coding (@garysheng) March 3, 2025](https://x.com/garysheng/status/1896648643333046750) | 04/03/2025 - 14:32|
