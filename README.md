@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Seeding my Bear ʕ•ᴥ•ʔ blog with more random posts, e.g. here's something I had on backlog for a while: # The append-and-review note An approach to note taking that I stumbled on and has worked for me quite well for many years. I find that it strikes a good balance of being… pic.twitter.com/aBYIbi0DRg— Andrej Karpathy (@karpathy) March 19, 2025](https://x.com/karpathy/status/1902503836067229803?s=12) | 20/03/2025 - 03:15|
 | [Crossing the uncanny valley of conversational voice](https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo) | 17/03/2025 - 12:31|
 | [The most expensive thing you’ll ever pay for is not what you think: pic.twitter.com/tmNeNuvmr1— Codie Sanchez (@Codie_Sanchez) March 14, 2025](https://x.com/codie_sanchez/status/1900584537333395719?s=12) | 15/03/2025 - 14:44|
 | [most AI design tools fundamentally misunderstand how designers actually work pic.twitter.com/vzAN5qawRj— Lucas Crespo 📧 (@lucas__crespo) March 14, 2025](https://x.com/lucas__crespo/status/1900577340960170045?s=12) | 14/03/2025 - 18:46|
