@@ -1,6 +1,8 @@
 
 |Name|Updated at|
 |-|-|
+| [Behind scenes](https://devouringdetails.com/resources/behind-scenes) | 22/04/2025 - 20:10|
+| [Garry Tan on X: "Every single one of these engineers just has to spend literally just one day making projects with Windsurf and it will be like they strapped on rocket boosters Don’t try to build a building with your bare hands. Use heavy machinery!" / X](https://x.com/garrytan/status/1907052575758623149) | 22/04/2025 - 15:19|
 | [Seeding my Bear ʕ•ᴥ•ʔ blog with more random posts, e.g. here's something I had on backlog for a while: # The append-and-review note An approach to note taking that I stumbled on and has worked for me quite well for many years. I find that it strikes a good balance of being… pic.twitter.com/aBYIbi0DRg— Andrej Karpathy (@karpathy) March 19, 2025](https://x.com/karpathy/status/1902503836067229803?s=12) | 20/03/2025 - 03:15|
 | [Crossing the uncanny valley of conversational voice](https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice#demo) | 17/03/2025 - 12:31|
 | [The most expensive thing you’ll ever pay for is not what you think: pic.twitter.com/tmNeNuvmr1— Codie Sanchez (@Codie_Sanchez) March 14, 2025](https://x.com/codie_sanchez/status/1900584537333395719?s=12) | 15/03/2025 - 14:44|
