@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [cdixon - The next big thing will start out looking like a toy](https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy) | 26/04/2025 - 13:46|
 | [Behind scenes](https://devouringdetails.com/resources/behind-scenes) | 22/04/2025 - 20:10|
 | [Garry Tan on X: "Every single one of these engineers just has to spend literally just one day making projects with Windsurf and it will be like they strapped on rocket boosters Don’t try to build a building with your bare hands. Use heavy machinery!" / X](https://x.com/garrytan/status/1907052575758623149) | 22/04/2025 - 15:19|
 | [Seeding my Bear ʕ•ᴥ•ʔ blog with more random posts, e.g. here's something I had on backlog for a while: # The append-and-review note An approach to note taking that I stumbled on and has worked for me quite well for many years. I find that it strikes a good balance of being… pic.twitter.com/aBYIbi0DRg— Andrej Karpathy (@karpathy) March 19, 2025](https://x.com/karpathy/status/1902503836067229803?s=12) | 20/03/2025 - 03:15|
