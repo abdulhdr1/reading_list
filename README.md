@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [The Side Project Prophecy](https://brianlovin.com/writing/side-project-prophecy) | 28/04/2025 - 16:04|
 | [cdixon - The next big thing will start out looking like a toy](https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy) | 26/04/2025 - 13:46|
 | [Behind scenes](https://devouringdetails.com/resources/behind-scenes) | 22/04/2025 - 20:10|
 | [Garry Tan on X: "Every single one of these engineers just has to spend literally just one day making projects with Windsurf and it will be like they strapped on rocket boosters Don’t try to build a building with your bare hands. Use heavy machinery!" / X](https://x.com/garrytan/status/1907052575758623149) | 22/04/2025 - 15:19|
