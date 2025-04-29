@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [Working on niche, personally-meaningful projects brings weirder, more serendipitous inbounds](https://notes.andymatuschak.org/zHV89H7dqnrvNvwXHBSGog9) | 29/04/2025 - 16:12|
+| [Anti-marketing, after Michael Nielsen](https://notes.andymatuschak.org/zF9ywLHqHfN5rFuPApiyqmP) | 29/04/2025 - 16:09|
+| [Work with the garage door up](https://notes.andymatuschak.org/Work_with_the_garage_door_up) | 29/04/2025 - 16:07|
 | [The Side Project Prophecy](https://brianlovin.com/writing/side-project-prophecy) | 28/04/2025 - 16:04|
 | [cdixon - The next big thing will start out looking like a toy](https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy) | 26/04/2025 - 13:46|
 | [Behind scenes](https://devouringdetails.com/resources/behind-scenes) | 22/04/2025 - 20:10|
