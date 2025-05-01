@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [YAGRI: You are gonna read it](https://www.scottantipa.com/yagri) | 01/05/2025 - 01:26|
+| [Berkeley RDI Center on Decentralization & AI](https://www.youtube.com/@BerkeleyRDI) | 01/05/2025 - 01:25|
+| [One line of code that did cost $8,000](https://pietrasiak.com/one-line-of-code-that-did-cost-dollar8000#86e96dd5a9a64f7eb2a3408771948538) | 01/05/2025 - 01:25|
 | [Working on niche, personally-meaningful projects brings weirder, more serendipitous inbounds](https://notes.andymatuschak.org/zHV89H7dqnrvNvwXHBSGog9) | 29/04/2025 - 16:12|
 | [Anti-marketing, after Michael Nielsen](https://notes.andymatuschak.org/zF9ywLHqHfN5rFuPApiyqmP) | 29/04/2025 - 16:09|
 | [Work with the garage door up](https://notes.andymatuschak.org/Work_with_the_garage_door_up) | 29/04/2025 - 16:07|
