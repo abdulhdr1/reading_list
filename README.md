@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Peripheral vision](https://notes.andymatuschak.org/z4geAr5cERWdJPrdhU5gy3N) | 02/05/2025 - 23:07|
 | [YAGRI: You are gonna read it](https://www.scottantipa.com/yagri) | 01/05/2025 - 01:26|
 | [Berkeley RDI Center on Decentralization & AI](https://www.youtube.com/@BerkeleyRDI) | 01/05/2025 - 01:25|
 | [One line of code that did cost $8,000](https://pietrasiak.com/one-line-of-code-that-did-cost-dollar8000#86e96dd5a9a64f7eb2a3408771948538) | 01/05/2025 - 01:25|
