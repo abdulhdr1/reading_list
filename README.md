@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [DAN KOE (@thedankoe) on X](https://x.com/thedankoe/status/1926960271278383373?s=12) | 27/05/2025 - 03:07|
 | [Aadit Sheth (@aaditsh) on X](https://x.com/aaditsh/status/1918596195405967658?s=12) | 03/05/2025 - 21:42|
 | [Nikunj Kothari on X: "clarity of thought and precise instruction is going to matter a LOT more in the near future.. https://t.co/YHNwfdszM0" / X](https://x.com/nikunj/status/1918084267453890651) | 03/05/2025 - 19:29|
 | [Founder Mode (@Founder_Mode_) on X](https://x.com/founder_mode_/status/1918402676464759231?s=12) | 03/05/2025 - 15:42|
