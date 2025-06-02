@@ -1,6 +1,8 @@
 
 |Name|Updated at|
 |-|-|
+| [START A COMPUTER CLUB](https://startacomputer.club/) | 02/06/2025 - 20:28|
+| [Profit Sharing - Paul Copplestone](https://paul.copplest.one/blog/profit-sharing.html#advantages) | 02/06/2025 - 14:12|
 | [Honkish](https://t.co/EYDlytdB5p?ssr=true) | 31/05/2025 - 21:52|
 | [You can have two Big Things, but not three](https://longform.asmartbear.com/two-big-things/) | 31/05/2025 - 20:54|
 | [DAN KOE (@thedankoe) on X](https://x.com/thedankoe/status/1926960271278383373?s=12) | 27/05/2025 - 03:07|
