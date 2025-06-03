@@ -1,6 +1,8 @@
 
 |Name|Updated at|
 |-|-|
+| [DOGE Days](https://sahillavingia.com/doge) | 03/06/2025 - 01:18|
+| [Build a Team that Ships](https://nav.al/build-a-team-that-ships) | 03/06/2025 - 01:23|
 | [START A COMPUTER CLUB](https://startacomputer.club/) | 02/06/2025 - 20:28|
 | [Profit Sharing - Paul Copplestone](https://paul.copplest.one/blog/profit-sharing.html#advantages) | 02/06/2025 - 14:12|
 | [Honkish](https://t.co/EYDlytdB5p?ssr=true) | 31/05/2025 - 21:52|
