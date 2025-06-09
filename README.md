@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [From Engineer to Founder](https://www.benja.dev/writing/from-engineer-to-founder) | 09/06/2025 - 21:06|
 | [Quarrelsome](https://sockpuppet.org/me/) | 06/06/2025 - 13:21|
 | [My AI Skeptic Friends Are All Nuts](https://fly.io/blog/youre-all-nuts/) | 04/06/2025 - 18:07|
 | [DOGE Days](https://sahillavingia.com/doge) | 03/06/2025 - 01:18|
