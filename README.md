@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [‘You cannot stop this from happening:’ The harsh reality of AI and the job market](https://www.independent.co.uk/news/world/americas/ai-job-layoffs-tech-unemployment-b2769796.html) | 21/06/2025 - 02:27|
+| [No Rivals: The Founders Fund Story](https://www.generalist.com/p/founders-fund-1) | 21/06/2025 - 16:12|
+| [The Curse of Knowing How, or; Fixing Everything - Blog](https://notashelf.dev/posts/curse-of-knowing) | 21/06/2025 - 02:19|
 | [From Engineer to Founder](https://www.benja.dev/writing/from-engineer-to-founder) | 09/06/2025 - 21:06|
 | [Quarrelsome](https://sockpuppet.org/me/) | 06/06/2025 - 13:21|
 | [My AI Skeptic Friends Are All Nuts](https://fly.io/blog/youre-all-nuts/) | 04/06/2025 - 18:07|
