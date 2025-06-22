@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Jay Yang (@Jayyanginspires) on X](https://x.com/jayyanginspires/status/1936522193447346325?s=12) | 22/06/2025 - 22:05|
 | [‘You cannot stop this from happening:’ The harsh reality of AI and the job market](https://www.independent.co.uk/news/world/americas/ai-job-layoffs-tech-unemployment-b2769796.html) | 21/06/2025 - 02:27|
 | [No Rivals: The Founders Fund Story](https://www.generalist.com/p/founders-fund-1) | 21/06/2025 - 16:12|
 | [The Curse of Knowing How, or; Fixing Everything - Blog](https://notashelf.dev/posts/curse-of-knowing) | 21/06/2025 - 02:19|
