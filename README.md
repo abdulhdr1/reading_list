@@ -1,6 +1,11 @@
 
 |Name|Updated at|
 |-|-|
+| [LukeW - Common AI Product Issues](https://lukew.com/ff/entry.asp?2107) | 25/06/2025 - 13:14|
+| [GuNzuVBXIAE8V16 (643×680)](https://pbs.twimg.com/media/GuNzuVBXIAE8V16?format=png&name=small) | 25/06/2025 - 01:16|
+| [Building our way: announcing our Series C - Linear Blog](https://linear.app/blog/building-our-way) | 25/06/2025 - 06:01|
+| [Call Your Shot - Terrain](https://www.terrain.com/letter) | 25/06/2025 - 05:42|
+| [AI Changes Everything](https://lucumr.pocoo.org/2025/6/4/changes/) | 25/06/2025 - 06:09|
 | [Jay Yang (@Jayyanginspires) on X](https://x.com/jayyanginspires/status/1936522193447346325?s=12) | 22/06/2025 - 22:05|
 | [‘You cannot stop this from happening:’ The harsh reality of AI and the job market](https://www.independent.co.uk/news/world/americas/ai-job-layoffs-tech-unemployment-b2769796.html) | 21/06/2025 - 02:27|
 | [No Rivals: The Founders Fund Story](https://www.generalist.com/p/founders-fund-1) | 21/06/2025 - 16:12|
