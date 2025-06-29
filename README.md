@@ -1,6 +1,9 @@
 
 |Name|Updated at|
 |-|-|
+| [how we accidentally solved robotics by watching 1 million hours of YouTube](https://ksagar.bearblog.dev/vjepa/) | 29/06/2025 - 21:52|
+| [Why Is Everyone Obsessed With Chat Interfaces?](https://zehfernandes.com/posts/why-is-everyone-obsessed-with-chat-interfaces) | 29/06/2025 - 21:57|
+| [Tiny Ui](https://www.molly.studio/thesis/tinyui) | 29/06/2025 - 22:05|
 | [LukeW - Common AI Product Issues](https://lukew.com/ff/entry.asp?2107) | 25/06/2025 - 13:14|
 | [GuNzuVBXIAE8V16 (643×680)](https://pbs.twimg.com/media/GuNzuVBXIAE8V16?format=png&name=small) | 25/06/2025 - 01:16|
 | [Building our way: announcing our Series C - Linear Blog](https://linear.app/blog/building-our-way) | 25/06/2025 - 06:01|
