@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Spegel - A Terminal Browser That Uses LLMs to Rewrite Webpages](https://simedw.com/2025/06/23/introducing-spegel/) | 01/07/2025 - 20:27|
 | [how we accidentally solved robotics by watching 1 million hours of YouTube](https://ksagar.bearblog.dev/vjepa/) | 29/06/2025 - 21:52|
 | [Why Is Everyone Obsessed With Chat Interfaces?](https://zehfernandes.com/posts/why-is-everyone-obsessed-with-chat-interfaces) | 29/06/2025 - 21:57|
 | [Tiny Ui](https://www.molly.studio/thesis/tinyui) | 29/06/2025 - 22:05|
