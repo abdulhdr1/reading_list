@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [I felt obliged to comment because I feel I know what you are talking about and I... - Hacker News](https://news.ycombinator.com/item?id=7789438) | 10/07/2025 - 02:26|
 | [Andrej Karpathy on X: "+1 for "context engineering" over "prompt engineering". People associate prompts with short task descriptions you'd give an LLM in your day-to-day use. When in every industrial-strength LLM app, context engineering is the delicate art and science of filling the context window" / X](https://x.com/karpathy/status/1937902205765607626) | 03/07/2025 - 04:01|
 | [Don't say "click here"; not everyone will be clicking - Quality Web Tips](https://www.w3.org/QA/Tips/noClickHere) | 03/07/2025 - 03:51|
 | [Sliding Window Technique Visualizer](https://sliding-window-visualizer-bryanneumann.replit.app/) | 02/07/2025 - 13:47|
