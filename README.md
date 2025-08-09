@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Give it five minutes](https://signalvnoise.com/posts/3124-give-it-five-minutes) | 09/08/2025 - 20:53|
 | [Bryan Kim on X: "There are billions of dollars to be made by consumer AI companies in old industries. That’s because they’re not stuck inside the system. They’re building directly for consumers. Without legacy friction, they can move faster, make better products, and deliver real outcomes. https://t.co/UyMynyTo7v" / X](https://x.com/kirbyman01/status/1950572170247319807) | 30/07/2025 - 17:44|
 | [Can LLMs Do Accounting? - Penrose](https://accounting.penrose.com/) | 24/07/2025 - 12:43|
 | [I felt obliged to comment because I feel I know what you are talking about and I... - Hacker News](https://news.ycombinator.com/item?id=7789438) | 10/07/2025 - 02:26|
