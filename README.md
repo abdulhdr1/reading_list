@@ -1,6 +1,11 @@
 
 |Name|Updated at|
 |-|-|
+| [DO TOO MUCH](https://alexw.substack.com/p/do-too-much?subscribe_prompt=free) | 10/08/2025 - 23:06|
+| [The Heartbeat Framework // Zeno Rocha](https://zenorocha.com/the-heartbeat-framework) | 10/08/2025 - 22:55|
+| [I Hate Next.js 13 Caching Even More Now](https://www.youtube.com/watch?v=_yhSh4g0NSk) | 10/08/2025 - 22:45|
+| [Buka Studio](https://buka.studio/) | 10/08/2025 - 22:35|
+| [Guillermo Rauch on X: "Active CPU pricing on Fluid has saved us 77% on our Vercel bill. This is the most significant infrastructure optimization we’ve shipped to date. It obviously changes how much you pay, but also the entire experience of using our product. Over the past year, our own workload mix https://t.co/iwge3XtEPi" / X](https://x.com/rauchg/status/1939864015616057597) | 10/08/2025 - 22:21|
 | [Give it five minutes](https://signalvnoise.com/posts/3124-give-it-five-minutes) | 09/08/2025 - 20:53|
 | [Bryan Kim on X: "There are billions of dollars to be made by consumer AI companies in old industries. That’s because they’re not stuck inside the system. They’re building directly for consumers. Without legacy friction, they can move faster, make better products, and deliver real outcomes. https://t.co/UyMynyTo7v" / X](https://x.com/kirbyman01/status/1950572170247319807) | 30/07/2025 - 17:44|
 | [Can LLMs Do Accounting? - Penrose](https://accounting.penrose.com/) | 24/07/2025 - 12:43|
