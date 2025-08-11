@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Engineering Your Way To Marketing Success - Kalzumeus Software](https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/) | 11/08/2025 - 13:56|
 | [DO TOO MUCH](https://alexw.substack.com/p/do-too-much?subscribe_prompt=free) | 10/08/2025 - 23:06|
 | [The Heartbeat Framework // Zeno Rocha](https://zenorocha.com/the-heartbeat-framework) | 10/08/2025 - 22:55|
 | [I Hate Next.js 13 Caching Even More Now](https://www.youtube.com/watch?v=_yhSh4g0NSk) | 10/08/2025 - 22:45|
