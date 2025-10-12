@@ -1,6 +1,7 @@
 
 |Name|Updated at|
 |-|-|
+| [Code Mode: the better way to use MCP](https://blog.cloudflare.com/code-mode/) | 12/10/2025 - 16:56|
 | [Engineering Your Way To Marketing Success - Kalzumeus Software](https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/) | 11/08/2025 - 13:56|
 | [DO TOO MUCH](https://alexw.substack.com/p/do-too-much?subscribe_prompt=free) | 10/08/2025 - 23:06|
 | [The Heartbeat Framework // Zeno Rocha](https://zenorocha.com/the-heartbeat-framework) | 10/08/2025 - 22:55|
