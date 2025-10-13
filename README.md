@@ -1,6 +1,8 @@
 
 |Name|Updated at|
 |-|-|
+| [A tale of two Agent Builders](https://ideas.fin.ai/p/a-tale-of-two-agent-builders) | 13/10/2025 - 01:00|
+| [Z Fellows on X: "Andreessen Horowitz Co-founder on a hard truth: "Nobody Cares" https://t.co/fnx1ARtdiw" / X](https://x.com/zfellows/status/1974834590414950523) | 13/10/2025 - 00:33|
 | [Code Mode: the better way to use MCP](https://blog.cloudflare.com/code-mode/) | 12/10/2025 - 16:56|
 | [Engineering Your Way To Marketing Success - Kalzumeus Software](https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/) | 11/08/2025 - 13:56|
 | [DO TOO MUCH](https://alexw.substack.com/p/do-too-much?subscribe_prompt=free) | 10/08/2025 - 23:06|
