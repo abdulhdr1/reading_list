@@ -1,15 +1,8 @@
 
 |Name|Updated at|
 | [@garrytan on X](https://x.com/garrytan/status/2023518514120937672?s=48) | 17/02/2026 - 13:14|
-| [@troyaitken_ on X](https://x.com/troyaitken_/status/2023152379571626312?s=48) | 17/02/2026 - 13:14|
-| [@robjama on X](https://x.com/robjama/status/2023151595295268939?s=48) | 17/02/2026 - 13:14|
-| [@marzooqahq on X](https://x.com/marzooqahq/status/2023506950890426755?s=48) | 17/02/2026 - 13:14|
 | [LinkedIn Post](https://www.linkedin.com/posts/vibegui_the-most-productive-thing-i-did-today-was-activity-7429359346947497984-UjXQ?utm_source=share&utm_medium=member_ios&rcm=ACoAAC6Ijo0BUm6Jo8k2K9JoxRvbQ3nmmdN2Smc) | 17/02/2026 - 13:14|
 | [@amirmxt on X](https://x.com/amirmxt/status/2023459550767288594?s=48) | 17/02/2026 - 13:14|
-| [@davidsenra on X](https://x.com/davidsenra/status/2012902807590822209?s=48) | 17/02/2026 - 13:14|
-| [Ironclaw — AI CRM](https://ironclaw.sh/) | 17/02/2026 - 16:48|
-| [@metapreston on X](https://x.com/metapreston/status/2023995973152752090) | 18/02/2026 - 10:08|
-| [@mdnlabs on X](https://x.com/mdnlabs/status/2023836520277332438) | 18/02/2026 - 10:08|
 | [A tale of two Agent Builders](https://ideas.fin.ai/p/a-tale-of-two-agent-builders) | 13/10/2025 - 01:00|
 | [Z Fellows on X: "Andreessen Horowitz Co-founder on a hard truth: "Nobody Cares" https://t.co/fnx1ARtdiw" / X](https://x.com/zfellows/status/1974834590414950523) | 13/10/2025 - 00:33|
 | [Code Mode: the better way to use MCP](https://blog.cloudflare.com/code-mode/) | 12/10/2025 - 16:56|
