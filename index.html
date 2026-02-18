@@ -196,7 +196,7 @@ fetch('./README.md')
       if (!m) return null;
       const d = parseDate(m[3]);
       return { title: m[1], url: m[2], date: d, dateStr: formatDate(d) };
-    }).filter(Boolean);
+    }).filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0));
     render(allItems);
   })
   .catch(() => {
