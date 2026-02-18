@@ -29,6 +29,13 @@ def build_page(item):
     except:
         pass
 
+    # Check for cover image
+    cover_path = os.path.join(ROOT, 'images', f'{s}.png')
+    has_cover = os.path.exists(cover_path)
+    cover_html = ''
+    if has_cover:
+        cover_html = f'  <img src="../images/{s}.png" class="cover" alt="{title}" loading="lazy">'
+
     # Split summary into paragraphs
     paragraphs = [p.strip() for p in raw_summary.split('\n\n') if p.strip()]
     summary_html = '\n'.join(f'  <p>{html.escape(p)}</p>' for p in paragraphs)
@@ -103,6 +110,12 @@ h1 {{
   letter-spacing: -0.01em;
 }}
 .meta-dot {{ color: var(--badge); }}
+/* Cover image */
+.cover {{
+  width: 100%; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 32px; display: block;
+}}
 /* Visit button */
 .visit-btn {{
   display: inline-flex; align-items: center; gap: 6px;
@@ -183,6 +196,7 @@ h1 {{
     <span class="meta-dot">·</span>
     <span>{rt}</span>
   </div>
+{cover_html}
   <a class="visit-btn" href="{url}" target="_blank" rel="noopener">
     Visit original <span class="arrow">↗</span>
   </a>
