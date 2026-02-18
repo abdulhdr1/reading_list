@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Curse of Knowing How, or; Fixing Everything</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #fafaf9; --text: #1a1a1a; --text-secondary: #6b6b6b;
+  --border: #e8e5e1; --hover: #f0efed; --active-tag: #e5e3df;
+  --badge-bg: #f0efed; --badge-text: #6b6b6b;
+  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.08);
+  --card-bg: #ffffff;
+}
+[data-theme="dark"] {
+  --bg: #111110; --text: #e8e6e2; --text-secondary: #8a8680;
+  --border: #2a2826; --hover: #1c1b19; --active-tag: #2a2826;
+  --badge-bg: #1f1e1c; --badge-text: #8a8680;
+  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.06);
+  --card-bg: #181715;
+}
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Accent top line */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent 80%);
+  z-index: 100;
+}
+.container {
+  max-width: 640px; margin: 0 auto;
+  padding: 72px 24px 120px;
+}
+/* Header */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 48px;
+}
+.back {
+  color: var(--text-secondary); text-decoration: none; font-size: 13px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 6px;
+  transition: color 180ms, background 180ms;
+  letter-spacing: -0.01em;
+}
+.back:hover { color: var(--text); background: var(--hover); }
+.domain-badge {
+  font-size: 12px; color: var(--badge-text);
+  background: var(--badge-bg); padding: 4px 10px;
+  border-radius: 20px; letter-spacing: -0.01em;
+  font-weight: 450;
+}
+/* Title */
+h1 {
+  font-size: 32px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.2; margin-bottom: 16px;
+  color: var(--text);
+}
+/* Meta line */
+.meta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  color: var(--text-secondary); font-size: 13px; margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.meta-dot { opacity: 0.4; }
+/* Visit button */
+.visit-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text); text-decoration: none;
+  font-size: 14px; font-weight: 550;
+  font-family: inherit; letter-spacing: -0.01em;
+  transition: all 200ms ease;
+  margin-bottom: 40px;
+}
+.visit-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200, 169, 110, 0.25);
+}
+.visit-btn .arrow {
+  transition: transform 200ms;
+}
+.visit-btn:hover .arrow {
+  transform: translate(2px, -2px);
+}
+/* Summary / Article body */
+.summary {
+  font-size: 17px; line-height: 1.8; letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+.summary p {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.summary p:last-child {
+  margin-bottom: 0;
+}
+/* Divider */
+.divider {
+  width: 40px; height: 1px; background: var(--border);
+  margin-bottom: 24px;
+}
+/* Tags */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.pill {
+  background: var(--badge-bg); color: var(--badge-text);
+  font-size: 12px; font-weight: 500; padding: 5px 14px;
+  border-radius: 20px; text-decoration: none;
+  transition: all 180ms; letter-spacing: -0.01em;
+  border: 1px solid transparent;
+}
+.pill:hover {
+  background: var(--active-tag); color: var(--text);
+  border-color: var(--border);
+}
+/* Theme toggle */
+.theme-toggle {
+  background: var(--badge-bg); border: none;
+  width: 32px; height: 32px; border-radius: 50%;
+  font-size: 14px; cursor: pointer; color: var(--text-secondary);
+  transition: all 180ms; display: flex; align-items: center; justify-content: center;
+}
+.theme-toggle:hover { background: var(--active-tag); color: var(--text); }
+/* Responsive */
+@media (max-width: 480px) {
+  .container { padding: 56px 16px 80px; }
+  h1 { font-size: 26px; }
+  .summary { font-size: 16px; line-height: 1.75; }
+  .header { margin-bottom: 36px; }
+}
+/* Smooth transitions for theme */
+body, .container, h1, p, a, .pill, .visit-btn, .domain-badge, .theme-toggle {
+  transition: color 250ms, background 250ms, border-color 250ms;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <a class="back" href="../index.html">← Back to list</a>
+    <span class="domain-badge">notashelf.dev</span>
+  </div>
+  <h1>The Curse of Knowing How, or; Fixing Everything</h1>
+  <div class="meta">
+    <span>21/06/2025 - 02:19</span>
+    <span class="meta-dot">·</span>
+    <span>1 min read</span>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+  </div>
+  <a class="visit-btn" href="https://notashelf.dev/posts/curse-of-knowing" target="_blank" rel="noopener">
+    Visit original <span class="arrow">↗</span>
+  </a>
+  <div class="summary">
+  <p>A deeply relatable essay about what happens when you learn enough about programming to see everything that&#x27;s broken. It starts innocently — you rename files with a Python script, alias a git command, build a shell function. Then you cross a threshold. You look at your tools, your environment, your OS, and suddenly everything is fair game.</p>
+  <p>Before you could program, broken software was frustrating but ignorable. Now it&#x27;s provocative. You notice flaws like a surgeon notices a limp. Why does this site send 10MB of JavaScript for a static page? Why is the CLI output not parseable by awk? Every piece of software becomes a TODO list. Every inconvenience becomes an indictment of inaction.</p>
+  <p>The essay draws on Camus&#x27;s Sisyphus — we are condemned to roll the boulder of improvement uphill, only to watch it roll back down. Technical capability creates a moral weight: because you can fix something, you feel you should. The curse isn&#x27;t the knowledge itself but the compulsion it creates. It&#x27;s a beautiful articulation of the engineer&#x27;s perpetual burden and why so many developers can&#x27;t stop tinkering with their own tools.</p>
+  </div>
+  <div class="divider"></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=engineering">engineering</a><a class="pill" href="../index.html?tag=culture">culture</a><a class="pill" href="../index.html?tag=productivity">productivity</a></div>
+</div>
+<script>
+function toggleTheme() {
+  const d = document.documentElement;
+  const next = d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  d.setAttribute('data-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '🌙';
+  }
+})();
+</script>
+</body>
+</html>

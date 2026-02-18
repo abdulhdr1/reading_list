@@ -7,91 +7,176 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #ffffff; --text: #1a1a1a; --text-secondary: #6b6b6b;
-  --border: #e8e5e1; --hover: #f5f4f2; --active-tag: #eeebe7; --badge: #c5c0b8;
+  --bg: #fafaf9; --text: #1a1a1a; --text-secondary: #6b6b6b;
+  --border: #e8e5e1; --hover: #f0efed; --active-tag: #e5e3df;
+  --badge-bg: #f0efed; --badge-text: #6b6b6b;
+  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.08);
+  --card-bg: #ffffff;
 }
 [data-theme="dark"] {
-  --bg: #141312; --text: #e8e6e2; --text-secondary: #8a8680;
-  --border: #2a2826; --hover: #1f1e1c; --active-tag: #2a2826; --badge: #5a5650;
+  --bg: #111110; --text: #e8e6e2; --text-secondary: #8a8680;
+  --border: #2a2826; --hover: #1c1b19; --active-tag: #2a2826;
+  --badge-bg: #1f1e1c; --badge-text: #8a8680;
+  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.06);
+  --card-bg: #181715;
 }
 body {
   background: var(--bg); color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  line-height: 1.7; letter-spacing: -0.01em;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.container { max-width: 640px; margin: 0 auto; padding: 80px 24px 120px; }
+/* Accent top line */
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent 80%);
+  z-index: 100;
+}
+.container {
+  max-width: 640px; margin: 0 auto;
+  padding: 72px 24px 120px;
+}
+/* Header */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 48px;
+}
 .back {
   color: var(--text-secondary); text-decoration: none; font-size: 13px;
   display: inline-flex; align-items: center; gap: 6px;
-  margin-bottom: 40px; transition: color 150ms;
+  padding: 6px 12px; border-radius: 6px;
+  transition: color 180ms, background 180ms;
+  letter-spacing: -0.01em;
 }
-.back:hover { color: var(--text); }
+.back:hover { color: var(--text); background: var(--hover); }
+.domain-badge {
+  font-size: 12px; color: var(--badge-text);
+  background: var(--badge-bg); padding: 4px 10px;
+  border-radius: 20px; letter-spacing: -0.01em;
+  font-weight: 450;
+}
+/* Title */
 h1 {
-  font-size: 28px; font-weight: 600; letter-spacing: -0.02em;
-  line-height: 1.2; margin-bottom: 12px;
+  font-size: 32px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.2; margin-bottom: 16px;
+  color: var(--text);
 }
+/* Meta line */
 .meta {
-  display: flex; align-items: center; gap: 12px;
-  color: var(--text-secondary); font-size: 13px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  color: var(--text-secondary); font-size: 13px; margin-bottom: 28px;
+  letter-spacing: -0.01em;
 }
-.meta-dot { color: var(--badge); }
-.visit {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 16px; border: 1px solid var(--border); border-radius: 6px;
-  color: var(--text); text-decoration: none; font-size: 13px; font-weight: 450;
-  margin-bottom: 32px; transition: background 150ms, border-color 150ms;
+.meta-dot { opacity: 0.4; }
+/* Visit button */
+.visit-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  color: var(--text); text-decoration: none;
+  font-size: 14px; font-weight: 550;
   font-family: inherit; letter-spacing: -0.01em;
+  transition: all 200ms ease;
+  margin-bottom: 40px;
 }
-.visit:hover { background: var(--hover); border-color: var(--badge); }
+.visit-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200, 169, 110, 0.25);
+}
+.visit-btn .arrow {
+  transition: transform 200ms;
+}
+.visit-btn:hover .arrow {
+  transform: translate(2px, -2px);
+}
+/* Summary / Article body */
 .summary {
-  color: var(--text); font-size: 15px; line-height: 1.8; margin-bottom: 32px;
+  font-size: 17px; line-height: 1.8; letter-spacing: -0.01em;
+  margin-bottom: 48px;
 }
-.divider { width: 32px; height: 1px; background: var(--border); margin-bottom: 20px; }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.summary p {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.summary p:last-child {
+  margin-bottom: 0;
+}
+/* Divider */
+.divider {
+  width: 40px; height: 1px; background: var(--border);
+  margin-bottom: 24px;
+}
+/* Tags */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
 .pill {
-  background: var(--hover); color: var(--text-secondary);
-  font-size: 12px; font-weight: 450; padding: 4px 10px; border-radius: 4px;
-  text-decoration: none; transition: background 150ms; letter-spacing: -0.01em;
+  background: var(--badge-bg); color: var(--badge-text);
+  font-size: 12px; font-weight: 500; padding: 5px 14px;
+  border-radius: 20px; text-decoration: none;
+  transition: all 180ms; letter-spacing: -0.01em;
+  border: 1px solid transparent;
 }
-.pill:hover { background: var(--active-tag); color: var(--text); }
+.pill:hover {
+  background: var(--active-tag); color: var(--text);
+  border-color: var(--border);
+}
+/* Theme toggle */
 .theme-toggle {
-  position: fixed; top: 20px; right: 20px; background: none; border: none;
+  background: var(--badge-bg); border: none;
+  width: 32px; height: 32px; border-radius: 50%;
   font-size: 14px; cursor: pointer; color: var(--text-secondary);
-  opacity: 0.5; transition: opacity 150ms;
+  transition: all 180ms; display: flex; align-items: center; justify-content: center;
 }
-.theme-toggle:hover { opacity: 1; }
+.theme-toggle:hover { background: var(--active-tag); color: var(--text); }
+/* Responsive */
 @media (max-width: 480px) {
-  .container { padding: 60px 16px 80px; }
-  h1 { font-size: 22px; }
+  .container { padding: 56px 16px 80px; }
+  h1 { font-size: 26px; }
+  .summary { font-size: 16px; line-height: 1.75; }
+  .header { margin-bottom: 36px; }
+}
+/* Smooth transitions for theme */
+body, .container, h1, p, a, .pill, .visit-btn, .domain-badge, .theme-toggle {
+  transition: color 250ms, background 250ms, border-color 250ms;
 }
 </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
 <div class="container">
-  <a class="back" href="../index.html">← Back</a>
+  <div class="header">
+    <a class="back" href="../index.html">← Back to list</a>
+    <span class="domain-badge">alexw.substack.com</span>
+  </div>
   <h1>DO TOO MUCH</h1>
   <div class="meta">
     <span>10/08/2025 - 23:06</span>
     <span class="meta-dot">·</span>
-    <span>alexw.substack.com</span>
+    <span>2 min read</span>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
   </div>
-  <a class="visit" href="https://alexw.substack.com/p/do-too-much" target="_blank" rel="noopener">Visit original ↗</a>
-  <p class="summary">Alex Wang, CEO of Scale AI, makes a provocative argument: what most people would call excessive effort is actually the baseline for building anything extraordinary. &#x27;Too much&#x27; is the right amount.
-
-As a leader, you are the upper bound for how much anyone in your company will care. His reframes cut deep:
+  <a class="visit-btn" href="https://alexw.substack.com/p/do-too-much" target="_blank" rel="noopener">
+    Visit original <span class="arrow">↗</span>
+  </a>
+  <div class="summary">
+  <p>Alex Wang, CEO of Scale AI, makes a provocative argument: what most people would call excessive effort is actually the baseline for building anything extraordinary. &#x27;Too much&#x27; is the right amount.</p>
+  <p>As a leader, you are the upper bound for how much anyone in your company will care. His reframes cut deep:
 - What people call overoptimism is just optimism
 - What people call overcommunicating is just communicating
 - What people call overdelivering is just delivering
 - What people call micromanagement is just management
-- What people call ruthless prioritization is just prioritization
-
-He backs this with examples: there is no Apple without Jobs&#x27;s &#x27;obsessive&#x27; attention to detail. No SpaceX or Tesla without Elon&#x27;s &#x27;maniacal&#x27; drive for execution. He has never seen ordinary effort lead to extraordinary results.
-
-The concrete Scale AI example is compelling: when generative AI took off in 2022, Scale shifted the vast majority of their team to LLM data generation within 6 months. Most companies would have spent quarters in bureaucratic planning cycles, only moving after a competitor started eating their lunch. The change was &#x27;drastic and abrupt — some might say jarring or extreme.&#x27; But what people described as overreacting was just reacting. That speed made Scale&#x27;s subsequent 4X growth possible.
-
-The essay&#x27;s closing is powerful: &#x27;Creating something meaningful is a beautiful, and yes, scary and painful thing. And if you&#x27;re not overdoing it, you&#x27;re underdoing it.&#x27; Scale will do things incumbent companies won&#x27;t because it&#x27;s too scary or painful — and that&#x27;s a feature, not a bug.</p>
+- What people call ruthless prioritization is just prioritization</p>
+  <p>He backs this with examples: there is no Apple without Jobs&#x27;s &#x27;obsessive&#x27; attention to detail. No SpaceX or Tesla without Elon&#x27;s &#x27;maniacal&#x27; drive for execution. He has never seen ordinary effort lead to extraordinary results.</p>
+  <p>The concrete Scale AI example is compelling: when generative AI took off in 2022, Scale shifted the vast majority of their team to LLM data generation within 6 months. Most companies would have spent quarters in bureaucratic planning cycles, only moving after a competitor started eating their lunch. The change was &#x27;drastic and abrupt — some might say jarring or extreme.&#x27; But what people described as overreacting was just reacting. That speed made Scale&#x27;s subsequent 4X growth possible.</p>
+  <p>The essay&#x27;s closing is powerful: &#x27;Creating something meaningful is a beautiful, and yes, scary and painful thing. And if you&#x27;re not overdoing it, you&#x27;re underdoing it.&#x27; Scale will do things incumbent companies won&#x27;t because it&#x27;s too scary or painful — and that&#x27;s a feature, not a bug.</p>
+  </div>
   <div class="divider"></div>
   <div class="tags"><a class="pill" href="../index.html?tag=leadership">leadership</a><a class="pill" href="../index.html?tag=startup">startup</a><a class="pill" href="../index.html?tag=productivity">productivity</a></div>
 </div>

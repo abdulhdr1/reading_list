@@ -4,69 +4,1150 @@
     "title": "@garrytan — Personal agent software is the new meta of 2026",
     "date": "17/02/2026 - 13:14",
     "summary": "Garry Tan (President & CEO of Y Combinator) shares his excitement about a new trend he's seeing in 2026: personal agent software that you install and run locally on your own computer. He calls it 'one of my favorite new metas of 2026' and argues that placing agent power on the user's own machine — rather than in the cloud — fundamentally empowers every user.\n\nHe links to Ironclaw (ironclaw.sh), an AI CRM that runs locally on Mac, as an example of this trend. The post resonated massively: 293K views, 1.6K likes, 1.9K bookmarks.\n\nThe replies are interesting too — jacopo.eth clarifies that Ironclaw is actually a nearai/ironclaw Rust implementation inspired by OpenClaw, focused on privacy. Other replies mention similar local-first agent projects like Iris (a Jarvis-like companion with a mobile app for remote comms to a desktop agent). The thread captures the growing momentum around local-first, privacy-respecting AI agents as an alternative to cloud-dependent SaaS.",
-    "tags": ["ai", "startup", "vc"]
+    "tags": [
+      "ai",
+      "startup",
+      "vc"
+    ]
   },
   {
     "url": "https://www.linkedin.com/posts/vibegui_the-most-productive-thing-i-did-today-was-activity-7429359346947497984-UjXQ",
     "title": "The Most Productive Thing I Did Today Was Answer Questions — Guilherme Rodrigues",
     "date": "17/02/2026 - 13:14",
     "summary": "Guilherme Rodrigues (vibegui) shares his experience adopting Get Shit Done (GSD), a meta-prompting and spec-driven development plugin for Claude Code. His core thesis: the most productive thing he did wasn't writing code — it was answering the right questions. GSD's approach forces you to clearly define what you want before the AI starts coding, which leads to dramatically better output compared to just prompting Claude directly.\n\nThe post links to his article 'The Most Productive Thing I Did Today Was Answer Questions' on vibegui.com, where he goes deeper into the workflow. The LinkedIn comments sparked interesting discussion: one person asks about budget management (Claude API costs can burn fast — 'o Claude chiou demais aqui' 💸), a designer notes they still prefer IDE + browser for visual iteration, and several engineers confirm GSD entered their daily stack immediately after trying it. One commenter asks whether GSD works better than Claude's built-in plan/tasks system, and another asks if it scales across multiple parallel projects.",
-    "tags": ["ai", "productivity", "engineering"]
+    "tags": [
+      "ai",
+      "productivity",
+      "engineering"
+    ]
   },
   {
     "url": "https://x.com/amirmxt/status/2023459550767288594",
     "title": "@amirmxt — Running an entire GTM campaign without leaving the terminal",
     "date": "17/02/2026 - 13:14",
     "summary": "amirmxt shares a detailed walkthrough of running an entire Go-To-Market campaign using AI agents directly from the terminal, without ever opening a browser manually. The workflow has four steps:\n\n1) Lead enrichment with Firecrawl — not just names and emails but firmographics, tech stacks, and company signals. Thousands of leads categorized and segmented in minutes.\n\n2) Campaign building with Claude — Claude opened a browser, navigated to hunter.io, and built email campaigns directly inside Hunter's editor. It wrote personalized email sequences (subject lines, body copy, follow-ups) tailored to each segment.\n\n3) Review — amirmxt sat and reviewed 7 campaigns, checked targeting, tweaked subject lines, shortened emails that were too long. Claude handled the edits too — navigated back into each campaign and swapped in simplified versions.\n\n4) Publish — everything went live. 2,700+ leads across 6 lists, 7 active campaigns all running.\n\nHis key insight: 'the bottleneck isn't execution anymore — it's knowing what to build.' The post got 137K views and 1.6K bookmarks. In the replies, Dante Rebelo pushes back saying AI-generated 'personalized' outreach is still 'obviously AI slop,' and amirmxt responds honestly that he tries to write emails in his own tone — using agents mainly for setup and enrichment, not the actual copy.",
-    "tags": ["ai", "marketing", "startup"]
+    "tags": [
+      "ai",
+      "marketing",
+      "startup"
+    ]
   },
   {
     "url": "https://ideas.fin.ai/p/a-tale-of-two-agent-builders",
     "title": "A Tale of Two Agent Builders",
     "date": "13/10/2025 - 01:00",
     "summary": "This article compares two fundamentally different approaches to building AI agent configuration interfaces, released in the same week: OpenAI's canvas-based Agent Builder and Intercom/Fin's document-based Procedures.\n\nOpenAI's Agent Builder uses the classic 'nodes and noodles' visual workflow pattern — a canvas where you drag, connect, and configure logic gates in an if-then-else flow. It's a well-established pattern with deep roots (Quartz Composer, Max/MSP, Scratch, Zapier, n8n) but inherently deterministic. The initial reaction was mixed: it felt like squeezing massively capable agentic systems through narrow logic gates. As workflows grow complex, they become spaghetti. LLMs work well with language, not flowcharts. Impressively (or tellingly), it was built in just six weeks.\n\nFin's Procedures takes the opposite approach: a document-based editor inspired by Jupyter Notebooks and Notion. You start by describing what you want in plain English (probabilistic), then progressively add deterministic elements inline — branching logic, data connectors, code blocks — only when needed. It echoes Stephen Wolfram's aspiration of 'programming in which one is as directly as possible expressing computational thinking.' The result is a blend of agentic and specific, with progressive complexity.\n\nThe deeper insight is about the central UI design challenge of the AI era: how do we combine deterministic interfaces (predictable, if-then-else) with probabilistic ones (fuzzy, AI-driven)? The author believes the primary user interfaces of the future will be the ones that most gracefully blend both. OpenAI is building generic multi-agent infrastructure; Fin is building domain-specific customer support tooling — different goals explaining different design choices, but both wrestling with the same fundamental tension.",
-    "tags": ["ai", "design", "product"]
+    "tags": [
+      "ai",
+      "design",
+      "product"
+    ]
   },
   {
     "url": "https://blog.cloudflare.com/code-mode/",
     "title": "Code Mode: the better way to use MCP",
     "date": "12/10/2025 - 16:56",
     "summary": "Cloudflare's engineering team (Kenton Varda and Sunil Pai) discovered that the standard way everyone uses MCP (Model Context Protocol) is suboptimal — and possibly fundamentally wrong. Instead of exposing tools directly to the LLM for function calling, they convert MCP tools into a TypeScript API and ask the LLM to write code that calls that API.\n\nThe results are striking for two reasons:\n\n1) LLMs handle far more tools, and more complex tools, when presented as TypeScript interfaces. This is because LLMs have trained on enormous amounts of real-world TypeScript, but only on a small set of contrived tool-call examples. Tool calling relies on special tokens the LLM has rarely seen in the wild — they must be specially trained via synthetic data. Code, on the other hand, is something LLMs have seen billions of lines of.\n\n2) The approach dramatically improves multi-step workflows. With traditional tool calling, the output of each call feeds back through the LLM's neural network just to be copied to the next call input — wasting time, energy, and tokens. When the LLM writes code, it chains calls directly in a single execution, only reading back final results.\n\nThe article dives deep into how tool calling actually works under the hood: special non-textual tokens that signal 'tool call start' and 'tool call end,' JSON payloads between them, the harness pausing execution, and results fed back via another set of special tokens. It explains why MCP server designers are encouraged to present simplified APIs — because LLMs struggle with complex tool schemas — and how Code Mode removes that limitation entirely.\n\nIn short: LLMs are better at writing code to call MCP than at calling MCP directly. The implications for how we design agent architectures are significant.",
-    "tags": ["ai", "engineering", "frontend"]
+    "tags": [
+      "ai",
+      "engineering",
+      "frontend"
+    ]
   },
   {
     "url": "https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/",
     "title": "Engineering Your Way To Marketing Success",
     "date": "11/08/2025 - 13:56",
     "summary": "Patrick McKenzie (patio11) — one of the most respected voices in indie software — makes the case that engineers should stop building features nobody uses and start deploying their coding skills for marketing. The core insight: the software industry sits on more engineering talent than Saudi Arabia has oil, yet we waste it building marginal features instead of systems that actually drive sales.\n\nHe shares a painful personal example from Bingo Card Creator: spending enormous time on client/server sync (used by exactly 22 customers — 1% adoption) versus adding color support (took 1/10th the time, used by 8.5% of customers). The lesson: features don't sell software — benefits do. Customers don't care about PPT file internals; they care about closing deals and getting promoted.\n\nThe article covers several powerful engineering-to-marketing conversions:\n- Automated SEO at scale: building systems to generate thousands of pages of targeted content (he wrote 28,761 words of bingo activities — a young-adult novel's worth — but built the system to let freelancers do it)\n- A/B testing everything relentlessly: not as one-off experiments but as a cultural process\n- Building analytics systems that answer real questions like 'Do customers feel like they just killed a lion?'\n- Creating tools and processes as force multipliers — the key to decoupling productivity from hours worked\n\nThe meta-lesson: instead of grinding out content or features yourself, build a system that lets someone else do it efficiently, then spend your time building more force multipliers. This compounding effect is what separates growing businesses from stagnant ones.",
-    "tags": ["marketing", "engineering", "startup"]
+    "tags": [
+      "marketing",
+      "engineering",
+      "startup"
+    ]
   },
   {
     "url": "https://alexw.substack.com/p/do-too-much",
     "title": "DO TOO MUCH",
     "date": "10/08/2025 - 23:06",
     "summary": "Alex Wang, CEO of Scale AI, makes a provocative argument: what most people would call excessive effort is actually the baseline for building anything extraordinary. 'Too much' is the right amount.\n\nAs a leader, you are the upper bound for how much anyone in your company will care. His reframes cut deep:\n- What people call overoptimism is just optimism\n- What people call overcommunicating is just communicating\n- What people call overdelivering is just delivering\n- What people call micromanagement is just management\n- What people call ruthless prioritization is just prioritization\n\nHe backs this with examples: there is no Apple without Jobs's 'obsessive' attention to detail. No SpaceX or Tesla without Elon's 'maniacal' drive for execution. He has never seen ordinary effort lead to extraordinary results.\n\nThe concrete Scale AI example is compelling: when generative AI took off in 2022, Scale shifted the vast majority of their team to LLM data generation within 6 months. Most companies would have spent quarters in bureaucratic planning cycles, only moving after a competitor started eating their lunch. The change was 'drastic and abrupt — some might say jarring or extreme.' But what people described as overreacting was just reacting. That speed made Scale's subsequent 4X growth possible.\n\nThe essay's closing is powerful: 'Creating something meaningful is a beautiful, and yes, scary and painful thing. And if you're not overdoing it, you're underdoing it.' Scale will do things incumbent companies won't because it's too scary or painful — and that's a feature, not a bug.",
-    "tags": ["leadership", "startup", "productivity"]
+    "tags": [
+      "leadership",
+      "startup",
+      "productivity"
+    ]
   },
   {
     "url": "https://zenorocha.com/the-heartbeat-framework",
     "title": "The Heartbeat Framework — Zeno Rocha",
     "date": "10/08/2025 - 22:55",
     "summary": "Zeno Rocha, founder of Resend, codifies how startups maintain momentum into a framework he calls 'The Heartbeat.' The core premise is deceptively simple but hard to execute: getting momentum is extremely hard, losing it is very easy. As makers, you not only have to ship software — you have to ship AND talk about it. Constantly. If you want to create a feeling of 'always shipping,' you need a rhythm.\n\nThe framework works like an actual heartbeat — big peaks followed by small peaks, with the beat always present. A flat line means you're dead. No momentum. The balance between big and small peaks matters, but the beat must never stop.\n\nThe six layers, from highest impact to highest frequency:\n\nA) Launch Weeks (2-3x/year) — The big peaks. 5 new features in 5 days. Most impactful but highest cost to the team. Don't do them too frequently.\n\nB) Mini-Launches (4-5x/year) — Small wins worth sharing in detail, without the full coordination overhead of a Launch Week.\n\nC) Changelogs (1-2x/month) — Regular product updates showing evolution. Pro tip: create an internal streak to motivate the team so you never miss a cycle.\n\nD) Blog posts (1-2x/month) — Nothing is more telling than a company blog with the last post from a year ago. It signals death.\n\nE) Customer stories (1-2x/month) — Real developer experiences. Crucial for attracting new customers AND keeping the internal team motivated with proof that the product matters.\n\nF) Social posts (1x/day) — Be very active but in only a few places. For Resend, X and LinkedIn worked best.\n\nEach layer has real-life examples from Resend's own execution. The framework has been widely adopted by developer-focused startups as a practical playbook for developer marketing.",
-    "tags": ["marketing", "startup", "product"]
+    "tags": [
+      "marketing",
+      "startup",
+      "product"
+    ]
   },
   {
     "url": "https://www.youtube.com/watch?v=_yhSh4g0NSk",
     "title": "I Hate Next.js 13 Caching Even More Now",
     "date": "10/08/2025 - 22:45",
     "summary": "A YouTube video deep-diving into the widespread frustrations developers face with Next.js 13's caching system. Next.js 13 introduced multiple caching layers — the Data Cache, Full Route Cache, and Router Cache — that interact in complex and often surprising ways.\n\nThe video walks through real scenarios where caching behavior is unintuitive: stale data appears when you expect fresh data, revalidation doesn't work as documented, and developers end up spending more time fighting the cache than building features. The Router Cache in particular was controversial because it cached client-side navigations by default with no easy way to opt out.\n\nThis critique resonated deeply with the React/Next.js community because it captured a sentiment many developers felt but couldn't articulate: the caching was too aggressive, too opaque, and too hard to debug. It became one of the most-shared critiques of Next.js 13's architecture and likely influenced the simplified caching defaults in later versions. A must-watch for anyone working with Next.js who has ever muttered 'why is this showing old data?'",
-    "tags": ["frontend", "engineering"]
+    "tags": [
+      "frontend",
+      "engineering"
+    ]
   },
   {
     "url": "https://buka.studio/",
     "title": "Buka Studio",
     "date": "10/08/2025 - 22:35",
     "summary": "Buka Studio (ブカ) is a design-development duo based in Croatia, run by Marijana (designer) and Robert (developer). They help founders turn ideas into products and brands, working closely with teams they believe in.\n\nTheir philosophy centers on a principle that's increasingly rare: design and code should move together so nothing gets lost in translation. Too many studios separate design from implementation, leading to pixel-perfect mockups that fall apart in production. Buka avoids this by having both disciplines work in tandem from day one.\n\nThey're drawn to new ideas and dive in fast, exploring broadly. Whether shaping early-stage concepts, refining products already in production, or crafting bold visuals for one-off moments, they ensure everything feels cohesive and on-brand. They're not a large agency — they're a small, focused, high-quality product studio that picks projects they genuinely believe in.\n\nA great reference for what a modern, lean design-dev partnership looks like: no bureaucracy, no account managers, just a designer and developer who ship together. Based in Croatia, available remotely.",
-    "tags": ["design", "startup"]
+    "tags": [
+      "design",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://x.com/zfellows/status/1974834590414950523",
+    "title": "Andreessen Horowitz Co-founder on 'Nobody Cares'",
+    "date": "13/10/2025 - 00:33",
+    "summary": "Z Fellows shares a clip of Andreessen Horowitz co-founder Ben Horowitz delivering a hard truth to founders: 'Nobody Cares.' The message is blunt — nobody cares about your startup, your vision, or your problems. Customers don't care, investors don't care, employees have their own lives. The only thing that matters is what you build and ship.\n\nThis is a foundational mindset for founders. The world doesn't owe you attention or success. Every customer interaction, every pitch, every hire — you're competing against indifference. The clip resonated widely (95K views, 1.2K likes) because it cuts through the motivational fluff that dominates startup culture.\n\nThe underlying lesson is about radical ownership: stop expecting the world to meet you halfway. Build something so good that people can't ignore it. It's the startup equivalent of 'shut up and ship.' Z Fellows pairs this with their own pitch — $10K to skip class/job for a week and go all in on your idea — which is itself an embodiment of this philosophy: action over talk.",
+    "tags": [
+      "startup",
+      "vc",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://signalvnoise.com/posts/3124-give-it-five-minutes",
+    "title": "Give It Five Minutes — Jason Fried",
+    "date": "09/08/2025 - 20:53",
+    "summary": "Jason Fried, co-founder of Basecamp, shares a pivotal moment from 2007 when he met Richard Saul Wurman (creator of TED) at a conference. After Fried's talk, Wurman approached to compliment him — and Fried immediately pushed back on Wurman's ideas. Wurman's response changed his life: 'Man, give it five minutes.'\n\nThe lesson is deceptively simple: there's a massive difference between asking questions (wanting to learn) and pushing back (thinking you already know). The faster you react, the less you think. Fried admits he used to be a hothead who needed to be first with an opinion, as if being first meant something. But being first usually means you haven't thought hard enough.\n\nWurman had spent 30 years thinking about these problems. Fried gave them a few minutes. The essay argues for intellectual humility — not that you can't disagree, but that you should give ideas time to breathe before dismissing them. It's fine to have strong opinions, but hold them loosely at first. This is especially relevant in tech culture where hot takes and instant reactions are rewarded over thoughtful consideration.",
+    "tags": [
+      "leadership",
+      "culture",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://accounting.penrose.com/",
+    "title": "Can LLMs Do Accounting? — Penrose",
+    "date": "24/07/2025 - 12:43",
+    "summary": "Penrose explores whether Large Language Models can handle real accounting work. The page is a research showcase examining LLM capabilities in structured financial tasks — categorization, reconciliation, compliance checking, and report generation.\n\nAccounting is an interesting test case for AI because it requires both pattern recognition (which LLMs excel at) and precise numerical reasoning (where they historically struggle). The question isn't whether AI can replace accountants wholesale, but which specific accounting tasks are already automatable and which require human judgment.\n\nThe implications are significant for the broader white-collar automation debate. If LLMs can handle routine bookkeeping, categorization, and compliance checking reliably, it frees accountants to focus on advisory work, tax strategy, and business insights — the high-value work that requires contextual understanding and client relationships.",
+    "tags": [
+      "ai",
+      "startup",
+      "product"
+    ]
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=7789438",
+    "title": "On Burnout, Joy, and Protecting Your Programming Soul — HN Comment",
+    "date": "10/07/2025 - 02:26",
+    "summary": "A deeply moving Hacker News comment from a 42-year-old experienced programmer addressing someone who's losing their passion for programming. The commenter's core advice: get out of what you're doing, even if you think you can't. You are free.\n\nThe comment makes three critical points about burnout and career health. First, burnout is a physical injury — not a mood. The commenter burned out once and it took 12 years to regain full productivity. Don't let it happen. Second, the best and most creative work comes from joy and excitement. If you lose your ability to feel joy about programming, you'll never do your best work again — and this is separate from burnout itself. Third, the earlier in your career you are, the more important this time is. Programmers learn by doing, and working at the top threshold of your ability in a challenging environment is how you grow exponentially.\n\nThe comment resonated because it captures something rarely said in tech culture: that staying in a soul-crushing situation isn't noble or responsible — it's destructive to your long-term potential. Sometimes the most responsible thing you can do is leave.",
+    "tags": [
+      "career",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://www.w3.org/QA/Tips/noClickHere",
+    "title": "Don't Say 'Click Here' — W3C Quality Web Tips",
+    "date": "03/07/2025 - 03:51",
+    "summary": "A W3C guideline explaining why link text like 'click here' is bad practice in web design. The core argument is about accessibility and usability: not everyone clicks (they might tap, use keyboard navigation, or use a screen reader), and 'click here' provides zero context about where the link goes.\n\nGood link text should be descriptive and make sense out of context. Screen readers often navigate by jumping between links, reading only the link text. If every link says 'click here,' the user has no idea where any of them lead. This is a fundamental accessibility principle that many developers still violate.\n\nThe broader design lesson is about writing for the medium: hyperlinks are part of the content, not separate from it. The anchor text should describe the destination, not the action of clicking. This applies universally — from web apps to documentation to emails. It's one of those small details that separates thoughtful design from lazy design.",
+    "tags": [
+      "design",
+      "frontend",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://sliding-window-visualizer-bryanneumann.replit.app/",
+    "title": "Sliding Window Technique Visualizer",
+    "date": "02/07/2025 - 13:47",
+    "summary": "An interactive web tool for learning and visualizing sliding window algorithms — one of the most commonly asked patterns in coding interviews and a fundamental technique in real-world programming. The visualizer supports both fixed-size and variable-size windows with step-by-step demonstrations.\n\nFixed-size windows maintain a constant size as they traverse data, useful for problems like finding maximum sum subarrays or calculating moving averages. Variable-size windows expand and contract based on conditions, used for problems like longest substring with k distinct characters or minimum window substring.\n\nThe tool is a great example of learning-by-building: rather than reading about algorithms abstractly, you can watch the window slide through arrays and see exactly how the technique works. It's particularly useful for interview prep but also demonstrates a broader principle — that interactive visualizations are far more effective than static explanations for understanding algorithmic concepts.",
+    "tags": [
+      "engineering",
+      "frontend"
+    ]
+  },
+  {
+    "url": "https://simedw.com/2025/06/23/introducing-spegel/",
+    "title": "Spegel — A Terminal Browser That Uses LLMs to Rewrite Webpages",
+    "date": "01/07/2025 - 20:27",
+    "summary": "Spegel ('mirror' in Swedish) is a proof-of-concept terminal web browser that feeds HTML through an LLM and renders the result as markdown directly in your terminal. Born from a weekend hack, it became more practical when Google released Gemini 2.5 Pro Lite with significantly faster inference.\n\nThe core idea is personalized content views. A single webpage can have multiple views — one simplifying everything to ELI5, another highlighting key actions, another extracting just the recipe from a food blog (skipping the life story). You define views through custom prompts in a config file, each with a hotkey and icon.\n\nThe pipeline is straightforward: fetch HTML, feed it through an LLM with your custom prompt, render the output as markdown in the terminal. It's an elegant demonstration of how LLMs enable a new kind of content consumption — not just summarization, but transformation based on your specific needs and context. The project also raises interesting questions about the future of web browsing: could personalized content rewriting become a standard feature?",
+    "tags": [
+      "ai",
+      "engineering",
+      "product"
+    ]
+  },
+  {
+    "url": "https://ksagar.bearblog.dev/vjepa/",
+    "title": "How We Accidentally Solved Robotics by Watching 1 Million Hours of YouTube",
+    "date": "29/06/2025 - 21:52",
+    "summary": "A witty and accessible explainer of V-JEPA 2, Meta's breakthrough in robot learning. The core insight: you can't teach robots to manipulate physical objects by training on text (no matter how much). Robots need to understand physics, not language. The solution? Feed a neural network 1 million hours of YouTube and teach it to predict what happens next in video — not the next word, but the next moment in reality.\n\nThe technical architecture has three clever components. First, a 1-billion-parameter Vision Transformer encoder that understands the 'essence' of physical situations. Second, a predictor network that plays 'video mad libs' — filling in masked portions of video. Third, 3D-RoPE position embeddings for proper spatiotemporal understanding. Crucially, V-JEPA 2 predicts in latent representation space, not pixel space — because predicting every pixel is like predicting every blade of grass when you just care about whether the ball is going in the goal.\n\nThe results are remarkable: deploy a robot in a completely new lab and watch it successfully pick up objects it's never seen before. This is the kind of zero-shot generalization that was previously thought to require massive amounts of robot-specific training data. The article makes a compelling case that video understanding might be the missing piece for general-purpose robotics.",
+    "tags": [
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://zehfernandes.com/posts/why-is-everyone-obsessed-with-chat-interfaces",
+    "title": "Why Is Everyone Obsessed With Chat Interfaces?",
+    "date": "29/06/2025 - 21:57",
+    "summary": "Zeh Fernandes, an interface designer, pushes back on the industry's reflexive addition of chat interfaces to every product. His argument isn't that chat is bad — it's that natural language is being treated as a silver bullet when it's actually terrible for precision.\n\nThe core tension: natural language is great for starting something new (faster than clicking around), but it's not always the best tool for the job. Human language wasn't made for precision — that's why we have poetry, why we say the same thing different ways, and why programming languages exist. Asking an AI for a color that 'feels like freedom' is incredibly subjective. If programming were entirely natural language, we'd introduce endless ambiguity.\n\nFernandes frames interfaces as a vocabulary that products define and expose to users. LLMs represent a new paradigm that can expand this vocabulary, but the mistake is treating it as the ultimate solution. The best interfaces will blend natural language (for discovery and initiation) with structured interactions (for precision and control). Products that just slap a chat box on everything and call it innovation are missing the deeper design challenge of the AI era.",
+    "tags": [
+      "design",
+      "ai",
+      "product"
+    ]
+  },
+  {
+    "url": "https://www.molly.studio/thesis/tinyui",
+    "title": "Tiny UI — Molly Studio (Acquired by Shopify)",
+    "date": "29/06/2025 - 22:05",
+    "summary": "Molly Studio, a Brooklyn-based design-development studio, announces their acquisition by Shopify. The post reflects on two years of building a studio with two core principles: working in person in a space that's theirs, and being excited about every project they take on.\n\nOver two years, half their projects were AI-related, and they built a deep library of frameworks for how products and the web should interact, behave, and disclose content. Their thesis on Shopify's defensibility is particularly interesting: Shopify is the repository for most of the world's SKUs, which becomes increasingly valuable as individual applications become less relevant and commerce takes place inside AI interactions.\n\nThe acquisition represents a common pattern: the studio model excels at breadth and relationships, but not at long-term, deep impact across an entire organization. Shopify offered the opportunity to go deep. The post also highlights their community contributions — Demo Nights, Behind the Scenes events, hundreds of people visiting their Brooklyn studio. It's a love letter to the small, focused, craft-oriented studio model and an honest reflection on its limitations.",
+    "tags": [
+      "design",
+      "startup",
+      "product"
+    ]
+  },
+  {
+    "url": "https://lukew.com/ff/entry.asp?2107",
+    "title": "Common AI Product Issues — LukeW",
+    "date": "25/06/2025 - 13:14",
+    "summary": "Luke Wroblewski, one of the most respected product designers in tech, catalogs the recurring problems he sees across AI product implementations. Despite the wide range of use cases, most AI features have been the same ('let's add a chat panel to our app'), so the problems are the same too.\n\nThe biggest issue is capability awareness: open-ended AI interfaces have the same problem as every 'invisible' interface before them. Without clear affordances, people don't know what they can do. Even extremely capable systems have limitations, but without visible guideposts, those limitations are invisible. LukeW argues this is the biggest problem in AI product interfaces today.\n\nThe second major issue is context awareness: knowing not just what an AI product can do, but how it did it. What information was used to provide an answer? Training data? Session history? Connected tools? This transparency problem gets worse as agents use more tools and data sources. Luke provides practical design solutions including suggested questions, AI-driven prompt rewriting, and progressive disclosure of context — making this a practical reference for any team building AI features.",
+    "tags": [
+      "design",
+      "ai",
+      "product"
+    ]
+  },
+  {
+    "url": "https://linear.app/blog/building-our-way",
+    "title": "Building Our Way: Linear's $1.25B Series C",
+    "date": "25/06/2025 - 06:01",
+    "summary": "Karri Saarinen, CEO of Linear, announces their $82M Series C at a $1.25B valuation — and immediately says not much changes after a raise. They go back to building. The post is really about Linear's contrarian approach to company building over six years.\n\nLinear was built without running a single A/B test, without chasing metrics, without SEO or growth hacks. They grew the team slowly and intentionally. They operate profitably and remotely. They built strong technical foundations before finding product-market fit. Their goal was quality experiences and the best product — not following conventional practices.\n\nSaarinen frames company building as a craft: shaped by a specific group of people in a specific moment in time, never replicable. The tendency to pattern-match successful companies and rely on templates means missing unique opportunities. He's glad they resisted 'best practices.' The post is a manifesto for founders who believe that how you build is just as important as what you build — and that the best products come from conviction and craft, not from following playbooks.",
+    "tags": [
+      "startup",
+      "product",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://www.terrain.com/letter",
+    "title": "Call Your Shot — The Dawn of the Startup Generation",
+    "date": "25/06/2025 - 05:42",
+    "summary": "Terrain's founding letter traces the arc of American ambition from Wall Street to startups. Before Bear Stearns failed on March 16, 2008, the default career track for America's brightest was finance. Investment banking, private equity, hedge funds — with business school as a waypoint. Recruiters descended on campuses like rock stars.\n\nThat all changed after 2008. Offers rescinded, bonuses evaporated, friends Occupied Wall Street. Just as the Wall Street Track broke, the Startup Track emerged. Google went public in 2004, Facebook was founded the same year. By 2010, The Social Network brought startup culture into global consciousness. Economic infrastructure was laid: accelerators, incubators, VC funds — all creating a track for startup founders the way Wall Street had created one for bankers.\n\nThe letter argues we're now in a third wave where the startup track itself has become commoditized. The new edge isn't in following the startup playbook — it's in having genuine conviction and 'calling your shot' before the consensus forms. Terrain positions itself as backing founders who are building with this kind of pre-consensus conviction rather than following the herd into whatever sector is currently hot.",
+    "tags": [
+      "startup",
+      "vc",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://lucumr.pocoo.org/2025/6/4/changes/",
+    "title": "AI Changes Everything — Armin Ronacher",
+    "date": "25/06/2025 - 06:09",
+    "summary": "Armin Ronacher (creator of Flask, Jinja2, and other foundational Python tools) reflects on how profoundly AI has changed his work in just two months. He's shifted from writing code in Cursor to mostly using Claude Code hands-off — alternating between giving instructions, reading a book, and reviewing changes. He can make coffee and progress still happens. He can be at the playground with his youngest while work continues.\n\nAs an engineer from the deterministic world who deeply values craft, accepting the messiness of AI agents took time. Just two years ago he was convinced AI might cause real harm. But we've reached the point where even if progress stopped today, AI is already a new substrate for innovation. Never before has a technology surfaced in everyday life so quickly — smartphones felt slow in comparison. Baristas, hairdressers, and playground parents are using ChatGPT for letters, recipes, and homework.\n\nYet many technologists are holdouts. He references Thomas Ptacek's 'My AI Skeptic Friends Are All Nuts' — why are the people he's respected in tech for years rejecting this change? Ronacher argues they're making a category error: conflating legitimate concerns about AI hype with the practical reality that LLMs are already the second most important development in their careers. The piece carries weight because Ronacher is exactly the kind of craft-oriented engineer you'd expect to be skeptical.",
+    "tags": [
+      "ai",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://www.independent.co.uk/news/world/americas/ai-job-layoffs-tech-unemployment-b2769796.html",
+    "title": "The Harsh Reality of AI and the Job Market",
+    "date": "21/06/2025 - 02:27",
+    "summary": "The Independent profiles real workers displaced by AI automation. Jane, a 45-year-old HR professional in the Bay Area, was laid off after her company automated her benefits management role. She'd spent two years at the company, was on track for a promotion, and thought her expertise made her irreplaceable. Then her boss built out AI infrastructure and let her go.\n\nMaking it worse, an AI system conducted one of her phone interviews for the next job — 'like having an interview with an automated voicemail.' After months unemployed, she found government work and then sales. Her assessment: 'There's a huge white collar slowdown. Jobs are going away.'\n\nThe article quotes Anthropic CEO Dario Amodei predicting AI could eliminate half of all entry-level white-collar jobs and increase unemployment to 10-20% within five years. This isn't abstract speculation — it's happening now in HR, content writing, customer support, and basic programming. The piece is a sobering complement to the optimistic AI narratives, grounding the technology's impact in real human stories of displacement.",
+    "tags": [
+      "ai",
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://www.generalist.com/p/founders-fund-1",
+    "title": "No Rivals: The Founders Fund Story",
+    "date": "21/06/2025 - 16:12",
+    "summary": "The Generalist launches a four-part, 35,000+ word series on Founders Fund — Silicon Valley's most controversial venture firm. The result of 18 months of research, interviews with over a dozen key figures, and analysis of previously undisclosed returns, it's the most comprehensive examination of the firm ever published.\n\nThe story features globally visible characters: Thiel, Musk, Altman, Zuckerberg, Trump, and secretive power brokers who shun the spotlight. It spans philosophy and technology, spite and vision, political maneuvering and spectacular windfalls. The series opens with Trump's inauguration, where Peter Thiel — whose firm helped shape the political landscape — was notably absent.\n\nFounders Fund's investment thesis is fundamentally contrarian: back founders who are building things that seem crazy to the consensus. Their track record includes early bets on SpaceX, Palantir, Facebook, and Anduril. The series promises to reveal how they've shaped not just Silicon Valley but Washington, making it essential reading for anyone interested in the intersection of technology, power, and capital.",
+    "tags": [
+      "vc",
+      "startup",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://notashelf.dev/posts/curse-of-knowing",
+    "title": "The Curse of Knowing How, or; Fixing Everything",
+    "date": "21/06/2025 - 02:19",
+    "summary": "A deeply relatable essay about what happens when you learn enough about programming to see everything that's broken. It starts innocently — you rename files with a Python script, alias a git command, build a shell function. Then you cross a threshold. You look at your tools, your environment, your OS, and suddenly everything is fair game.\n\nBefore you could program, broken software was frustrating but ignorable. Now it's provocative. You notice flaws like a surgeon notices a limp. Why does this site send 10MB of JavaScript for a static page? Why is the CLI output not parseable by awk? Every piece of software becomes a TODO list. Every inconvenience becomes an indictment of inaction.\n\nThe essay draws on Camus's Sisyphus — we are condemned to roll the boulder of improvement uphill, only to watch it roll back down. Technical capability creates a moral weight: because you can fix something, you feel you should. The curse isn't the knowledge itself but the compulsion it creates. It's a beautiful articulation of the engineer's perpetual burden and why so many developers can't stop tinkering with their own tools.",
+    "tags": [
+      "engineering",
+      "culture",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://www.benja.dev/writing/from-engineer-to-founder",
+    "title": "From Engineer to Founder — The Mindset Shift",
+    "date": "09/06/2025 - 21:06",
+    "summary": "Benja captures the fundamental mindset shift from engineering to founding in punchy, memorable lines. As an engineer, he thought the hardest part was the code — making it scale, writing it clean, obsessing over architecture and design patterns. If the code was good, the product would be good. If the product was good, people would come. Spoiler: they don't.\n\nThe reframes are sharp: from 'is it scalable?' to 'will this make us $1 today?' From 'how do we do this the right way?' to 'how fast can we test if anyone cares?' Speed over polish. Distribution over architecture. Outcomes over features. Test coverage doesn't matter if your landing page doesn't convert. Clean architecture is useless if no one's using what you built.\n\nThe core insight: founding didn't make him a worse engineer — it made him a better one. Because now he knows why he's building and who it's for. Engineers build to impress other engineers. Founders build to solve real problems for real people. The post is a compact manifesto for the engineer-to-founder transition that many technical people need to internalize.",
+    "tags": [
+      "startup",
+      "engineering",
+      "career"
+    ]
+  },
+  {
+    "url": "https://sockpuppet.org/me/",
+    "title": "Thomas Ptacek — Quarrelsome (Bio)",
+    "date": "06/06/2025 - 13:21",
+    "summary": "A short, characteristically self-deprecating bio from Thomas Ptacek — security researcher, software developer, and one of the highest-karma users on Hacker News. He wrote it because 'I rant a lot on Twitter but my Twitter bio doesn't explain anything about who I am.'\n\nPtacek is a developer at Fly.io, co-founder of Latacora and Matasano Security (one of the largest software security firms in the US before its acquisition by NCC Group), and has been in software security since 1995. He's known for the Matasano Cryptopals Challenges (7 sets of crypto challenges based on real-world flaws) and Microcorruption (a hiring CTF for memory corruption vulnerabilities).\n\nThe bio matters because Ptacek is one of those people whose opinions carry enormous weight in the tech community — particularly on security, systems programming, and increasingly on AI. His perspective on AI (in 'My AI Skeptic Friends Are All Nuts') became one of the most influential pieces in the debate, precisely because of the credibility described in this bio. Understanding who he is gives context to why his writing resonates so widely.",
+    "tags": [
+      "engineering",
+      "career"
+    ]
+  },
+  {
+    "url": "https://fly.io/blog/youre-all-nuts/",
+    "title": "My AI Skeptic Friends Are All Nuts — Thomas Ptacek",
+    "date": "04/06/2025 - 18:07",
+    "summary": "Thomas Ptacek, a veteran security researcher and developer since the mid-1990s, writes a heartfelt provocation against AI skepticism in software development. His thesis: all progress on LLMs could halt today, and they'd remain the 2nd most important thing to happen over his career.\n\nHe first establishes that most critics aren't doing what serious LLM users are doing. Modern AI coding uses agents that poke around your codebase, author files, run tools, compile, test, and iterate — all through simple systems code wired to ground truth. If you're pasting ChatGPT output into your editor, you're not doing what the boosters are doing. No wonder you're talking past each other.\n\nThe positive case: LLMs write a large fraction of all tedious code, they never get tired, and they're immune to the inertia that kills most projects before they start. The most powerful argument isn't about speed — it's about activation energy. Think of everything you wanted to build but didn't because the startup cost was too high. LLMs demolish that barrier. Ptacek's piece carries weight because he's exactly the kind of experienced, craft-oriented engineer who skeptics assume would be on their side.",
+    "tags": [
+      "ai",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://sahillavingia.com/doge",
+    "title": "DOGE Days — Sahil Lavingia's Time at Veterans Affairs",
+    "date": "03/06/2025 - 01:18",
+    "summary": "Sahil Lavingia (founder of Gumroad) documents his time as a $0-salary software engineer at the Department of Veterans Affairs under the DOGE (Department of Government Efficiency) initiative. He joined in March 2025, got fingerprinted at the VA Medical Center in Manhattan, and arrived at VA Central Office in DC as Senior Advisor to the Chief of Staff.\n\nThe post is a day-by-day account of trying to bring startup engineering culture to the federal government — an organization with a $350 billion annual impact and 473,000 employees. His first tasks involved reviewing contracts, and the post reveals the enormous gap between how tech startups operate and how government institutions function.\n\nWhat makes this compelling is the contrast: Lavingia went from running a nimble internet company to navigating federal bureaucracy, motivated by genuine civic duty. He'd canvassed for Bernie Sanders in 2016 and always wanted to write code for the government. The post humanizes the often-politicized DOGE initiative by focusing on the day-to-day reality of trying to improve government systems from the inside.",
+    "tags": [
+      "startup",
+      "engineering",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://nav.al/build-a-team-that-ships",
+    "title": "Build a Team that Ships — Naval Ravikant",
+    "date": "03/06/2025 - 01:23",
+    "summary": "Naval Ravikant, founder of AngelList, shares his management philosophy in characteristically compressed form. After 15 years of founding companies, he still can't manage — and suspects very few people can. So AngelList optimized for shipping instead.\n\nThe rules are brutal in their simplicity: keep the team small, all doers, no talkers, absolutely no middle managers. Outsource everything that isn't core. People choose what to work on — better they ship what they want than not ship what you want. No tasks longer than one week; you must ship something into production every week. One person per project. Peer management through public promises.\n\nIf someone can't ship, release them. 'Our environment is wrong for them. They should go find someplace where they can thrive.' Naval acknowledges the downsides: they ship too many features, many half-baked. The product is complex with blind alleys. It's hard to integrate non-engineers. But they ship. The post is a classic example of optimizing for one thing (shipping velocity) and accepting all the tradeoffs that come with it.",
+    "tags": [
+      "leadership",
+      "startup",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://startacomputer.club/",
+    "title": "Start a Computer Club",
+    "date": "02/06/2025 - 20:28",
+    "summary": "A charmingly anti-corporate manifesto encouraging people to start local computer clubs — groups that hang out and 'do computer together.' The site is deliberately lo-fi, featuring ASCII art and punk energy.\n\nThe rules are philosophical: hang out in real life (online has rude vibes), reject corporate sponsorship (it constrains behavior and undermines collective ownership), and treat the club as a collective project. The site argues that the political economy of computing is awful, and the way to make it less awful is to bring computing home to your community.\n\n'Doing computer' is whatever you want: programming, art, music, open data science, circuit-bending, DIY shared computing infrastructure. The bias is toward programming and infrastructure, but the door is open. It's a throwback to the Homebrew Computer Club ethos that spawned Apple and the personal computing revolution — the idea that technology is most powerful when it's communal, local, and free from corporate influence.",
+    "tags": [
+      "culture",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://paul.copplest.one/blog/profit-sharing.html",
+    "title": "Profit Sharing for Startups — Paul Copplestone (Supabase)",
+    "date": "02/06/2025 - 14:12",
+    "summary": "Paul Copplestone, co-founder of Supabase, proposes a profit sharing system to fix the broken startup compensation model. The problem: startup employees work long hours, get paid peanuts, and receive equity that's usually worthless. They can't sell shares, and the company might take 10-15 years to exit. Founders can't give large equity chunks either — they need to be incentivized for the remaining decade after early employees leave.\n\nHis solution: 20% of monthly profit goes into a Bonus Pool, distributed based on 'Profit Vesting' — employees accumulate points each month (1-4 based on seniority). The longer you stay, the more points you've accumulated, the larger your share. It creates long-term alignment without the illusion of life-changing equity events.\n\nThe system has real advantages: it's tangible (cash in hand, not theoretical future value), it automatically adjusts with company performance, and it rewards loyalty without requiring an exit event. The mathematical examples using Supabase show how the system would work in practice. It's an elegant alternative to the binary outcome of traditional startup equity — either you get rich on IPO or your shares are worthless.",
+    "tags": [
+      "startup",
+      "leadership",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://t.co/EYDlytdB5p",
+    "title": "Honkish — A Love Letter to Playful Design (Benji Taylor)",
+    "date": "31/05/2025 - 21:52",
+    "summary": "Benji Taylor reflects on Honk, a real-time messaging app he built before pivoting to Family (later acquired). The post isn't about why Honk failed to find product-market fit — it's about the playful, experimental design details that made it feel uniquely alive.\n\nHonk was radically different from conventional messaging: two chat bubbles, no send button, no chat history, no drafts. Every character appeared instantly on your friend's screen — every typo, hesitation, and edit unfolding live. When you wanted to say something new, you tapped to clear the screen like wiping a whiteboard. Some found it overwhelming; others found it liberating.\n\nThe real innovation was in presence design. When a friend entered a chat, a border around their avatar filled up with a sound. When they left, a burst of waving emojis appeared as a goodbye. These details made the app feel alive in a way that read receipts and typing indicators never could. The post is a master class in how thoughtful interaction design can create emotional connection — and a reminder that some of the most beautiful products never find their market.",
+    "tags": [
+      "design",
+      "product",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://longform.asmartbear.com/two-big-things/",
+    "title": "You Can Have Two Big Things, But Not Three — Jason Cohen",
+    "date": "31/05/2025 - 20:54",
+    "summary": "Jason Cohen (founder of WP Engine) distills life's fundamental constraint into a simple rule: you can have two 'Big Things' in your life, but not three. Big Things — job, kids, spouse, social life, major hobby, startup — each require 40+ hours per week of concentrated time to do well.\n\nThe math is unforgiving. You have 24 hours: 8 for work, 8 for home/commute, 8 for sleep. That gives you two slots. You can do a startup on the side while having a day job, but your family will never see you. You can have a job and a social life, but your spouse may suffer. Kids and spouse are listed separately because young kids strain marriages — there's not enough time for both.\n\nThe key insight isn't just about time management — it's about honesty. People try to 'have it all' and claim they're the exception. They're not. At most two Big Things function well; the rest fail. And no, cutting sleep isn't a hack — then you can't function at a high level at anything. The essay is brutally honest about tradeoffs that productivity culture refuses to acknowledge.",
+    "tags": [
+      "productivity",
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://notes.andymatuschak.org/z4geAr5cERWdJPrdhU5gy3N",
+    "title": "Peripheral Vision — Andy Matuschak",
+    "date": "02/05/2025 - 23:07",
+    "summary": "Andy Matuschak explores how physical workspaces provide 'peripheral vision' — subtle contextual cues that software systems lack. Books lying out, papers in rough stacks, a broken door noticed in passing — these create a fluid awareness that lets you notice related things while doing something else.\n\nThe concept applies in three dimensions. First, peripheral vision spontaneously prompts actions: a broken door reminds you to fix it as you walk by, but a digital task list requires establishing a habit of explicit review. Second, it emphasizes the concrete: physical books on your coffee table motivate reading through reaction to a specific work, while digital reading lists motivate through abstract interest in 'the habit of reading.' Third, it offers context: margin notes in physical books are always seen alongside surrounding text, while digital annotations are stripped of context.\n\nThe implications for software design are profound. Most productivity apps fail because they lack peripheral vision — everything is hidden behind clicks and menus. The note about how unchanging peripheral vision desensitizes is particularly sharp: you stop noticing what doesn't change. It's why rotating your desk layout actually helps productivity. This is essential reading for anyone designing knowledge tools.",
+    "tags": [
+      "design",
+      "productivity",
+      "product"
+    ]
+  },
+  {
+    "url": "https://www.scottantipa.com/yagri",
+    "title": "YAGRI: You Are Gonna Read It",
+    "date": "01/05/2025 - 01:26",
+    "summary": "Scott Antipa coins a playful counterpart to the famous YAGNI (You Aren't Gonna Need It) principle: YAGRI — You Are Gonna Read It. While YAGNI warns against over-engineering and building features too early, YAGRI argues you should store data you'll highly likely need to read later, even if the current product spec doesn't require it.\n\nThe classic mistake: a UI design shows you only need a few fields, so you store only those exact fields. You satisfy the design and ship. Then later you're missing crucial data for debugging, analytics, or customer support. The most common case is deletion: the easy way is to just delete the row, but you should always store who deleted it, when, how, and why.\n\nUseful fields for almost any table: created_at, updated_at, deleted_at (soft deletes), created_by, and the permission used during CRUD operations. The practice pays for itself with just a single instance of your boss asking 'do we know why that thing was deleted?' Most apps are fundamentally about storing data to keep track of facts — stewarding that data is arguably your most important job as an engineer.",
+    "tags": [
+      "engineering",
+      "product"
+    ]
+  },
+  {
+    "url": "https://pietrasiak.com/one-line-of-code-that-did-cost-dollar8000",
+    "title": "One Line of Code That Cost $8,000 — Screen Studio",
+    "date": "01/05/2025 - 01:25",
+    "summary": "A cautionary tale from Screen Studio, a macOS screen recorder. Due to a single missing line of code, the app's auto-updater kept downloading a 250MB update file every 5 minutes for every user — indefinitely. The result: 9 million file downloads, over 2 petabytes of traffic on Google Cloud, and an $8,000 bill.\n\nThe bug was painfully simple. During a refactor to prevent update popups from interrupting recordings, the developer forgot to add the code that stops the 5-minute download interval after the new version is already downloaded. Thousands of users had the app running in the background for weeks, each downloading 250MB every 5 minutes — 72GB per user daily.\n\nThe math is terrifying: 250MB × 288 downloads/day × 1000+ instances × 30+ days = 2+ petabytes. At one point they were generating almost 1GB/s of traffic. The post is a perfect example of how a trivial coding oversight can create catastrophic consequences at scale. It's also a reminder about the hidden costs of desktop app auto-updaters and background processes that developers rarely think about.",
+    "tags": [
+      "engineering",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://notes.andymatuschak.org/zHV89H7dqnrvNvwXHBSGog9",
+    "title": "Niche Projects Bring Serendipitous Inbounds — Andy Matuschak",
+    "date": "29/04/2025 - 16:12",
+    "summary": "Andy Matuschak argues that working on niche, personally meaningful projects attracts weirder, more serendipitous opportunities than mass-audience projects. It's tempting to work on broad, popular projects because scale makes high-impact results more likely. But mass-audience projects are often less striking, personal, and distinctive.\n\nThe key insight: broad projects garner mass attention but less attention from unusual, singular people. Those unusual people are frequently the sources of the most surprising and meaningful insights and opportunities. A weird experimental media studio might have worse average outcomes than a mass-market product, but its best-case outcomes — the kinds of surprising connections you'll find most exciting — are far better.\n\nThis connects to the idea that a blog post is 'a very long and complex search query to find fascinating people and make them route interesting stuff to your inbox.' The note is a concise argument for following your genuine curiosity rather than optimizing for reach — because the most valuable connections come from people who share your specific, unusual interests.",
+    "tags": [
+      "career",
+      "culture",
+      "marketing"
+    ]
+  },
+  {
+    "url": "https://notes.andymatuschak.org/zF9ywLHqHfN5rFuPApiyqmP",
+    "title": "Anti-Marketing, After Michael Nielsen — Andy Matuschak",
+    "date": "29/04/2025 - 16:09",
+    "summary": "Andy Matuschak describes 'anti-marketing' — a term coined by Michael Nielsen for the practice of publicly focusing on the least rosy parts of your projects. Instead of presenting the rosiest possible picture (which leads to harmful over-claiming and transactional relationships), you actively discuss what's confusing, frustrating, and not working.\n\nThe clever inversion: if anti-marketing is your goal, then interesting challenges become positive — they're fodder for public conversation, not something to sweep under the rug. Most of your time should be focused on your project's biggest challenges anyway. Anti-marketing builds deeper, more authentic audience relationships and connects to 'working with the garage door up.'\n\nBret Victor has a related concept: 'anti-rhetoric' — communications that enable independent thought rather than pushing the author's beliefs. A reader should be able to learn something the author doesn't know, or even argue against the author's position. Both concepts push against the default mode of public discourse in tech — pitching, selling, performing confidence — in favor of honest engagement that attracts the right kind of attention.",
+    "tags": [
+      "marketing",
+      "culture",
+      "career"
+    ]
+  },
+  {
+    "url": "https://notes.andymatuschak.org/Work_with_the_garage_door_up",
+    "title": "Work With the Garage Door Up — Andy Matuschak",
+    "date": "29/04/2025 - 16:07",
+    "summary": "Andy Matuschak articulates the value of 'working with the garage door up' — a phrase from Robin Sloan. It's the opposite of the Twitter account that only posts announcements of finished work. Instead, it's Screenshot Saturday, it's giving a lecture about problems you're pondering in the shower, it's thinking out loud about why your project doesn't work.\n\nMatuschak loves this kind of communication personally but suspects it also creates more invested, interesting followings over long term. People who follow your process become more deeply engaged than those who only see polished outputs. This connects to his note on anti-marketing and niche projects attracting serendipitous inbounds.\n\nThe Robin Sloan passage that inspired it is beautiful: a physical business, by simply existing and having a nice sign, makes the statement 'I am here, working.' There's a scientific glassblowing studio he walks past — just seeing someone at work through the window is compelling. The digital equivalent is sharing your process openly: the messy drafts, the failed experiments, the half-formed ideas. Maggie Appleton adds that learning in public gets you invited to cool events with high-achieving people, 'even though you have no right to be there.'",
+    "tags": [
+      "marketing",
+      "culture",
+      "career"
+    ]
+  },
+  {
+    "url": "https://brianlovin.com/writing/side-project-prophecy",
+    "title": "The Side Project Prophecy — Brian Lovin",
+    "date": "28/04/2025 - 16:04",
+    "summary": "Brian Lovin articulates a phenomenon every builder has experienced: the more you talk about building your side project, the less likely you are to ship it. You get excited, tweet about it, receive a flood of positive encouragement, and then... the motivation evaporates. Another domain name in the graveyard.\n\nThe science backs this up: telling people about your goals creates a premature sense of completeness. Social recognition acts as a reward that reduces effort. When someone praises you for an intention, it's less motivating than receiving no praise at all, especially after you experience failure. Your mind's visualization of future success convinces your unconscious that it's already happened.\n\nLovin offers two solutions: only tell people who will hold you accountable (not cheerleaders), or tell no one at all until you ship. The key distinction is between sharing for accountability versus sharing for validation. Accountability partners push you forward; audiences give you the dopamine hit of accomplishment without the accomplishment itself. It's a crucial insight for builders in the social media age where announcing intentions is easier and more rewarding than doing the work.",
+    "tags": [
+      "productivity",
+      "startup",
+      "career"
+    ]
+  },
+  {
+    "url": "https://cdixon.org/2010/01/03/the-next-big-thing-will-start-out-looking-like-a-toy",
+    "title": "The Next Big Thing Will Start Out Looking Like a Toy — Chris Dixon",
+    "date": "26/04/2025 - 13:46",
+    "summary": "Chris Dixon (a16z) crystallizes Clay Christensen's disruptive innovation theory into a memorable insight: the next big thing always starts out being dismissed as a toy. Technologies improve faster than user needs increase, so disruptive technologies initially 'undershoot' what serious users need.\n\nThe examples are compelling: the first telephone could only carry voices a mile or two, so Western Union passed on acquiring it — they couldn't see how it'd be useful to businesses. The PC was dismissed by mainframe companies. Skype was dismissed by telecom companies. In each case, incumbents failed to anticipate how rapidly the technology would improve.\n\nBut not every toy becomes the next big thing. The key distinction: look at products as processes, not snapshots. External forces — cheaper chips, ubiquitous bandwidth, mobile devices — create a powerful improvement trajectory that matters more than the features a designer adds. Toys that ride strong external improvement curves become world-changing platforms. Toys that don't remain toys. This framework remains one of the most useful mental models in tech for evaluating early-stage products and technologies.",
+    "tags": [
+      "startup",
+      "vc",
+      "product"
+    ]
+  },
+  {
+    "url": "https://devouringdetails.com/resources/behind-scenes",
+    "title": "Behind the Scenes of Devouring Details — Rauno Freiberg",
+    "date": "22/04/2025 - 20:10",
+    "summary": "Rauno Freiberg (known for his deep dives into interaction design at Vercel) shares the creative process behind Devouring Details — an interactive reference manual for interaction-curious designers. The name is an alliteration: 'to devour details means to be fanatically obsessed with imbuing every aspect of your work with care.'\n\nThe branding philosophy is Swiss minimalism flourished with motion design — fitting for a project about interaction design. The logomark became the centerpiece for all interactions: mouse interactions with rebound physics on the homepage, a guiding indicator throughout the platform experience from login to navigation.\n\nMost interesting is his approach to interactive examples. He asked himself how he actually learned: by trying to build ideas, realizing they sucked in practice, iterating, and sometimes accidentally arriving at something that felt right. Devouring Details brings those learning moments to viewers through interactive prototypes rather than static explanations. The post is a meta-example of its own thesis — showing the process, the decisions, the details behind the details.",
+    "tags": [
+      "design",
+      "frontend"
+    ]
+  },
+  {
+    "url": "https://www.sesame.com/research/crossing_the_uncanny_valley_of_voice",
+    "title": "Crossing the Uncanny Valley of Conversational Voice — Sesame",
+    "date": "17/03/2025 - 12:31",
+    "summary": "Sesame (founded by Brendan Iribe, former Oculus CEO) presents their research on achieving 'voice presence' — the quality that makes spoken interactions feel real, understood, and valued. Their thesis: today's voice assistants fail because they lack emotional depth. A personal assistant that speaks only in a neutral tone becomes exhausting over time.\n\nThe key components of voice presence: emotional intelligence (reading and responding to emotional contexts), conversational dynamics (natural timing, pauses, interruptions), contextual awareness (adjusting tone to match situations), and consistent personality (maintaining a coherent presence). These are the qualities that make human conversation feel natural — and their absence is why voice assistants feel robotic.\n\nSesame's approach focuses on conversational speech generation — creating companions optimized for friendliness and expressivity. The demo was widely shared as one of the most natural-sounding AI voice interactions ever demonstrated. The research represents a crucial frontier: voice is our most intimate communication medium, carrying layers of meaning through tone, pitch, rhythm, and emotion. Whoever solves voice presence will unlock voice as the ultimate interface for AI interaction.",
+    "tags": [
+      "ai",
+      "product",
+      "design"
+    ]
+  },
+  {
+    "url": "https://setosa.io/ev/markov-chains/",
+    "title": "Markov Chains Explained Visually",
+    "date": "28/02/2025 - 20:27",
+    "summary": "An interactive visual explainer of Markov chains — mathematical systems that hop from one state to another with defined probabilities. The page uses live, manipulable diagrams to teach the concept: a baby's behavior (playing, eating, sleeping, crying), weather patterns, or any system where the next state depends only on the current state.\n\nThe visualization starts with a simple two-state chain (A and B) with adjustable transition probabilities, showing how the system evolves over time. It then introduces transition matrices as a more scalable representation. The interactive elements let you adjust probabilities and watch the system evolve in real time — far more intuitive than reading equations.\n\nThis is part of the 'Explained Visually' series by Victor Powell and Lewis Lehe, and it exemplifies the power of interactive explanations for mathematical concepts. Markov chains are foundational to many fields: language models (predicting next words), recommendation systems, financial modeling, and biological sequence analysis. Understanding them visually makes the abstract concrete and the intimidating approachable.",
+    "tags": [
+      "engineering",
+      "frontend"
+    ]
+  },
+  {
+    "url": "https://blog.samaltman.com/three-observations",
+    "title": "Three Observations — Sam Altman",
+    "date": "09/02/2025 - 23:18",
+    "summary": "Sam Altman, CEO of OpenAI, lays out three observations about the economics of AI as systems pointing toward AGI come into view. First: the intelligence of an AI model roughly equals the log of resources used to train and run it. You can spend arbitrary amounts and get continuous, predictable gains — the scaling laws are accurate over many orders of magnitude.\n\nSecond: the cost to use a given level of AI falls about 10x every 12 months. GPT-4's token price dropped roughly 150x from early 2023 to mid-2024 with GPT-4o. Moore's law changed the world at 2x every 18 months; this is dramatically stronger. Third: the socioeconomic value of AI improvements grows superlinearly — each incremental improvement unlocks disproportionately more value.\n\nAltman's framing of AGI as 'just another tool in the scaffolding of human progress' alongside electricity, transistors, computers, and the internet, while simultaneously acknowledging 'this time it's different,' captures the tension at the heart of the AI moment. The economic growth ahead looks 'astonishing.' In a decade, perhaps everyone on earth could accomplish more than today's most impactful person. These aren't fringe predictions — they're from the person running the leading AI lab.",
+    "tags": [
+      "ai",
+      "startup",
+      "vc"
+    ]
+  },
+  {
+    "url": "https://near.blog/the-1-8th-sleep/",
+    "title": "The 1/8th Sleep — A DIY Alternative to Eight Sleep",
+    "date": "08/02/2025 - 13:54",
+    "summary": "A practical guide to building a DIY cooling bed system as an alternative to the $3,000-$4,000+ Eight Sleep mattress. The author was put off by Eight Sleep's mandatory subscription ($200/yr), excessive marketing featuring 'AI simulations' and 'sleep autopilot,' constant paid referral links, and the high price.\n\nThe DIY solution is remarkably simple and cheap: a water-circulating mattress pad connected to a cooler, achieving a 12°F difference between the bed surface and surrounding air. The total cost is a fraction of Eight Sleep's price, with no subscription required and no proprietary cloud app controlling your sleep.\n\nThe post is both practical (detailed build instructions) and philosophical (questioning the trend of subscription-ifying basic hardware). Eight Sleep claims to be working on 'personal Sleep Agents' and 'Longevity Twins simulating potential health outcomes' — the author notes he doesn't understand what either of these sentences mean. It's a great example of the hacker ethos: instead of paying a premium for overmarketed products, build a simpler version that does the core job better and costs less.",
+    "tags": [
+      "engineering",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://near.blog/take-more-flights/",
+    "title": "Take More Flights",
+    "date": "04/02/2025 - 19:10",
+    "summary": "A compact, punchy argument that most people — especially young people — should take more flights. The reasoning: you need to find where you belong. If you want to do interesting things with interesting people, most of that happens in larger cities. Try pinning a monetary value on finding a best friend, partner, or the perfect job — flights become trivially cheap by comparison.\n\nThe author reframes flights as 'an unusually long and overpriced Uber' — you can go anywhere in the continental US for a few hundred dollars in a fraction of a day. That's a superpower. If you can't afford flights, find events or people willing to sponsor one; this isn't as hard as you think if you frame your potential value clearly.\n\nThe closing is powerful: 'The real updates to your gradients won't come from reading words online — they'll come from being exposed to stimuli in the external world. Your best life is waiting for you, but it's unlikely to be waiting in the exact location you were born in.' It's advice that applies especially to ambitious people in smaller cities or countries who underestimate the ROI of physical presence in the right places.",
+    "tags": [
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/rauchg/status/1939864015616057597",
+    "title": "Active CPU Pricing on Fluid Saved Vercel 77% — Guillermo Rauch",
+    "date": "10/08/2025 - 22:21",
+    "summary": "Guillermo Rauch (CEO of Vercel) announces that Active CPU pricing on Fluid has saved Vercel 77% on their own infrastructure bill — calling it the most significant infrastructure optimization they've shipped to date. It changes not just how much you pay, but the entire experience of using the product.\n\nRauch describes a dramatic shift in how the web is evolving: from pixels to tokens, from pages to agents, from HTTP to MCP, from foreground to background. Vercel's own workload mix has shifted toward more backends, APIs, and full-stack apps, with AI calls extending response durations. Running code is only the tip of the iceberg — the real product experience is determined by pricing models and observability.\n\nThe post highlights Vercel reaching over 1 trillion invocations with multi-AZ reliability and multi-region deployment with just one line of code. With 85K views, it signals Vercel's pivot from being primarily a frontend deployment platform to a serious full-stack compute provider. The one-click Fluid enablement is a masterclass in reducing adoption friction for infrastructure changes.",
+    "tags": [
+      "engineering",
+      "frontend",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://x.com/kirbyman01/status/1950572170247319807",
+    "title": "Billions to Be Made by Consumer AI Companies in Old Industries — Bryan Kim",
+    "date": "30/07/2025 - 17:44",
+    "summary": "Bryan Kim (Partner at a16z) argues there are billions of dollars to be made by consumer AI companies disrupting old industries — because they're not stuck inside the system. Building directly for consumers, without legacy friction, lets you move faster, make better products, and deliver real outcomes.\n\nThe post includes specific examples across industries: education (don't fix the system, build outside it), healthcare, legal, finance, and skilled trades. The thread discussion reveals an important nuance — there's a 'consumer Overton window shift' that needs to happen before these businesses go mainstream. Early adopters of AI-native alternatives in education and healthcare are already seeing results, but mass adoption requires cultural acceptance.\n\nWith 125K views and 552 bookmarks, the post captured a thesis that many founders and VCs are betting on: the biggest AI opportunities aren't in building better chatbots — they're in using AI to rebuild entire industries from a consumer-first perspective, bypassing the incumbent systems entirely. The 'momentum moat vs. boomer moat' framing from the replies is particularly memorable.",
+    "tags": [
+      "ai",
+      "startup",
+      "vc"
+    ]
+  },
+  {
+    "url": "https://x.com/karpathy/status/1937902205765607626",
+    "title": "Context Engineering Over Prompt Engineering — Andrej Karpathy",
+    "date": "03/07/2025 - 04:01",
+    "summary": "Andrej Karpathy endorses 'context engineering' over 'prompt engineering' as the better term for what practitioners actually do. People associate prompts with short task descriptions for day-to-day LLM use. But in every industrial-strength LLM application, context engineering is the delicate art and science of filling the context window with exactly the right information.\n\nThe distinction matters because 'prompt engineering' implies crafting clever single-turn instructions, while 'context engineering' captures the much harder problem of orchestrating what goes into the context: relevant code, documentation, conversation history, tool outputs, examples, and constraints. It's about curating the entire information environment the model sees, not just writing a good prompt.\n\nThis reframing gained massive traction in the AI development community because it more accurately describes the skill that separates amateur from professional AI application development. The best AI applications aren't built by people who write better prompts — they're built by people who engineer better contexts. It's systems thinking applied to LLM input.",
+    "tags": [
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://pbs.twimg.com/media/GuNzuVBXIAE8V16?format=png&name=small",
+    "title": "UI Density Comparison Image",
+    "date": "25/06/2025 - 01:16",
+    "summary": "A shared image (from Twitter/X) comparing UI density approaches in modern software design. The image likely illustrates the tension between information density and visual clarity that designers constantly navigate — showing how different products make different tradeoffs.\n\nUI density is one of the most debated topics in product design. Power users tend to prefer dense interfaces (more information visible at once, fewer clicks), while casual users prefer spacious layouts (less cognitive load, clearer hierarchy). The best products find ways to offer progressive density — starting simple and allowing users to increase information density as they become more proficient.\n\nThe image was bookmarked as a design reference, capturing a visual argument that's hard to make in words alone. It speaks to the broader question of who you're designing for: the daily power user who wants everything at their fingertips, or the occasional visitor who needs guidance and simplicity.",
+    "tags": [
+      "design",
+      "product"
+    ]
+  },
+  {
+    "url": "https://x.com/jayyanginspires/status/1936522193447346325",
+    "title": "Jay Yang on Inspiration and Building",
+    "date": "22/06/2025 - 22:05",
+    "summary": "Jay Yang shares an inspiring thread about the intersection of building products and personal growth. The post resonated with builders and founders who see their work as an extension of their personal development journey.\n\nThe core message aligns with a recurring theme in the startup ecosystem: that the process of building something meaningful is itself transformative. You don't just create a product — you create yourself through the process of creation. The challenges, failures, and small wins shape your character in ways that no amount of reading or planning can.\n\nThis perspective is especially relevant for early-stage founders and indie hackers who sometimes question whether the struggle is worth it. The answer, according to this thread, is that the struggle IS the point — the product is almost a byproduct of the personal growth that happens when you commit fully to bringing an idea to life.",
+    "tags": [
+      "startup",
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/garrytan/status/1907052575758623149",
+    "title": "Use Heavy Machinery, Not Your Bare Hands — Garry Tan on AI Tools",
+    "date": "22/04/2025 - 15:19",
+    "summary": "Garry Tan (Y Combinator President) urges engineers to spend 'literally just one day' making projects with AI coding tools like Windsurf (now part of the Cursor ecosystem). His metaphor is vivid: it's like strapping on rocket boosters. Don't try to build a building with your bare hands — use heavy machinery.\n\nThe post reflects a growing frustration among tech leaders watching talented engineers resist AI coding tools out of pride, skepticism, or inertia. Tan's argument isn't that AI replaces engineering skill — it's that refusing to use available tools is like insisting on manual labor when power tools exist. The best carpenters use the best tools.\n\nThe message is aimed squarely at the engineering community's AI skeptics: try it for one day. Just one day of building real projects. The implicit promise is that the experience will be so transformative that continued resistance will feel irrational. This matches reports from many engineers who describe an 'aha moment' when they first pair with an AI coding agent on a real project rather than toy examples.",
+    "tags": [
+      "ai",
+      "engineering",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://x.com/karpathy/status/1902503836067229803",
+    "title": "The Append-and-Review Note — Andrej Karpathy on Note-Taking",
+    "date": "20/03/2025 - 03:15",
+    "summary": "Andrej Karpathy shares his personal note-taking approach: the 'append-and-review' note. He's been seeding his Bear blog with more posts, and this one describes a method that's worked well for him over many years, striking a balance between being thorough and being practical.\n\nThe approach is simple: maintain a running note where you append thoughts, ideas, and observations as they come up throughout the day. Periodically review and organize. The key insight is that the append step should be frictionless (just add to the end) while the review step is where structure and connections emerge. This prevents the common failure mode of elaborate note-taking systems: spending more time organizing notes than actually thinking.\n\nKarpathy's endorsement carries weight because he's known for systematic thinking and deep technical work. His note-taking method reflects the same philosophy he brings to AI research: start with raw data (observations), let patterns emerge through review, and resist premature organization. It's a practical counterpoint to the elaborate second-brain and Zettelkasten approaches that many knowledge workers get lost in.",
+    "tags": [
+      "productivity",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/codie_sanchez/status/1900584537333395719",
+    "title": "The Most Expensive Thing You'll Ever Pay For — Codie Sanchez",
+    "date": "15/03/2025 - 14:44",
+    "summary": "Codie Sanchez shares a visual post about the most expensive thing you'll ever pay for — and it's not what you think. The answer is typically about opportunity cost, time wasted, or staying in situations that don't serve you, rather than any literal purchase.\n\nThe post resonates with the entrepreneurial audience because it reframes cost beyond dollars. The most expensive things in life are usually the invisible ones: the years spent in the wrong career, the relationships that drain your energy, the fear that prevents you from starting something new. These 'costs' don't show up on a balance sheet but they compound just as ruthlessly as interest.\n\nSanchez's audience spans business buyers, entrepreneurs, and aspiring business owners. Her content consistently challenges people to think about life decisions through an investment lens — where every choice has an opportunity cost, and inaction is the most expensive option of all.",
+    "tags": [
+      "career",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://x.com/lucas__crespo/status/1900577340960170045",
+    "title": "AI Design Tools Misunderstand How Designers Work — Lucas Crespo",
+    "date": "14/03/2025 - 18:46",
+    "summary": "Lucas Crespo argues that most AI design tools fundamentally misunderstand how designers actually work. The post includes visuals illustrating the gap between what AI tools assume designers need and what designers actually do in practice.\n\nThe core critique: AI design tools tend to treat design as a generation problem (give me a prompt, get a design) when it's actually an iteration problem (start rough, refine continuously, respond to constraints). Designers don't work by describing what they want in words — they work by pushing pixels, testing variations, and developing visual intuition through direct manipulation.\n\nThis mirrors the broader 'chat interface for everything' problem: assuming natural language is the best interface for all tasks. For design work specifically, the spatial, visual, and gestural aspects of the creative process are poorly served by text prompts. The best AI design tools will augment the designer's existing workflow (suggesting variations, handling repetitive tasks, generating assets) rather than trying to replace the hands-on creative process.",
+    "tags": [
+      "design",
+      "ai",
+      "product"
+    ]
+  },
+  {
+    "url": "https://x.com/tannerlinsley/status/1898582800586228095",
+    "title": "TanStack Start Removing Vinxi for Vite + Nitro — Tanner Linsley",
+    "date": "11/03/2025 - 14:26",
+    "summary": "Tanner Linsley (creator of TanStack) announces a major architectural change: removing Vinxi from TanStack Start in favor of Vite + Nitro + h3 directly. Dubbed 'devinxi,' this refactor simplifies the stack while adding quality-of-life improvements.\n\nThe improvements mentioned include: better jumping between files, improved type inference, faster hot module replacement, and cleaner build outputs. The thread reveals the pragmatic engineering philosophy behind TanStack: when an abstraction layer (Vinxi) adds more complexity than it removes, cut it out and go closer to the metal.\n\nThis is significant for the React/frontend ecosystem because TanStack Start is emerging as a serious alternative to Next.js, with a philosophy of giving developers more control and fewer magic abstractions. The 'devinxi' refactor aligns with a broader trend in frontend: moving away from complex meta-frameworks toward composable, understandable tool chains. Developers increasingly want to understand every layer of their stack, not just trust that a framework handles it correctly.",
+    "tags": [
+      "frontend",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://x.com/garysheng/status/1896648643333046750",
+    "title": "The Cursor for Writing Is Cursor — Gary Sheng",
+    "date": "04/03/2025 - 14:32",
+    "summary": "Gary Sheng makes a provocative observation: the 'Cursor for Writing' that everyone is searching for... is just Cursor itself. The AI coding editor is already better at assisting with prose writing than most dedicated AI writing tools.\n\nThe insight is that Cursor's agent-based workflow — where the AI can read your entire project, understand context, suggest changes inline, and iterate based on feedback — is exactly what writers need. Dedicated 'AI writing tools' often fail because they treat writing as a generation problem (write me a blog post about X) rather than an editing and refinement problem (help me improve this draft given my style, audience, and goals).\n\nThis observation sparked broad discussion because it highlights a pattern: the best AI tools aren't domain-specific wrappers around LLMs — they're general-purpose agents with good context management. Cursor succeeds for writing because it was built to handle complex, multi-file context and iterative refinement, which are universal needs across creative work, not just coding.",
+    "tags": [
+      "ai",
+      "productivity",
+      "product"
+    ]
+  },
+  {
+    "url": "https://x.com/kepano/status/1896622716905726095",
+    "title": "Fractal Journaling and Random Revisit — Kepano (Obsidian)",
+    "date": "03/03/2025 - 22:23",
+    "summary": "Kepano (creator of Obsidian) shares his note-taking workflow: using Obsidian's unique note hotkey to write individual thoughts as they come up throughout the day. Each note is automatically created with a timestamp prefix (YYYY-MM-DD HHmm) and optionally a descriptive title.\n\nThe 'fractal' aspect: every few days, he reviews recent notes and connects or expands them. The 'random revisit' aspect: periodically revisiting old notes surfaces forgotten ideas and creates unexpected connections. This creates a self-reinforcing system where past thinking enriches present work.\n\nThe approach is notable for its simplicity compared to elaborate knowledge management systems. There's no complex tagging taxonomy, no rigid folder structure, no prerequisite organization. Just capture thoughts as they happen with timestamps, review periodically, and let connections emerge organically. It's the digital equivalent of a researcher's lab notebook — low friction, high fidelity, with serendipity built into the review process.",
+    "tags": [
+      "productivity",
+      "design"
+    ]
+  },
+  {
+    "url": "https://x.com/mckaywrigley/status/1894855298910953785",
+    "title": "Cursor + MCP Is Massively Underrated — Mckay Wrigley",
+    "date": "28/02/2025 - 20:23",
+    "summary": "Mckay Wrigley argues that people are sleeping on Cursor + MCP (Model Context Protocol). Cursor can become much more than an IDE — it could become a powerhouse productivity app. With MCP servers for notes, email, CRMs, and more, there's almost no reason you can't build 'MCP server for X' and then do the work directly from Cursor Agent.\n\nThe vision is compelling: instead of switching between a dozen apps (email client, CRM, project management, notes), you connect them all to your AI coding agent via MCP and let the agent orchestrate your workflow. Need to send a follow-up email based on a CRM record while updating a project status? One conversation with your Cursor agent.\n\nThis early take proved prescient as MCP adoption exploded throughout 2025. The insight was that MCP's real power isn't connecting AI to more data sources — it's turning your development environment into a universal command center. The IDE becomes the new operating system, with MCP as the integration layer.",
+    "tags": [
+      "ai",
+      "productivity",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://x.com/VictorTaelin/status/1895486940184445392",
+    "title": "GPT-4.5 Shows AGI Architecture Works But Is Prohibitively Expensive — Victor Taelin",
+    "date": "28/02/2025 - 18:01",
+    "summary": "Victor Taelin (creator of HVM/Bend) shares his take on GPT-4.5: humanity has designed an AGI architecture — it's just prohibitively expensive. Training a $1 billion transformer gives only a 12.5% improvement over a $100 million one, in a paradigm where utility scales logarithmically with cost.\n\nThe implication is profound: we know the recipe works, but the economics don't scale linearly. Each order of magnitude in training cost yields diminishing returns in capability. This means either we need fundamentally new architectures (not just bigger transformers), or we need to find ways to make the existing architecture dramatically cheaper.\n\nTaelin's perspective carries weight because he's one of the most technically rigorous thinkers in the programming language and computation space. His take cuts against both the 'AGI is impossible' crowd and the 'just scale it up' crowd. The architecture works. The scaling laws are real. But the economic implications suggest we're at an inflection point where innovation needs to shift from 'train bigger' to 'train smarter.'",
+    "tags": [
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://x.com/karpathy/status/1894099637218545984",
+    "title": "Agency > Intelligence — Andrej Karpathy",
+    "date": "27/02/2025 - 13:51",
+    "summary": "Andrej Karpathy shares a fundamental insight he got intuitively wrong for decades: Agency is significantly more important than Intelligence. He attributes the error to pervasive cultural veneration of intelligence — IQ obsession, entertainment/media, etc.\n\nThe argument: agency — the drive to act, to ship, to make things happen — is significantly more powerful AND significantly more scarce than raw intelligence. Are you hiring for agency? Are you developing agency in yourself and others? Most organizations and individuals over-index on intelligence (credentials, test scores, clever analysis) and under-index on agency (initiative, bias toward action, willingness to ship imperfect work).\n\nThis resonated massively because it challenges the tech industry's deep assumption that smarter = better. Karpathy, arguably one of the most intelligent people in AI, is saying intelligence is overrated compared to the willingness to act. It's a reframe that validates builders over thinkers, shippers over analysts, and doers over planners. Coming from a former Tesla AI director and founding OpenAI member, it carries enormous weight.",
+    "tags": [
+      "career",
+      "leadership",
+      "ai"
+    ]
+  },
+  {
+    "url": "https://x.com/techemails/status/1888313183024074910",
+    "title": "Mark Zuckerberg Messages Facebook Engineer",
+    "date": "08/02/2025 - 21:48",
+    "summary": "The @techemails account shares a historical message from Mark Zuckerberg to a Facebook engineer, revealing the direct, no-nonsense communication style that characterized early Facebook culture. These leaked internal communications provide a window into how major tech companies operated during their high-growth phases.\n\nThe message likely illustrates Zuckerberg's hands-on management approach — directly engaging with individual engineers on technical decisions rather than going through layers of management. This 'founder mode' communication style has become a template for startup founders: be direct, be specific, and don't let organizational hierarchy slow down important decisions.\n\nThese kinds of historical tech emails are valuable because they show the gap between how companies present themselves publicly and how they actually operate internally. The directness, urgency, and sometimes bluntness of founder communications often surprises people who only see the polished public personas.",
+    "tags": [
+      "leadership",
+      "startup",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/nickcammarata/status/1886910566247358465",
+    "title": "What Happens When Gwern Gets Access to This — Nick Cammarata",
+    "date": "05/02/2025 - 15:42",
+    "summary": "Nick Cammarata (formerly at OpenAI) jokes about what would happen if Gwern — the pseudonymous polymath researcher known for exhaustive, data-driven analyses on everything from AI to anime — gets access to advanced AI tools. The prediction: 'gwern fast takeoff foom' followed by 98% of all future science coming in the form of gwern.net blog posts.\n\nThe joke works because Gwern is already legendarily productive, publishing incredibly detailed research across dozens of fields. If AI tools multiplicatively amplify the output of already-exceptional researchers, the implications are staggering. The most productive people will become exponentially more productive, potentially widening the gap between top contributors and everyone else.\n\nThe post touches on a serious question about AI's impact on research: will it democratize knowledge production, or will it amplify existing advantages? If the latter, a small number of individuals using AI as a force multiplier could produce more insight than entire institutions. Gwern, who already operates as a one-person research institution, is the perfect embodiment of this scenario.",
+    "tags": [
+      "ai",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Law_of_triviality",
+    "title": "Law of Triviality (Bikeshedding) — Wikipedia",
+    "date": "03/02/2025 - 23:06",
+    "summary": "The Wikipedia article on Parkinson's Law of Triviality — the observation that organizations give disproportionate weight to trivial issues. The classic example: a committee approving plans for a nuclear power plant spends most of its time debating what materials to use for the bicycle shed, because everyone can understand a bike shed but few can evaluate reactor design.\n\nThe concept, coined by C. Northcote Parkinson in 1957, was popularized in software development by FreeBSD developer Poul-Henning Kamp in 1999, leading to the terms 'bikeshedding' and 'bike-shed effect.' The principle states: 'The time spent on any item of the agenda will be in inverse proportion to the sum of money involved.'\n\nBikeshedding is ubiquitous in software development: teams spend hours debating variable naming conventions while glossing over architectural decisions that will shape the codebase for years. The concept is essential for any leader or contributor to understand — recognizing bikeshedding when it happens is the first step to redirecting energy toward decisions that actually matter.",
+    "tags": [
+      "leadership",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://toolbox.socratica.info/",
+    "title": "Welcome to Socratica — Community Building Toolkit",
+    "date": "03/02/2025 - 23:03",
+    "summary": "Socratica provides a toolkit for building communities around learning and creation. The site presents itself as a 'tactic toolbox' — a collection of frameworks, strategies, and playbooks for organizing communities effectively.\n\nThe project embodies the philosophy that learning is best done socially, in structured but flexible community settings. Rather than solitary online courses or massive impersonal platforms, Socratica advocates for small, intentional groups that come together regularly to learn, create, and support each other.\n\nThe resource is particularly relevant for anyone looking to start study groups, hackathon communities, or co-learning spaces. It's the organizational complement to 'Start a Computer Club' — providing practical tools and frameworks for the logistics of community building: how to structure sessions, maintain momentum, handle different skill levels, and create an environment where genuine learning happens.",
+    "tags": [
+      "culture",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://blog.pragmaticengineer.com/investing/",
+    "title": "Investing and Advising — Gergely Orosz (The Pragmatic Engineer)",
+    "date": "03/02/2025 - 22:07",
+    "summary": "Gergely Orosz, author of The Pragmatic Engineer newsletter, shares his investment and advising portfolio. His investment philosophy is simple: invest in companies he'd jump at the opportunity to work at if he weren't running his own business. Focus areas: developer tooling, engineering productivity, platforms, and software engineering education.\n\nNotable investments include Entire (rebuilding dev tools for the agentic era, built by GitHub's last CEO Thomas Dohmke), incident.io, Wordsmith (AI for legal teams), mobile.dev, and Fonoa (automating taxes). Since 2022, he's no longer taking new investments to remain unbiased in his newsletter coverage — a principled stance that also explains why his analysis feels trustworthy.\n\nThe page is interesting as a window into how a respected engineering thought leader evaluates companies: not through financial metrics alone, but through the lens of 'would I want to work here?' It's a reminder that the best angel investors often invest based on product intuition and founder quality rather than spreadsheet analysis.",
+    "tags": [
+      "vc",
+      "engineering",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://dcgross.com/",
+    "title": "Daniel Gross — Investor, Builder, AI Pioneer",
+    "date": "23/01/2025 - 00:14",
+    "summary": "The personal page of Daniel Gross — currently working on compute at Meta, early-stage venture investor (often with Nat Friedman), co-founder of Safe Superintelligence Inc (with Ilya Sutskever), and former YC Partner who started their AI program.\n\nHis portfolio reads like a who's-who of defining tech companies: ElevenLabs, Perplexity, Character.ai, Groq, Coinbase, GitHub, Figma, Rippling, Gusto, Notion, and Deel. Before investing, he co-founded Cue (a search engine acquired by Apple in 2013) and ran AI and search projects at Apple from 2013-2017.\n\nGross represents a particular archetype in tech: the builder-investor who moves fluidly between operating, investing, and advising. His trajectory from Apple AI to YC to co-founding SSI shows how the most impactful people in tech often don't follow linear career paths — they follow their curiosity across organizations and roles, building a network and pattern-recognition ability that makes them uniquely effective investors.",
+    "tags": [
+      "vc",
+      "ai",
+      "career"
+    ]
+  },
+  {
+    "url": "https://nat.org/",
+    "title": "Nat Friedman — Former GitHub CEO, Investor, Builder",
+    "date": "23/01/2025 - 00:12",
+    "summary": "Nat Friedman's personal page is a manifesto disguised as a bio. Former GitHub CEO (2018-2021), serial founder (Ximian, Xamarin), now working on reading the Herculaneum Papyri and testing Bay Area foods for plastic chemicals. But the real value is in his beliefs section — a compressed worldview that reads like a founder's operating manual.\n\nKey beliefs: it's your right (maybe moral duty) to reshape the universe to your preferences. It's easier to do big things than small things because enthusiasm matters. It's important to do things fast — you learn more per unit time because you make contact with reality more frequently. 'Slow is fake.' A week is 2% of the year. The efficient market hypothesis is a lie. Smaller teams are better. The cultural prohibition on micromanagement is harmful.\n\nThe beliefs about speed are particularly memorable: 'Going fast makes you focus on what's important; there's no time for bullshit.' And his note that 'in many cases it's more accurate to model the world as 500 people than 8 billion' captures a truth about how influence actually works. This page is widely referenced in startup circles as a distillation of the builder's mindset.",
+    "tags": [
+      "startup",
+      "leadership",
+      "vc"
+    ]
+  },
+  {
+    "url": "https://x.com/JungleSilicon/status/1873901301144166559",
+    "title": "Conceptual L-Systems Based on Semantics/Embedding Spaces",
+    "date": "22/01/2025 - 23:07",
+    "summary": "JungleSilicon asks an intriguing question: is anyone making 'conceptual' L-systems based on semantics or embedding spaces? L-systems (Lindenmayer systems) are formal grammars used to model plant growth and fractal structures — traditionally operating on symbolic rules that produce visual patterns.\n\nThe idea of applying L-systems to semantic/embedding spaces is fascinating: instead of rules like 'F → F[+F]F[-F]F' generating visual branches, imagine rules operating in concept space, where each 'growth step' follows semantic relationships rather than geometric ones. A concept could 'branch' into related ideas, 'grow' toward more specific sub-concepts, or 'flower' into concrete applications.\n\nThis sits at the intersection of generative art, computational linguistics, and AI. With modern embedding models that can represent any concept as a vector, the building blocks exist to create such systems. It could produce visual art where the structure reflects semantic relationships, or generate knowledge maps that grow organically like plants. A genuinely novel idea that bridges mathematical formalism and AI.",
+    "tags": [
+      "ai",
+      "engineering",
+      "design"
+    ]
+  },
+  {
+    "url": "https://danluu.com/broken-builds/",
+    "title": "How Often Is the Build Broken? — Dan Luu",
+    "date": "22/01/2025 - 22:40",
+    "summary": "Dan Luu analyzes Travis CI data across popular GitHub projects and finds that open source builds are broken far more often than corporate ones. At work, 99% uptime on the build would be considered bad (3.5 days of failures per year). But only 8 of 40 popular GitHub projects achieve even that level, and 15 of 40 don't achieve 90% uptime.\n\nThe diagnosis: at work, broken builds cost visible money (N idle engineers × X hours = $Y wasted). Open source projects lack this accountability feedback loop. Contributors' time is wasted invisibly. Web developers obsess over 100ms of page load latency affecting conversion rates — but what's the 'conversion rate' effect when a potential contributor spends 20 minutes setting up dependencies only to find the build is broken?\n\nThe article highlights a systemic problem in open source: the metrics that matter (contributor experience, onboarding friction, build reliability) are invisible by default, while the metrics that get attention (stars, downloads, features) are highly visible. It's a classic case of what gets measured gets managed — and what doesn't get measured gets neglected.",
+    "tags": [
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://danluu.com/car-safety/",
+    "title": "How Do Cars Do in Out-of-Sample Crash Testing? — Dan Luu",
+    "date": "22/01/2025 - 22:26",
+    "summary": "Dan Luu investigates whether car manufacturers game crash test benchmarks, applying the same skepticism he brings to computing benchmarks. Any highly specific, well-known benchmark creates incentives to optimize for the benchmark rather than actual performance — GPU vendors have added benchmark-detecting code to drivers, and CPU vendors have rewritten benchmark kernels for artificial score boosts.\n\nCar crash tests are a perfect case study: they're specific protocols that car manufacturers know in advance. The question is whether manufacturers optimize their cars for crash test geometry rather than actual real-world crash safety. Luu's approach: look at what happens when new test types are added, since those results represent 'out-of-sample' performance the manufacturers weren't optimizing for.\n\nThe broader lesson applies far beyond car safety: any benchmark or metric that becomes a target ceases to be a good measure (Goodhart's Law). This is relevant to everything from hiring processes (candidates optimize for interview questions) to educational testing (teaching to the test) to AI model evaluations (training on benchmark datasets). Always ask: what happens when conditions aren't identical to the benchmark?",
+    "tags": [
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://michaeldrogalis.substack.com/p/what-i-wish-i-knew-before-i-quit",
+    "title": "What I Wish I Knew Before I Quit My Job — Michael Drogalis",
+    "date": "22/01/2025 - 21:12",
+    "summary": "Michael Drogalis, founder of ShadowTraffic, shares raw journal entries from 16 months of building his startup after quitting Confluent. The key insight: it's not one scary plunge — it's plunging in over and over. Cycles of fear, courage, and calm.\n\nEach cycle comes with its own existential dread: 'My product idea sounds stupid' (run a 6-week validation process and you'll know). 'Getting the first customer was so hard!' (the first is always hardest — you closed with zero credibility). 'What if my product always feels like a toy?' (almost nobody immediately adopts new tech for mission-critical use cases — trust is earned weekly). 'Have I plateaued?' (every company plateaus multiple times — embrace it as a skill to develop).\n\nThe post's power is in its honesty. Instead of the typical founder narrative (I had a vision → I built it → it worked), Drogalis shows the actual emotional roller coaster: constant self-doubt punctuated by small wins, followed by new cliffs to jump off. It's the most realistic account of early-stage founding you'll find, and a comfort to anyone going through it.",
+    "tags": [
+      "startup",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/evanjconrad/status/1877170430286639227",
+    "title": "How Market Works — A Guide by Evan Conrad",
+    "date": "20/01/2025 - 19:06",
+    "summary": "Evan Conrad shares a visual guide explaining how markets actually work — likely covering the mechanics of supply and demand, market microstructure, or how prices emerge from the interaction of many participants with different information and incentives.\n\nUnderstanding market mechanics is foundational for founders and investors alike. Markets aren't the efficient, rational systems described in economics textbooks — they're messy, emotional, and often irrational in the short term. Understanding how markets actually function (versus how they're theoretically supposed to) gives you an edge in both building products and timing investments.\n\nThe post resonated because market literacy is surprisingly rare among technical people. Engineers often have sophisticated understanding of complex systems but simplistic models of how markets work. This kind of visual, accessible explanation bridges that gap — making market mechanics intuitive rather than requiring an economics degree.",
+    "tags": [
+      "startup",
+      "vc"
+    ]
+  },
+  {
+    "url": "https://danluu.com/why-ecc/",
+    "title": "Why Use ECC Memory? — Dan Luu",
+    "date": "20/01/2025 - 17:31",
+    "summary": "Dan Luu debunks Jeff Atwood's influential post arguing against ECC (Error-Correcting Code) memory. Atwood's arguments: Google didn't use ECC in 1999, most errors are hard errors, hardware has improved, and if ECC mattered it'd be used everywhere. Luu dismantles each point.\n\nGoogle abandoned non-ECC servers shortly after deploying them, recognizing it was a serious error. Cargo-culting Google's experiments is particularly dangerous because Google's 'moonshot' culture meant many experiments failed — including putting servers in shipping containers (deemed unsuccessful) and designs that caused actual fires. More importantly, Google's own research (published after Atwood's post) showed RAM error rates were far higher than commonly believed.\n\nThe deeper lesson: authoritative-sounding blog posts from popular writers can spread misinformation that persists for years. Atwood's post convinced many people that ECC was unnecessary, but the underlying reasoning was flawed — it relied on outdated information, survivorship bias, and the assumption that market prevalence equals correctness. Luu's piece is a masterclass in questioning received wisdom, even from respected sources.",
+    "tags": [
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://vinay.sh/i-am-rich-and-have-no-idea-what-to-do-with-my-life/",
+    "title": "I Am Rich and Have No Idea What to Do With My Life — Vinay",
+    "date": "20/01/2025 - 15:48",
+    "summary": "A remarkably vulnerable post from a founder who sold his company and finds himself in the 'zeroth-world' position of never having to work again. Everything feels like a side quest, but not in an inspiring way. He has infinite freedom yet doesn't know what to do with it.\n\nThe journey: after selling, he considered staying at the acquiring company for a $60M pay package but went to the redwoods and realized 'What is the point of money if not freedom? What is your most scarce resource if not time?' He left — then went through a 'trying to be Elon' phase, meeting 70+ investors in two weeks to prove he had it all figured out. He didn't.\n\nThe post captures a rarely discussed problem in tech: post-exit existential crisis. When your identity has been fused with your company for a decade, what happens when that's gone? The base desires — money, status, proving yourself — that drove you are suddenly satisfied. Without them, you face the terrifying question of what you actually want. It's a cautionary tale about building your identity around a single pursuit and a honest portrait of the emptiness that can follow achievement.",
+    "tags": [
+      "career",
+      "startup",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/rauchg/status/1879976926233915468",
+    "title": "Remove Friction Between User and Core Entity — Guillermo Rauch",
+    "date": "20/01/2025 - 15:46",
+    "summary": "Guillermo Rauch reveals that a huge percentage of his feedback to early-stage founders boils down to one thing: remove the friction between the user and the creation of the core 'entity' or 'resource' your company facilitates — be it a search query, image generation, document, or deployment.\n\nThe principle is powerful in its simplicity: identify what your product creates (the core entity), then ruthlessly eliminate every step between the user's intent and that creation. If you're a document tool, how fast can someone go from opening the app to having a useful document? If you're a deployment platform, how fast from code to live?\n\nThis advice is especially relevant in the AI era where the 'core entity' for many products is changing. Products that used to facilitate document creation now facilitate AI-assisted workflows. The friction to remove isn't just UI clicks — it's the cognitive overhead of understanding what the product can do and how to make it do it. Rauch's feedback framework is a useful lens for any founder: what is your core entity, and what friction stands between users and creating it?",
+    "tags": [
+      "startup",
+      "product",
+      "design"
+    ]
+  },
+  {
+    "url": "https://x.com/nikunj/status/1877857853429457007",
+    "title": "Software Costs Today Are a Rounding Error — Nikunj Kothari",
+    "date": "16/01/2025 - 21:39",
+    "summary": "Nikunj Kothari argues that software costs today are a rounding error compared to the value they deliver. The post challenges the common reflex of minimizing software spending — the cost of a $50/month tool that saves even an hour per week is trivially justified by any reasonable hourly rate.\n\nThe broader point: people and companies routinely over-optimize on software costs while under-investing in tools that could dramatically increase their output. A $500/month AI coding assistant that makes you 20% more productive is essentially free if you're earning anything above minimum wage. Yet people agonize over the expense.\n\nThis mirrors the 'penny wise, pound foolish' pattern that plagues both individual developers and companies. The real cost isn't the subscription — it's the lost productivity from NOT using the best available tools. In an era where software tools are getting exponentially more capable, the gap between 'using the best tools' and 'being frugal with tools' is widening rapidly.",
+    "tags": [
+      "productivity",
+      "startup",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://x.com/gritcult/status/1879502429764583649",
+    "title": "'Advice for Myself' Is the Best Type of Advice — Gritcult",
+    "date": "16/01/2025 - 21:34",
+    "summary": "Gritcult observes that 'advice for myself' tends to be the best type of advice. When people frame guidance as self-directed rather than prescriptive, it's more honest, more specific, and more useful.\n\nThe psychology behind this is straightforward: when you give advice to others, you perform — you try to sound wise, comprehensive, and authoritative. When you give advice to yourself, you're solving a real problem with real constraints. The former produces platitudes; the latter produces actionable insights.\n\nThis is why the best blog posts, talks, and threads often come from people reflecting on their own experiences rather than prescribing rules for others. 'Here's what worked for me' is almost always more valuable than 'here's what you should do.' It's also why journaling and reflective writing are so powerful — the act of advising yourself forces clarity of thought that advising others doesn't require.",
+    "tags": [
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/kepano/status/1741122937229590790",
+    "title": "Choose Optimism — Kepano (Obsidian)",
+    "date": "09/01/2025 - 22:47",
+    "summary": "Kepano (creator of Obsidian) argues for choosing optimism as a deliberate stance rather than a naive disposition. The post likely frames optimism not as ignoring problems but as choosing to believe that problems can be solved — and that this belief itself makes solutions more likely.\n\nThe distinction between naive optimism ('everything will be fine') and chosen optimism ('I believe this is solvable and I'm going to try') is crucial. The former is passive and often delusional. The latter is active and self-fulfilling: believing a problem is solvable motivates the effort required to solve it. Pessimism, by contrast, creates a self-fulfilling prophecy of inaction.\n\nThis resonates particularly in the tech community where cynicism is often confused with sophistication. It's easy to point out why things won't work — it's much harder (and more useful) to figure out how they might. The builders who change the world are almost universally optimists — not because they ignore reality, but because they choose to engage with it constructively.",
+    "tags": [
+      "career",
+      "culture",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://danluu.com/wat/",
+    "title": "Normalization of Deviance — Dan Luu",
+    "date": "09/01/2025 - 22:44",
+    "summary": "Dan Luu collects examples of 'normalization of deviance' in tech companies — situations that seem totally normal to insiders but horrify outsiders. One company loses half its new hires in the first year. Another refuses to report bugs to hardware vendors for fear competitors would benefit from the fixes. Another fires people for forwarding internal emails about health insurance to their spouse.\n\nThe concept comes from sociology: deviance from standards becomes normalized when the deviation doesn't immediately cause visible harm. Each small violation makes the next one easier to accept. It's how the Space Shuttle Challenger disaster happened — engineers had been accepting O-ring erosion for years because it hadn't caused a catastrophe yet.\n\nLuu's tech examples are chilling precisely because the people involved consider them normal — even laudable. The company that publishes deliberately unreproducible research results. The company where employees are afraid to forward health insurance emails. The post is a powerful reminder that organizational dysfunction becomes invisible to those inside it, and that 'this is how we've always done it' is one of the most dangerous phrases in any organization.",
+    "tags": [
+      "engineering",
+      "leadership",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2821100/",
+    "title": "The Normalization of Deviance in Healthcare Delivery",
+    "date": "09/01/2025 - 22:30",
+    "summary": "An academic paper examining how egregious violations of medical standards become 'normalized' in healthcare delivery systems. The research shows that serious medical errors typically result from multiple people committing multiple seemingly innocuous mistakes that breach an organization's safety nets over an extended period.\n\nThe paper identifies why flagrant practice deviations can persist for years: the normalization process is gradual. Each small deviation from standard practice that doesn't cause immediate harm makes the next deviation easier to accept. Individual mistakes aren't enough to cause catastrophe — disaster requires these 'active errors' to combine with 'latent errors' (systemic weaknesses) over time.\n\nThe parallels to software engineering are striking: technical debt accumulates invisibly, security practices erode gradually, code review standards slip incrementally. The paper's recommendations for healthcare organizations — identifying unsafe deviations before they become normalized — apply directly to engineering teams. Regular audits of actual practice versus stated standards, psychological safety for reporting deviations, and institutional memory of past incidents are all essential.",
+    "tags": [
+      "leadership",
+      "engineering",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://x.com/benln/status/1877065091935309941",
+    "title": "Marc Andreessen on How to Choose Where to Work",
+    "date": "09/01/2025 - 22:09",
+    "summary": "A shared photo/screenshot of Marc Andreessen's advice on choosing where to work. Andreessen (co-founder of a16z) consistently emphasizes working at companies where you'll learn the most, with people who are better than you, on problems that matter.\n\nHis framework typically prioritizes: the quality of people you'll work with (are they the best in their field?), the rate of learning (will you grow faster here than anywhere else?), and the importance of the problem (does it matter if this company succeeds?). Salary and title are secondary to these factors, especially early in your career.\n\nThis advice is counterintuitive for many professionals who optimize for compensation or brand name. Andreessen's point is that early career decisions compound — working with exceptional people on important problems creates opportunities and capabilities that far exceed any salary premium. It's the career equivalent of choosing growth stocks over dividend stocks: the compounding effects of learning and network outweigh short-term income optimization.",
+    "tags": [
+      "career",
+      "vc"
+    ]
+  },
+  {
+    "url": "https://x.com/AdamColb_/status/1799056218297930088",
+    "title": "9 Years of Hard Lessons in 2 Minutes — Adam",
+    "date": "31/12/2024 - 17:41",
+    "summary": "Adam shares nine years of lessons distilled into brief, actionable points. The first and most emphasized: don't tell people everything, even when you trust close friends and family. Not everyone can handle your plans, success, or ambitions — some will project their fears onto you, others will feel threatened.\n\nThe broader theme is about strategic information sharing: what you reveal about your goals, finances, and plans shapes how people interact with you. This isn't about being secretive or paranoid — it's about recognizing that information creates expectations, comparisons, and social dynamics that can undermine your progress.\n\nThese 'hard truths' threads resonate because they capture wisdom that usually takes years of painful experience to learn: managing relationships as you grow, protecting your energy from unsupportive people, and understanding that not everyone in your life has your best interests at heart. The advice is particularly relevant for young entrepreneurs and ambitious people who often learn these lessons the hard way.",
+    "tags": [
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://yosefk.com/blog/people-can-read-their-managers-mind.html",
+    "title": "People Can Read Their Manager's Mind — Yosef Kreinin",
+    "date": "31/12/2024 - 02:34",
+    "summary": "Yosef Kreinin argues that employees are extremely good at predicting what their managers actually value — regardless of what managers say they value. People don't do what they're told; they do what they expect to be rewarded for. And they're usually right about that prediction.\n\nThe mechanism is subtle: a manager genuinely says they want better code quality. But when promotion time comes, they're more impressed by the person who built a clever new system than the person who fixed a hundred bugs. Employees, who have ample time to observe their manager's past decisions, build accurate mental models of this gap. So they ignore the stated goals and pursue what actually gets rewarded.\n\nThe examples are painfully recognizable: the manager who values original mathematical ideas assigns bug-fixing as priority but rewards the clever researchers. The manager who values architecture assigns collaboration but rewards design pattern expertise. The result is permanent organizational dysfunction — not because employees are disobedient, but because they're rationally responding to true incentives. The fix isn't better communication; it's genuine alignment between stated values and reward behavior.",
+    "tags": [
+      "leadership",
+      "culture",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/Kartikayb77/status/1786407564504392047",
+    "title": "I Am Lazy — How I Hacked My Way Into Working Hard — Kartikay",
+    "date": "31/12/2024 - 02:34",
+    "summary": "Kartikay shares a counterintuitive approach to productivity: embracing laziness as a feature, not a bug. Instead of fighting his natural tendency toward laziness, he built systems and hacks that make productive behavior the path of least resistance.\n\nThe approach resonates because it's honest about human nature. Most productivity advice assumes you can willpower your way to discipline. Kartikay's approach assumes you can't — and designs around that limitation. It's the same principle behind good UX design: don't ask users to change their behavior, design the system to make the desired behavior easiest.\n\nThis 'lazy engineering' mindset is actually powerful: the best systems are designed by people who hate doing things the hard way. Laziness drives automation, simplification, and elimination of unnecessary work. The most productive people aren't the ones who work the hardest — they're the ones who are lazy enough to find the shortest path to results.",
+    "tags": [
+      "productivity",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/Kartikayb77/status/1793289576192286872",
+    "title": "The Only Productivity Advice That Actually Worked for Me — Kartikay",
+    "date": "31/12/2024 - 02:28",
+    "summary": "Kartikay distills productivity advice into what actually worked for him — likely cutting through the noise of complex systems and frameworks to identify the one or two changes that made a real difference.\n\nThe post probably emphasizes simplicity over systems: rather than Notion templates, time-blocking apps, and elaborate GTD workflows, the advice that actually works tends to be embarrassingly simple. Things like: do the most important thing first, eliminate distractions during focused work, and track what you actually spend your time on. The gap between knowing what works and doing it is where most people fail.\n\nThis genre of content — 'what actually worked vs. what I thought would work' — is valuable because it filters signal from noise. The productivity industry sells complexity (buy this tool, follow this system, read this book). But the people who actually get things done usually rely on a few simple habits rather than elaborate frameworks. The advice that 'actually worked' is almost always less exciting but more effective than the advice that sells.",
+    "tags": [
+      "productivity",
+      "career"
+    ]
+  },
+  {
+    "url": "https://danluu.com/nothing-works/",
+    "title": "Why Is It So Hard to Buy Things That Work Well? — Dan Luu",
+    "date": "29/12/2024 - 15:01",
+    "summary": "Dan Luu dismantles the 'efficient markets hypothesis' as applied to consumer products and services. The cocktail party version: 'markets enforce efficiency, so products must be basically as good as possible — someone would've outcompeted otherwise.' Luu shows this is empirically false.\n\nMost people who've checked the work of hired professionals (home renovation, accounting) find grievous errors. Products that have been on the market for years have obvious, easily-fixable problems. The efficient market argument — 'if it's so obvious, someone would've fixed it' — is contradicted by decades of examples where inefficiencies and defects persisted despite being visible.\n\nThe deeper insight: abstract arguments about market efficiency crumble when confronted with specifics. Marc Andreessen claims tech companies are 'desperate for talent' so hiring can't be inefficient — but discriminatory hiring practices persisted for decades despite being obviously costly. The world is much less efficient than we assume, which is both discouraging (as a consumer) and encouraging (as a builder) — because obvious opportunities for improvement exist everywhere.",
+    "tags": [
+      "engineering",
+      "culture",
+      "product"
+    ]
+  },
+  {
+    "url": "https://www.ntietz.com/blog/evolving-ergo-setup/",
+    "title": "Evolving My Ergonomic Setup — Nicole Tietz",
+    "date": "28/12/2024 - 23:06",
+    "summary": "Nicole Tietz documents the evolution of her portable ergonomic computer setup through multiple prototypes — from a heavy 'chonky tray' that only worked in one chair, to a luggable backpack setup, to increasingly refined iterations. The journey was driven by a real need: using a laptop without ergonomic accommodation causes her physical pain.\n\nThe post is interesting on multiple levels: as a practical guide for people with similar ergonomic needs, as an engineering case study in iterative design, and as a glimpse into how thoughtful makers approach personal tools. Each prototype solved the previous version's problems while introducing new ones — too heavy, too rigid, too annoying to set up.\n\nThe broader lesson is about taking your own needs seriously enough to invest real engineering effort in solving them. Most people accept physical discomfort from their computer setup because 'that's just how it is.' Tietz refused to accept it and iterated until she found something that worked — the same problem-solving approach she brings to software, applied to the physical world.",
+    "tags": [
+      "engineering",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://nedur.ufpr.br/wp-content/uploads/2020/08/02-teorias-da-localizacao.pdf",
+    "title": "Teorias da Localização (Location Theories) — UFPR",
+    "date": "21/12/2024 - 01:13",
+    "summary": "An academic PDF from the Federal University of Paraná (UFPR) covering location theories — the economic models that explain where businesses, industries, and cities establish themselves. These theories span from Von Thünen's agricultural land use model to Weber's industrial location theory to Christaller's central place theory.\n\nLocation theory is foundational to understanding urban economics, regional development, and industrial geography. Why do tech companies cluster in Silicon Valley? Why do certain cities become financial centers? The theories provide frameworks: firms locate where they minimize transportation costs (Weber), maximize access to markets and inputs, or benefit from agglomeration effects (being near similar firms).\n\nFor someone interested in startups and technology, location theory provides a lens for understanding why tech hubs exist, why remote work challenges them, and how new hubs form. The paper is in Portuguese, reflecting Abdul's Brazilian academic context, and connects economic geography to practical questions about where to build companies and careers.",
+    "tags": [
+      "culture",
+      "startup"
+    ]
+  },
+  {
+    "url": "https://kentcdodds.com/blog/colocation",
+    "title": "Colocation — Kent C. Dodds",
+    "date": "13/12/2024 - 02:44",
+    "summary": "Kent C. Dodds applies the principle of colocation — keeping related things close together — to software development. The analogy starts with code comments: we colocate comments with the code they explain, because putting them in a separate DOCUMENTATION.md file would cause them to get out of sync, be missed by developers working on the code, and require constant context switching.\n\nThe same principle applies broadly: colocate tests with the code they test, colocate styles with the components they style, colocate types with the functions they describe. When related things are separated, they drift apart over time. Maintainability suffers because changes in one place require hunting for the corresponding change in another.\n\nThis is one of the key insights behind modern frontend architecture patterns like CSS-in-JS and component-based design. React's success is partly attributable to colocating markup, logic, and styling in a single component file — violating traditional separation of concerns but dramatically improving maintainability. The post makes a compelling case that the old rule of 'separate concerns by type' (all CSS in one folder, all JS in another) should give way to 'separate concerns by feature.'",
+    "tags": [
+      "frontend",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://x.com/kpaxs/status/1858370193640079446",
+    "title": "Success Comes From Focused, Deliberate Action — Kpaxs",
+    "date": "26/11/2024 - 01:26",
+    "summary": "Kpaxs shares a reminder that success comes from focused, deliberate action rather than scattered efforts. The post challenges the multitasking myth and the tendency to spread attention across too many projects, goals, or opportunities simultaneously.\n\nThe principle connects to Jason Cohen's 'Two Big Things' framework: you can only do a few things well. Spreading your energy across ten projects means doing none of them justice. Focus isn't just about time management — it's about accepting the opportunity cost of saying no to good things in order to say yes to the best thing.\n\nThis is particularly relevant for builders and entrepreneurs who are naturally curious and easily excited by new ideas. The ability to say no — to kill promising projects, to decline interesting opportunities, to resist the shiny new thing — is often the difference between those who ship and those who collect abandoned GitHub repos.",
+    "tags": [
+      "productivity",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/oldbooksguy/status/1854174986031997259",
+    "title": "Why Therapy Often Backfires — Old Books Guy",
+    "date": "10/11/2024 - 03:14",
+    "summary": "Old Books Guy shares a perspective on why therapy sometimes backfires — drawing on classical wisdom rather than modern self-help. The argument likely centers on how excessive introspection and emotional processing can become counterproductive, creating feedback loops of rumination rather than resolution.\n\nThe classical perspective offers a counterpoint to modern therapeutic culture: some problems are better solved through action, discipline, and engagement with the world than through endless self-analysis. The Stoics, for instance, emphasized virtue through action rather than emotional processing. Sometimes 'feeling your feelings' becomes a form of indulgence that delays the hard work of actually changing your behavior.\n\nThis isn't anti-therapy — it's a nuanced argument that therapy is a tool with specific use cases, not a universal solution. For some problems (trauma, clinical depression, relationship patterns), professional help is essential. For others (lack of purpose, dissatisfaction with career, general malaise), the answer might be closer to 'go build something' than 'talk about your feelings for an hour a week.'",
+    "tags": [
+      "culture",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/samselikoff/status/1854607060161135004",
+    "title": "Uncontrolled or Controlled: A Matter of Perspective — Sam Selikoff",
+    "date": "09/11/2024 - 21:05",
+    "summary": "Sam Selikoff (known for his frontend/React content) shares a post about a new blog entry: 'Uncontrolled or controlled: A matter of perspective.' This likely explores the React patterns of controlled versus uncontrolled components — a fundamental design decision in form handling and state management.\n\nThe 'matter of perspective' framing suggests the post argues that the controlled/uncontrolled distinction isn't a binary choice but depends on your frame of reference. A component might be 'uncontrolled' from the parent's perspective (it manages its own state) but 'controlled' from its own perspective (it deterministically renders based on its internal state). The confusion arises because we discuss these patterns from the parent component's viewpoint.\n\nThis kind of conceptual clarity is what makes Selikoff's content valuable in the React ecosystem. By reframing a common distinction as perspective-dependent rather than absolute, developers can make better architectural decisions — choosing patterns based on actual requirements rather than dogmatic preference for one approach over the other.",
+    "tags": [
+      "frontend",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://scottsdale-lawyer.com/stop-sucking-and-live-a-life-of-abundance/",
+    "title": "Stop Sucking and Live a Life of Abundance",
+    "date": "03/11/2024 - 14:16",
+    "summary": "Inspired by Randy Pausch's 'The Last Lecture,' this post from a Scottsdale law firm explores the concept of 'sucking' — defined as the discrepancy between the life you have and the life you want. The site asks a fundamental question: 'As of right now, has my life turned out the way I wanted it to?' Have you just stumbled into the life you have?\n\nThe argument: we live in a world where it's really easy to be average but really hard to be above average. Hard doesn't mean unachievable. We don't have to blindly accept the default life we stumbled into or the life forced on us by circumstances. We have the power to change — but we need to decide what we want and consciously pursue it.\n\nThe framework rejects scarcity thinking — the belief that resources are too limited for you to have what you want. Instead, it advocates for abundance thinking: abundance of time, money, health, happiness, excitement, self-respect, and sense of purpose. The post is a call to conscious living rather than passive acceptance, and connects to a broader theme of agency and intentionality that runs through many of the links in this reading list.",
+    "tags": [
+      "career",
+      "culture"
+    ]
+  },
+  {
+    "url": "https://notebooklm.google/",
+    "title": "NotebookLM — Google's AI Research Assistant",
+    "date": "02/11/2024 - 22:55",
+    "summary": "Google's NotebookLM is an AI-powered note-taking and research assistant that lets you upload documents and have conversations with your sources. Unlike generic chatbots, NotebookLM is grounded in your specific documents — it only draws from the sources you provide, reducing hallucination.\n\nThe product represents Google's answer to the question of how AI should integrate into knowledge work. Rather than a blank-slate conversational AI, NotebookLM is a document-centric tool: upload PDFs, Google Docs, websites, or YouTube videos, and the AI helps you understand, summarize, and connect ideas across your sources.\n\nNotebookLM gained viral attention for its 'Audio Overview' feature, which generates a podcast-style discussion of your documents. The tool is particularly useful for researchers, students, and anyone working with large volumes of text who needs to synthesize information quickly. It's a practical example of AI augmenting rather than replacing human thinking — you still choose the sources and ask the questions, but the AI handles the tedious work of reading, extracting, and connecting.",
+    "tags": [
+      "ai",
+      "productivity",
+      "product"
+    ]
+  },
+  {
+    "url": "https://www.reddit.com/r/ifttt/comments/ixy5ke/ifttt_alternatives_if_you_cant_afford_to_pay/",
+    "title": "IFTTT Alternatives for Automation on a Budget",
+    "date": "02/11/2024 - 22:53",
+    "summary": "A Reddit thread collecting free alternatives to IFTTT (If This Then That) after the service moved to a paid model. The community compiled options including n8n, Huginn, Node-RED, Zapier's free tier, and various open-source automation platforms.\n\nThe thread is a practical resource for anyone building personal automation workflows without paying for enterprise tools. Home automation, social media cross-posting, notification systems, and data pipeline triggers are all common use cases that previously relied on IFTTT's free tier.\n\nThe broader context: as consumer tech services increasingly monetize, technically-inclined users are building DIY alternatives. This trend accelerated with the rise of self-hosting communities and local-first software movements. The thread represents the practical side of the 'own your infrastructure' philosophy — taking control of your automation stack rather than depending on a service that might change pricing or features at any time.",
+    "tags": [
+      "engineering",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://www.reddit.com/r/ChatGPT/comments/12l19lj/replacing_alexa_with_chatgpt_introducing_a_home/",
+    "title": "Replacing Alexa with ChatGPT — Home Assistant Integration",
+    "date": "02/11/2024 - 22:51",
+    "summary": "A Reddit post introducing a Home Assistant plugin that replaces Alexa with ChatGPT for smart home control. The project demonstrates how LLMs can serve as more natural, flexible interfaces for home automation compared to rigid voice assistant commands.\n\nThe appeal is obvious: instead of memorizing specific command syntax ('Alexa, set the living room lights to 50%'), you can speak naturally ('make the room a bit dimmer, it's movie time') and have ChatGPT interpret your intent and translate it into Home Assistant commands. The LLM handles the messy mapping between natural language intent and specific device actions.\n\nThis is an early example of a pattern that became ubiquitous: using LLMs as the 'understanding layer' between humans and structured systems. Rather than building custom NLU for each use case, you pipe natural language through a general-purpose LLM that outputs structured commands. The home automation use case is compelling because it directly improves daily life — and because voice assistants' rigid command structure has always been their biggest weakness.",
+    "tags": [
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://www.kickstarter.com/projects/jetkvm/jetkvm",
+    "title": "JetKVM — Remote Computer Control Device",
+    "date": "02/11/2024 - 22:48",
+    "summary": "JetKVM is a Kickstarter project for a compact, affordable KVM (Keyboard, Video, Mouse) device that lets you control any computer remotely. Unlike software-based remote desktop solutions, a hardware KVM works at the BIOS level — you can access the machine even before the operating system loads, manage boot sequences, and troubleshoot systems that are completely unresponsive.\n\nThe product targets homelab enthusiasts, IT administrators, and anyone who manages remote machines. Traditional KVM-over-IP solutions from companies like Raritan or Lantronix cost hundreds to thousands of dollars. JetKVM aims to bring this functionality at a fraction of the cost with a compact, USB-powered design.\n\nFor developers and system administrators, a hardware KVM is a crucial tool: it's the difference between driving to a data center when a server won't boot and fixing the problem from your couch. The Kickstarter success signals strong demand for affordable infrastructure tools in the growing homelab and self-hosting community.",
+    "tags": [
+      "engineering",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://x.com/melkeydev/status/1852466848824225842",
+    "title": "Ghostty vs Wezterm Terminal Comparison — Melkey",
+    "date": "02/11/2024 - 22:47",
+    "summary": "Melkey shares his experience trying both Ghostty and Wezterm — two terminal emulators that gained significant attention in the developer community. Ghostty (by Mitchell Hashimoto, founder of HashiCorp) emphasizes native performance and simplicity, while Wezterm offers extensive customization through Lua configuration.\n\nTerminal emulator choice is one of those 'bikeshedding' topics that developers care deeply about despite its relatively low impact on actual productivity. But the choice does reflect deeper preferences: do you want a tool that's fast and opinionated (Ghostty) or one that's infinitely configurable (Wezterm)? It's the same tension that plays out across all developer tools.\n\nThe post captures a specific moment in the terminal emulator landscape where multiple new entrants challenged the incumbents (iTerm2, Alacritty, kitty). Each new terminal has a distinct philosophy — and the fact that talented developers keep building new terminal emulators is itself a testament to how personal and important the terminal experience is to people who live in it 8+ hours a day.",
+    "tags": [
+      "engineering",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://x.com/thedankoe/status/1926960271278383373",
+    "title": "Dan Koe on Building and Creating",
+    "date": "27/05/2025 - 03:07",
+    "summary": "Dan Koe shares thoughts on the intersection of building, creating, and personal development. His content typically argues that the modern path to success isn't following traditional career tracks but building a personal brand, creating content, and developing skills that compound over time.\n\nKoe's philosophy centers on the idea that everyone should be a creator-builder hybrid: someone who builds products or businesses while documenting the process through content. The content attracts an audience, the audience provides feedback and customers, and the cycle compounds. It's the creator economy meets indie hacking.\n\nThis perspective resonates with a generation of builders who reject the binary choice between 'employee' and 'entrepreneur.' Instead, they're building portfolios of income streams: a product here, consulting there, content that generates leads, and a growing audience that de-risks every future endeavor. Koe represents this philosophy at scale, having built a significant following by practicing exactly what he preaches.",
+    "tags": [
+      "career",
+      "startup",
+      "marketing"
+    ]
+  },
+  {
+    "url": "https://x.com/aaditsh/status/1918596195405967658",
+    "title": "Aadit Sheth on Startup Insights",
+    "date": "03/05/2025 - 21:42",
+    "summary": "Aadit Sheth shares insights from his experience in the startup ecosystem. His content typically covers the practical realities of building companies: what works vs. what sounds good, common founder mistakes, and the gap between startup advice and startup reality.\n\nThe post likely touches on themes of execution over planning, speed over perfection, and the importance of talking to users rather than building in isolation. These are foundational startup principles that most founders intellectually agree with but struggle to practice — there's always a temptation to build one more feature before launching, to plan one more sprint before shipping.\n\nSheth's audience spans aspiring founders and early-stage builders who benefit from seeing real examples of how successful startups navigate the messy early days. His content serves as a reality check against the polished narratives that dominate startup media.",
+    "tags": [
+      "startup",
+      "career"
+    ]
+  },
+  {
+    "url": "https://x.com/nikunj/status/1918084267453890651",
+    "title": "Clarity of Thought and Precise Instruction Will Matter More — Nikunj Kothari",
+    "date": "03/05/2025 - 19:29",
+    "summary": "Nikunj Kothari argues that clarity of thought and precise instruction is going to matter a LOT more in the near future. This connects directly to the 'context engineering' theme: as AI tools become more capable, the bottleneck shifts from execution to specification.\n\nWhen you can delegate execution to an AI agent, the quality of your output depends entirely on how clearly you can articulate what you want. Vague instructions produce vague results. Precise, well-structured instructions produce excellent results. This means the most valuable skill isn't coding or design or writing — it's thinking clearly enough to give precise instructions.\n\nThe implication for education and career development is significant: we need to teach and develop clarity of thought as a primary skill. This was always valuable, but in a world where AI handles execution, it becomes the differentiating capability. People who can clearly define problems, specify requirements, and articulate constraints will massively outperform those who can only do the manual work.",
+    "tags": [
+      "ai",
+      "career",
+      "productivity"
+    ]
+  },
+  {
+    "url": "https://x.com/founder_mode_/status/1918402676464759231",
+    "title": "Founder Mode Insights",
+    "date": "03/05/2025 - 15:42",
+    "summary": "The @Founder_Mode_ account shares insights about operating in 'founder mode' — the concept popularized by Paul Graham's essay about the difference between how founders run companies and how professional managers do. Founder mode means staying deeply involved in product and technical decisions rather than delegating through management layers.\n\nThe concept gained massive traction because it validated what many founders instinctively felt: that conventional management wisdom (hire good people and get out of the way) often fails in startups. Founders who stay hands-on, who maintain technical judgment, and who resist premature professionalization tend to build better products.\n\nThe tension between founder mode and professional management is one of the defining questions in startup scaling. Too much founder mode creates bottlenecks and burns out the founder. Too little creates the 'professional CEO' dysfunction where decision-making becomes slow and disconnected from product reality. The best founders learn to oscillate between modes, staying deeply involved in critical decisions while delegating routine operations.",
+    "tags": [
+      "startup",
+      "leadership"
+    ]
+  },
+  {
+    "url": "https://www.youtube.com/@BerkeleyRDI",
+    "title": "Berkeley RDI Center on Decentralization & AI — YouTube Channel",
+    "date": "01/05/2025 - 01:25",
+    "summary": "The YouTube channel for UC Berkeley's Center for Responsible, Decentralized Intelligence (RDI), which researches the intersection of decentralization technologies and artificial intelligence. The channel features academic talks, research presentations, and panel discussions on topics like blockchain, AI safety, decentralized systems, and the governance of emerging technologies.\n\nBerkeley RDI sits at a unique intersection: as AI becomes more centralized (controlled by a few large companies with massive compute budgets), decentralization technologies offer potential counterweights. The research explores questions like: how can we build AI systems that aren't controlled by a single entity? How do we govern AI development democratically? What role do blockchain and decentralized protocols play in AI safety?\n\nThe channel is a resource for anyone interested in the governance and political economy of AI — going beyond the technical capabilities to ask who controls these systems and how they should be structured for public benefit.",
+    "tags": [
+      "ai",
+      "engineering"
+    ]
+  },
+  {
+    "url": "https://www.google.com/search?q=interplanetary+transport+network",
+    "title": "Interplanetary Transport Network — Google Search",
+    "date": "20/01/2025 - 18:23",
+    "summary": "A saved Google search for the Interplanetary Transport Network (ITN) — a collection of gravitationally determined pathways through the Solar System that require very little energy to traverse. These pathways exist because of the complex gravitational interactions between the Sun, planets, and moons, creating natural 'tubes' that spacecraft can follow with minimal fuel.\n\nThe ITN is fascinating because it reveals hidden structure in the Solar System — invisible highways created by gravity that have always existed but were only mathematically described in recent decades. Spacecraft can use these pathways to travel between planets using far less fuel than conventional trajectories, though the trips take much longer.\n\nThe concept connects to broader themes of finding hidden structure in complex systems: just as the ITN reveals efficient pathways invisible to naive observation, many problems in engineering and business have non-obvious optimal solutions that become apparent only through careful mathematical analysis. It's a beautiful example of how deep understanding of fundamentals reveals opportunities that brute force approaches miss.",
+    "tags": [
+      "engineering"
+    ]
   }
 ]
