@@ -217,27 +217,32 @@ body {
 
 .link-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   padding: 12px 32px;
   border-bottom: 1px solid var(--border);
   transition: background 150ms;
   position: relative;
+  gap: 14px;
 }
 .link-row:hover {
   background: var(--hover);
 }
 
-.link-enriched-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--badge);
+.link-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
   flex-shrink: 0;
-  margin-right: 12px;
-  margin-top: 7px;
-  align-self: flex-start;
+  background: var(--hover);
 }
-.link-enriched-dot.hidden { visibility: hidden; }
+.link-thumb-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  background: var(--hover);
+}
 
 .link-info {
   flex: 1;
@@ -597,8 +602,13 @@ function renderItem(i) {
     if (snip) snippetHtml = `<div class="snippet">${snip}</div>`;
   }
 
+  const hasImage = isEnriched && sl;
+  const thumbHtml = hasImage
+    ? `<img class="link-thumb" src="images/${esc(sl)}.png" alt="" loading="lazy" onerror="this.className='link-thumb-placeholder';this.removeAttribute('src')">`
+    : `<div class="link-thumb-placeholder"></div>`;
+
   return `<li class="link-row">
-    <span class="link-enriched-dot${isEnriched ? '' : ' hidden'}"></span>
+    ${thumbHtml}
     <div class="link-info">
       <div class="link-title-row">
         <a class="link-title" href="${esc(titleHref)}"${titleTarget}>${esc(displayTitle)}</a>
