@@ -130,6 +130,29 @@ body {
   background: var(--active-tag);
   color: var(--text);
 }
+.tag-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tag-only {
+  font-size: 10px;
+  color: var(--badge);
+  font-weight: 500;
+  opacity: 0;
+  cursor: pointer;
+  padding: 1px 5px;
+  border-radius: 3px;
+  transition: opacity 150ms, background 150ms, color 150ms;
+  letter-spacing: 0;
+}
+.tag-item:hover .tag-only {
+  opacity: 1;
+}
+.tag-only:hover {
+  background: var(--active-tag);
+  color: var(--text);
+}
 .tag-count {
   font-size: 11px;
   color: var(--badge);
@@ -502,15 +525,26 @@ function updateUI() {
   });
 }
 
+function onlyTag(tag, e) {
+  e.stopPropagation();
+  activeTags.clear();
+  activeTags.add(tag);
+  renderTagFilters();
+  applyFilters();
+  const url = new URL(window.location);
+  url.searchParams.set('tag', tag);
+  history.replaceState(null, '', url);
+}
+
 function renderTagFilters() {
   const list = document.getElementById('tag-list');
   const total = allItems.length;
   let html = `<li class="tag-item${activeTags.size === 0 ? ' active' : ''}" data-tag="" onclick="clearTags()">
-    <span>All</span><span class="tag-count">${total}</span>
+    <span>All</span><span class="tag-right"><span class="tag-count">${total}</span></span>
   </li>`;
   allTags.forEach(t => {
     html += `<li class="tag-item${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${esc(t)}')">
-      <span>${esc(t)}</span><span class="tag-count">${tagCounts[t] || 0}</span>
+      <span>${esc(t)}</span><span class="tag-right"><span class="tag-only" onclick="onlyTag('${esc(t)}', event)">only</span><span class="tag-count">${tagCounts[t] || 0}</span></span>
     </li>`;
   });
   list.innerHTML = html;
