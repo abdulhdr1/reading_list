@@ -17,6 +17,8 @@
   --fg2: #888888;
   --fg3: #aaaaaa;
   --border: #e0e0e0;
+  --pill-bg: #e8e8e8;
+  --pill-fg: #666666;
 }
 
 [data-theme="dark"] {
@@ -26,6 +28,8 @@
   --fg2: #777777;
   --fg3: #555555;
   --border: #2a2a2a;
+  --pill-bg: #2a2a2a;
+  --pill-fg: #999999;
 }
 
 body {
@@ -101,7 +105,35 @@ h1 {
   border-bottom: 1px solid var(--border);
 }
 
-.links a {
+.link-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.link-title {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: opacity .2s;
+  cursor: pointer;
+  flex: 1;
+}
+.link-title:hover { opacity: 0.6; }
+
+.link-external {
+  color: var(--fg3);
+  text-decoration: none;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  transition: opacity .2s;
+}
+.link-external:hover { opacity: 0.6; color: var(--fg); }
+
+/* Plain links (no enriched data) */
+.links a.plain-link {
   color: var(--fg);
   text-decoration: none;
   font-size: 1rem;
@@ -110,13 +142,52 @@ h1 {
   display: block;
   transition: opacity .2s;
 }
-.links a:hover { opacity: 0.6; }
+.links a.plain-link:hover { opacity: 0.6; }
 
 .date {
   color: var(--fg2);
   font-size: 0.82rem;
   margin-top: 4px;
 }
+
+.summary-preview {
+  color: var(--fg2);
+  font-size: 0.88rem;
+  margin-top: 6px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.summary-full {
+  color: var(--fg2);
+  font-size: 0.88rem;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.pill {
+  background: var(--pill-bg);
+  color: var(--pill-fg);
+  font-size: 0.72rem;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.expanded .summary-preview { display: none; }
+.expanded .summary-full { display: block; }
+:not(.expanded) .summary-full { display: none; }
 
 .loading {
   color: var(--fg3);
@@ -142,6 +213,7 @@ h1 {
 </div>
 <script>
 let allItems = [];
+let enrichedMap = {};
 
 function toggleTheme() {
   const d = document.documentElement;
@@ -161,7 +233,6 @@ function toggleTheme() {
 })();
 
 function parseDate(s) {
-  // "13/10/2025 - 01:00" → Date
   const m = s.trim().match(/(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2})/);
   if (!m) return null;
   return new Date(+m[3], +m[2]-1, +m[1], +m[4], +m[5]);
@@ -172,36 +243,70 @@ function formatDate(d) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderItem(i) {
+  const e = enrichedMap[i.url];
+  if (e) {
+    const pills = (e.keywords || []).map(k => `<span class="pill">${esc(k)}</span>`).join('');
+    return `<li id="item-${i.idx}">
+      <div class="link-header">
+        <span class="link-title" onclick="toggle(${i.idx})">${esc(i.title)}</span>
+        <a class="link-external" href="${esc(i.url)}" target="_blank" rel="noopener" title="Open link">↗</a>
+      </div>
+      <div class="date">${i.dateStr}</div>
+      <div class="summary-preview">${esc(e.summary)}</div>
+      <div class="summary-full">${esc(e.summary)}</div>
+      ${pills ? `<div class="keywords">${pills}</div>` : ''}
+    </li>`;
+  }
+  return `<li><a class="plain-link" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a><div class="date">${i.dateStr}</div></li>`;
+}
+
+function toggle(idx) {
+  const el = document.getElementById('item-' + idx);
+  if (el) el.classList.toggle('expanded');
+}
+
 function render(items) {
   const ul = document.getElementById('links');
   const count = document.getElementById('count');
   count.textContent = items.length + ' links';
   if (!items.length) { ul.innerHTML = '<li class="loading">No results.</li>'; return; }
-  ul.innerHTML = items.map(i =>
-    `<li><a href="${i.url}" target="_blank" rel="noopener">${i.title}</a><div class="date">${i.dateStr}</div></li>`
-  ).join('');
+  ul.innerHTML = items.map(renderItem).join('');
 }
 
 function filter(q) {
   q = q.toLowerCase();
-  render(allItems.filter(i => i.title.toLowerCase().includes(q)));
+  render(allItems.filter(i => {
+    if (i.title.toLowerCase().includes(q)) return true;
+    const e = enrichedMap[i.url];
+    if (e) {
+      if (e.summary && e.summary.toLowerCase().includes(q)) return true;
+      if (e.keywords && e.keywords.some(k => k.toLowerCase().includes(q))) return true;
+    }
+    return false;
+  }));
 }
 
-fetch('./README.md')
-  .then(r => r.text())
-  .then(md => {
-    const lines = md.split('\n').filter(l => l.startsWith('| ['));
-    allItems = lines.map(l => {
-      const m = l.match(/\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)/);
-      if (!m) return null;
-      const d = parseDate(m[3]);
-      return { title: m[1], url: m[2], date: d, dateStr: formatDate(d) };
-    }).filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0));
-    render(allItems);
-  })
-  .catch(() => {
-    document.getElementById('links').innerHTML = '<li class="loading">Failed to load.</li>';
-  });
+Promise.all([
+  fetch('./README.md').then(r => r.text()),
+  fetch('./data/links.json').then(r => r.json()).catch(() => [])
+]).then(([md, enriched]) => {
+  enriched.forEach(e => { enrichedMap[e.url] = e; });
+  const lines = md.split('\n').filter(l => l.startsWith('| ['));
+  allItems = lines.map((l, idx) => {
+    const m = l.match(/\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)/);
+    if (!m) return null;
+    const d = parseDate(m[3]);
+    return { title: m[1], url: m[2], date: d, dateStr: formatDate(d), idx };
+  }).filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0));
+  render(allItems);
+});
 </script>
 </body>
 </html>

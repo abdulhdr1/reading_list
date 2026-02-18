@@ -1,0 +1,72 @@
+[
+  {
+    "url": "https://x.com/garrytan/status/2023518514120937672",
+    "title": "@garrytan on X",
+    "date": "17/02/2026 - 13:14",
+    "summary": "Tweet by Garry Tan (Y Combinator president). Content unavailable via scraping.",
+    "keywords": ["twitter", "garry-tan", "vc", "yc"]
+  },
+  {
+    "url": "https://www.linkedin.com/posts/vibegui_the-most-productive-thing-i-did-today-was-activity-7429359346947497984-UjXQ",
+    "title": "The Most Productive Thing I Did Today Was Answer Questions — Guilherme Rodrigues",
+    "date": "17/02/2026 - 13:14",
+    "summary": "Guilherme Rodrigues (vibegui) shares his experience using Get Shit Done (GSD), a meta-prompting plugin for Claude Code. Discusses how answering the right questions during spec-driven development leads to better AI coding output. Community discusses budget management with Claude and compares GSD to built-in plan/tasks.",
+    "keywords": ["claude-code", "gsd", "meta-prompting", "ai-coding", "productivity", "vibecoding"]
+  },
+  {
+    "url": "https://x.com/amirmxt/status/2023459550767288594",
+    "title": "@amirmxt on X",
+    "date": "17/02/2026 - 13:14",
+    "summary": "Tweet by amirmxt. Content unavailable via scraping.",
+    "keywords": ["twitter"]
+  },
+  {
+    "url": "https://ideas.fin.ai/p/a-tale-of-two-agent-builders",
+    "title": "A Tale of Two Agent Builders",
+    "date": "13/10/2025 - 01:00",
+    "summary": "Compares OpenAI's canvas-based Agent Builder with Fin's document-based Procedures. Explores the fundamental UI design challenge of the AI era: combining deterministic and probabilistic interfaces. Canvas approaches favor visual workflows while document approaches leverage natural language — each reflecting different philosophies on how humans should configure AI agents.",
+    "keywords": ["ai-agents", "ui-design", "openai", "intercom", "fin", "deterministic-vs-probabilistic", "product-design"]
+  },
+  {
+    "url": "https://blog.cloudflare.com/code-mode/",
+    "title": "Code Mode: the better way to use MCP",
+    "date": "12/10/2025 - 16:56",
+    "summary": "Cloudflare discovers that converting MCP tools into a TypeScript API and letting LLMs write code against that API works dramatically better than exposing tools directly. LLMs handle more tools, more complex tools, and chain multiple calls more efficiently when working with TypeScript interfaces — likely because training data contains far more real TypeScript than tool-call examples.",
+    "keywords": ["mcp", "cloudflare", "typescript", "llm", "ai-agents", "developer-tools", "code-generation"]
+  },
+  {
+    "url": "https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/",
+    "title": "Engineering Your Way To Marketing Success",
+    "date": "11/08/2025 - 13:56",
+    "summary": "Patrick McKenzie (patio11) argues that engineers should use their coding skills for marketing: automated SEO, A/B testing, tracking, email automation. Instead of building marginal features nobody uses, deploy engineering resources to maximize sales. Real example: adding color to bingo cards (simple, high-impact) vs building client/server sync (complex, barely used).",
+    "keywords": ["marketing", "engineering", "seo", "ab-testing", "patio11", "indie-hacker", "growth"]
+  },
+  {
+    "url": "https://alexw.substack.com/p/do-too-much",
+    "title": "DO TOO MUCH",
+    "date": "10/08/2025 - 23:06",
+    "summary": "Alex Wang (Scale AI CEO) argues that extraordinary results require extraordinary effort. What looks like overreacting is just reacting, overcommunicating is just communicating, micromanagement is just management. Scale shifted most of the team to LLM data work within 6 months of the 2022 AI boom — a move others called extreme but proved essential for 4X growth.",
+    "keywords": ["leadership", "startup", "scale-ai", "hustle", "execution", "founder-mindset", "management"]
+  },
+  {
+    "url": "https://zenorocha.com/the-heartbeat-framework",
+    "title": "The Heartbeat Framework — Zeno Rocha",
+    "date": "10/08/2025 - 22:55",
+    "summary": "Zeno Rocha (Resend) codifies startup momentum as a 'heartbeat' — a rhythm of shipping and talking about it. Framework: Launch Weeks (2-3x/year, big peaks), Mini-Launches (4-5x/year), Changelogs (1-2x/month), Blog posts, Customer stories, and Social posts. The beat must always be present — a flat line means you're dead.",
+    "keywords": ["startup", "marketing", "momentum", "launch-week", "resend", "developer-marketing", "shipping"]
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=_yhSh4g0NSk",
+    "title": "I Hate Next.js 13 Caching Even More Now",
+    "date": "10/08/2025 - 22:45",
+    "summary": "YouTube video critiquing Next.js 13's caching mechanisms and their complexity/frustrations for developers.",
+    "keywords": ["nextjs", "caching", "react", "web-development", "frontend", "critique"]
+  },
+  {
+    "url": "https://buka.studio/",
+    "title": "Buka Studio",
+    "date": "10/08/2025 - 22:35",
+    "summary": "Design-development duo (Marijana & Robert) based in Croatia. They help founders turn ideas into products and brands, working where design and code move together so nothing gets lost in translation. Focus on early-stage products, production refinement, and brand cohesion.",
+    "keywords": ["design-studio", "product-design", "development", "founders", "branding", "agency"]
+  }
+]
