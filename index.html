@@ -3,272 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdul's Reading List</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<title>Reading List</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◽</text></svg>">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #f7f5f2;
-  --fg: #1a1a1a;
-  --fg2: #8a8578;
-  --fg3: #b5ae9e;
-  --border: #e5e2dc;
-  --pill-bg: #eae7e1;
-  --pill-fg: #6b6560;
+  --sidebar-bg: #f9f8f7;
+  --main-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #6b6b6b;
+  --border: #e8e5e1;
+  --hover: #f5f4f2;
+  --active-tag: #eeebe7;
+  --badge: #c5c0b8;
+  --focus: #a8a29e;
+  --highlight: #f5e6a3;
+  --highlight-text: #1a1a1a;
 }
 
 [data-theme="dark"] {
-  --bg: #1a1917;
-  --fg: #e8e6e2;
-  --fg2: #8a8578;
-  --fg3: #5a5650;
-  --border: #2e2c28;
-  --pill-bg: #2e2c28;
-  --pill-fg: #a09a90;
+  --sidebar-bg: #1c1b1a;
+  --main-bg: #141312;
+  --text: #e8e6e2;
+  --text-secondary: #8a8680;
+  --border: #2a2826;
+  --hover: #1f1e1c;
+  --active-tag: #2a2826;
+  --badge: #5a5650;
+  --focus: #6b6560;
+  --highlight: #b8a900;
+  --highlight-text: #1a1a1a;
 }
 
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  line-height: 1.6;
-  transition: background .3s, color .3s;
+  background: var(--main-bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 100px 24px 140px;
+.layout {
+  display: flex;
+  min-height: 100vh;
 }
 
-header {
-  margin-bottom: 64px;
-  text-align: center;
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 100;
 }
 
-h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 3.8rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin-bottom: 12px;
+.sidebar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 0 8px;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 
-.subtitle {
-  color: var(--fg2);
-  font-size: 1.05rem;
-  font-style: italic;
-  letter-spacing: 0.01em;
+.sidebar-search {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--main-bg);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  outline: none;
+  margin-bottom: 16px;
+  transition: border-color 150ms;
+}
+.sidebar-search::placeholder { color: var(--badge); }
+.sidebar-search:focus { border-color: var(--focus); }
+
+.sidebar-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--badge);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 8px;
+  margin-bottom: 6px;
 }
 
-header::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--border);
-  margin: 32px auto 0;
+.tag-list {
+  list-style: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 450;
+  color: var(--text-secondary);
+  transition: background 150ms, color 150ms;
+  user-select: none;
+}
+.tag-item:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.tag-item.active {
+  background: var(--active-tag);
+  color: var(--text);
+}
+.tag-count {
+  font-size: 11px;
+  color: var(--badge);
+  font-weight: 400;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .theme-toggle {
-  position: fixed;
-  top: 24px;
-  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 450;
+  color: var(--text-secondary);
   background: none;
   border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  opacity: 0.4;
-  transition: opacity .2s;
-  z-index: 10;
-}
-.theme-toggle:hover { opacity: 1; }
-
-.search {
-  width: 100%;
-  padding: 14px 0;
-  border: none;
-  border-bottom: 1.5px solid var(--border);
-  background: transparent;
-  color: var(--fg);
-  font-size: 1.1rem;
   font-family: inherit;
-  outline: none;
-  margin-bottom: 20px;
-  transition: border-color .2s;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.01em;
+  transition: background 150ms, color 150ms;
+  width: 100%;
+  text-align: left;
 }
-.search::placeholder { color: var(--fg3); font-style: italic; }
-.search:focus { border-color: var(--fg2); }
-
-.tag-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
+.theme-toggle:hover {
+  background: var(--hover);
+  color: var(--text);
 }
 
-.tag-btn {
-  background: var(--pill-bg);
-  color: var(--pill-fg);
-  font-size: 0.72rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  padding: 5px 14px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  transition: all .2s;
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  text-transform: lowercase;
-}
-.tag-btn:hover {
-  background: var(--fg2);
-  color: var(--bg);
-}
-.tag-btn.active {
-  background: var(--fg);
-  color: var(--bg);
+/* Main content */
+.main {
+  flex: 1;
+  margin-left: 220px;
+  min-height: 100vh;
 }
 
-.count {
-  color: var(--fg3);
-  font-size: 0.82rem;
-  margin-bottom: 16px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.links { list-style: none; }
-
-.links li {
-  padding: 24px 0;
+.main-header {
+  padding: 20px 32px;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--main-bg);
+  z-index: 50;
 }
 
-.links li:first-child {
-  border-top: 1px solid var(--border);
+.main-count {
+  font-size: 12px;
+  color: var(--text-secondary);
 }
 
-.link-header {
+.link-list {
+  list-style: none;
+}
+
+.link-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  padding: 12px 32px;
+  border-bottom: 1px solid var(--border);
+  transition: background 150ms;
+  position: relative;
+}
+.link-row:hover {
+  background: var(--hover);
+}
+
+.link-enriched-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--badge);
+  flex-shrink: 0;
+  margin-right: 12px;
+  margin-top: 7px;
+  align-self: flex-start;
+}
+.link-enriched-dot.hidden { visibility: hidden; }
+
+.link-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.link-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
 }
 
 .link-title {
-  color: var(--fg);
+  color: var(--text);
   text-decoration: none;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 500;
   line-height: 1.4;
-  transition: opacity .2s;
-  flex: 1;
+  transition: opacity 150ms;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.link-title:hover { opacity: 0.5; }
+.link-title:hover { opacity: 0.7; }
+
+.link-domain {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 
 .link-external {
-  color: var(--fg3);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 150ms;
   flex-shrink: 0;
-  transition: opacity .2s;
-  opacity: 0.5;
+  margin-left: 8px;
 }
-.link-external:hover { opacity: 1; color: var(--fg2); }
+.link-row:hover .link-external { opacity: 0.6; }
+.link-external:hover { opacity: 1 !important; }
 
-.links a.plain-link {
-  color: var(--fg);
-  text-decoration: none;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.4;
-  display: block;
-  transition: opacity .2s;
-}
-.links a.plain-link:hover { opacity: 0.5; }
-
-.meta-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-.date {
-  color: var(--fg2);
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.pill {
-  background: var(--pill-bg);
-  color: var(--pill-fg);
-  font-size: 0.68rem;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  padding: 2px 10px;
-  border-radius: 12px;
+.link-date {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-left: 16px;
   white-space: nowrap;
-  letter-spacing: 0.02em;
 }
 
 .snippet {
-  color: var(--fg2);
-  font-size: 0.88rem;
-  margin-top: 8px;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-top: 4px;
+  line-height: 1.5;
 }
 .snippet mark {
-  background: #f5e6a3;
-  color: #1a1a1a;
+  background: var(--highlight);
+  color: var(--highlight-text);
   font-weight: 500;
   padding: 1px 3px;
   border-radius: 2px;
 }
-[data-theme="dark"] .snippet mark {
-  background: #b8a900;
-  color: #1a1a1a;
+
+.empty-state {
+  padding: 48px 32px;
+  color: var(--text-secondary);
+  font-size: 13px;
 }
 
-.loading {
-  color: var(--fg3);
-  font-style: italic;
+/* Mobile */
+.mobile-header {
+  display: none;
+  position: sticky;
+  top: 0;
+  background: var(--sidebar-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  z-index: 200;
+  gap: 12px;
+  flex-direction: column;
 }
 
-@media (max-width: 480px) {
-  .container { padding: 60px 20px 100px; }
-  h1 { font-size: 2.6rem; }
+.mobile-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text);
+  padding: 4px;
+}
+
+.mobile-search {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--main-bg);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  outline: none;
+}
+.mobile-search::placeholder { color: var(--badge); }
+.mobile-search:focus { border-color: var(--focus); }
+
+.mobile-tags {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.mobile-tags::-webkit-scrollbar { display: none; }
+
+.mobile-tag {
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 450;
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--main-bg);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all 150ms;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+}
+.mobile-tag.active {
+  background: var(--active-tag);
+  color: var(--text);
+  border-color: var(--active-tag);
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 99;
+}
+
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); transition: transform 200ms; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+  .main { margin-left: 0; }
+  .mobile-header { display: flex; }
+  .main-header { display: none; }
+  .link-row { padding: 12px 16px; }
+  .link-date { display: none; }
+  .link-external { opacity: 0.4; }
 }
 </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
-<div class="container">
-  <header>
-    <h1>Abdul's Reading List</h1>
-    <p class="subtitle">The most precious bits of the internet.</p>
-  </header>
-  <input class="search" type="text" placeholder="Search..." oninput="filter(this.value)">
-  <div class="tag-filters" id="tag-filters"></div>
-  <p class="count" id="count"></p>
-  <ul class="links" id="links"><li class="loading">Loading…</li></ul>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">Reading List</div>
+    <input class="sidebar-search" id="search" type="text" placeholder="Search…" oninput="filter(this.value)">
+    <div class="sidebar-section-label">Tags</div>
+    <ul class="tag-list" id="tag-list"></ul>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">☀️</span>
+        <span id="theme-label">Dark mode</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="mobile-header" id="mobile-header">
+      <div class="mobile-top-row">
+        <span class="mobile-title">Reading List</span>
+        <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+      </div>
+      <input class="mobile-search" type="text" placeholder="Search…" oninput="filter(this.value)">
+      <div class="mobile-tags" id="mobile-tags"></div>
+    </div>
+    <div class="main-header">
+      <span class="main-count" id="count"></span>
+    </div>
+    <ul class="link-list" id="links"><li class="empty-state">Loading…</li></ul>
+  </div>
 </div>
+
 <script>
 let allItems = [];
 let enrichedMap = {};
@@ -276,12 +426,15 @@ let slugMap = {};
 let currentQuery = '';
 let activeTags = new Set();
 let allTags = [];
+let tagCounts = {};
 
 function toggleTheme() {
   const d = document.documentElement;
   const next = d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   d.setAttribute('data-theme', next);
-  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+  const isDark = next === 'dark';
+  document.getElementById('theme-icon').textContent = isDark ? '🌙' : '☀️';
+  document.getElementById('theme-label').textContent = isDark ? 'Light mode' : 'Dark mode';
   localStorage.setItem('theme', next);
 }
 
@@ -290,9 +443,19 @@ function toggleTheme() {
     (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   if (saved === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    document.querySelector('.theme-toggle').textContent = '🌙';
+    document.getElementById('theme-icon').textContent = '🌙';
+    document.getElementById('theme-label').textContent = 'Light mode';
   }
 })();
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
 
 function parseDate(s) {
   const m = s.trim().match(/(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2})/);
@@ -302,7 +465,7 @@ function parseDate(s) {
 
 function formatDate(d) {
   if (!d) return '';
-  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
 function esc(s) {
@@ -311,14 +474,16 @@ function esc(s) {
   return d.innerHTML;
 }
 
-function normalizeUrl(url) {
-  return url.split('?')[0];
+function normalizeUrl(url) { return url.split('?')[0]; }
+
+function getDomain(url) {
+  try { return new URL(url).hostname.replace('www.', ''); } catch(e) { return ''; }
 }
 
 function toggleTag(tag) {
   if (activeTags.has(tag)) activeTags.delete(tag);
   else activeTags.add(tag);
-  updateTagButtons();
+  updateUI();
   applyFilters();
   const url = new URL(window.location);
   if (activeTags.size) url.searchParams.set('tag', [...activeTags].join(','));
@@ -326,17 +491,47 @@ function toggleTag(tag) {
   history.replaceState(null, '', url);
 }
 
-function updateTagButtons() {
-  document.querySelectorAll('.tag-btn').forEach(btn => {
-    btn.classList.toggle('active', activeTags.has(btn.dataset.tag));
+function updateUI() {
+  // Desktop tags
+  document.querySelectorAll('.tag-item').forEach(el => {
+    el.classList.toggle('active', activeTags.has(el.dataset.tag));
+  });
+  // Mobile tags
+  document.querySelectorAll('.mobile-tag').forEach(el => {
+    el.classList.toggle('active', activeTags.has(el.dataset.tag));
   });
 }
 
 function renderTagFilters() {
-  const el = document.getElementById('tag-filters');
-  el.innerHTML = allTags.map(t =>
-    `<button class="tag-btn${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${esc(t)}')">${esc(t)}</button>`
-  ).join('');
+  const list = document.getElementById('tag-list');
+  const total = allItems.length;
+  let html = `<li class="tag-item${activeTags.size === 0 ? ' active' : ''}" data-tag="" onclick="clearTags()">
+    <span>All</span><span class="tag-count">${total}</span>
+  </li>`;
+  allTags.forEach(t => {
+    html += `<li class="tag-item${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${esc(t)}')">
+      <span>${esc(t)}</span><span class="tag-count">${tagCounts[t] || 0}</span>
+    </li>`;
+  });
+  list.innerHTML = html;
+
+  // Mobile tags
+  const mt = document.getElementById('mobile-tags');
+  let mhtml = `<button class="mobile-tag${activeTags.size === 0 ? ' active' : ''}" data-tag="" onclick="clearTags()">All</button>`;
+  allTags.forEach(t => {
+    mhtml += `<button class="mobile-tag${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${esc(t)}')">${esc(t)}</button>`;
+  });
+  mt.innerHTML = mhtml;
+}
+
+function clearTags() {
+  activeTags.clear();
+  updateUI();
+  applyFilters();
+  const url = new URL(window.location);
+  url.searchParams.delete('tag');
+  history.replaceState(null, '', url);
+  renderTagFilters();
 }
 
 function getSnippet(summary, query) {
@@ -356,39 +551,37 @@ function renderItem(i) {
   const normUrl = normalizeUrl(i.url);
   const e = enrichedMap[i.url] || enrichedMap[normUrl];
   const sl = slugMap[normUrl];
+  const domain = getDomain(i.url);
+  const isEnriched = !!e;
+  const displayTitle = (e && e.title) || i.title;
+  const titleHref = (isEnriched && sl) ? `pages/${sl}.html` : i.url;
+  const titleTarget = (isEnriched && sl) ? '' : ' target="_blank" rel="noopener"';
 
-  if (e) {
-    const displayTitle = e.title || i.title;
-    const pills = (e.tags || []).map(t => `<span class="pill">${esc(t)}</span>`).join('');
-    const titleHref = sl ? `pages/${sl}.html` : i.url;
-    const titleTarget = sl ? '' : ' target="_blank" rel="noopener"';
+  let snippetHtml = '';
+  if (currentQuery && e) {
+    const snip = getSnippet(e.summary, currentQuery);
+    if (snip) snippetHtml = `<div class="snippet">${snip}</div>`;
+  }
 
-    let snippetHtml = '';
-    if (currentQuery) {
-      const snip = getSnippet(e.summary, currentQuery);
-      if (snip) snippetHtml = `<div class="snippet">${snip}</div>`;
-    }
-
-    return `<li>
-      <div class="link-header">
+  return `<li class="link-row">
+    <span class="link-enriched-dot${isEnriched ? '' : ' hidden'}"></span>
+    <div class="link-info">
+      <div class="link-title-row">
         <a class="link-title" href="${esc(titleHref)}"${titleTarget}>${esc(displayTitle)}</a>
-        <a class="link-external" href="${esc(i.url)}" target="_blank" rel="noopener" title="Open original">↗</a>
-      </div>
-      <div class="meta-row">
-        <span class="date">${i.dateStr}</span>
-        ${pills ? `<div class="tags">${pills}</div>` : ''}
+        <span class="link-domain">${esc(domain)}</span>
       </div>
       ${snippetHtml}
-    </li>`;
-  }
-  return `<li><a class="plain-link" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a><div class="meta-row"><span class="date">${i.dateStr}</span></div></li>`;
+    </div>
+    <a class="link-external" href="${esc(i.url)}" target="_blank" rel="noopener" title="Open original">↗</a>
+    <span class="link-date">${i.dateStr}</span>
+  </li>`;
 }
 
 function render(items) {
   const ul = document.getElementById('links');
   const count = document.getElementById('count');
   count.textContent = items.length + ' links';
-  if (!items.length) { ul.innerHTML = '<li class="loading">No results.</li>'; return; }
+  if (!items.length) { ul.innerHTML = '<li class="empty-state">No results found.</li>'; return; }
   ul.innerHTML = items.map(renderItem).join('');
 }
 
@@ -421,6 +614,8 @@ function applyFilters() {
 
 function filter(q) {
   currentQuery = q;
+  // Sync both search inputs
+  document.querySelectorAll('.sidebar-search, .mobile-search').forEach(el => { if (el.value !== q) el.value = q; });
   applyFilters();
 }
 
@@ -434,7 +629,7 @@ Promise.all([
   enriched.forEach(e => {
     enrichedMap[e.url] = e;
     try { enrichedMap[normalizeUrl(e.url)] = e; } catch(x) {}
-    (e.tags || []).forEach(t => tagSet.add(t));
+    (e.tags || []).forEach(t => { tagSet.add(t); tagCounts[t] = (tagCounts[t] || 0) + 1; });
   });
   allTags = [...tagSet].sort();
 
