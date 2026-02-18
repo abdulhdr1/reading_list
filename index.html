@@ -86,11 +86,39 @@ h1 {
   font-size: 1rem;
   font-family: inherit;
   outline: none;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   transition: border-color .2s;
 }
 .search::placeholder { color: var(--fg3); }
 .search:focus { border-color: var(--fg2); }
+
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.tag-btn {
+  background: var(--pill-bg);
+  color: var(--pill-fg);
+  font-size: 0.75rem;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  padding: 4px 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.tag-btn:hover {
+  background: var(--fg2);
+  color: var(--bg);
+}
+.tag-btn.active {
+  background: var(--fg);
+  color: var(--bg);
+}
 
 .count {
   color: var(--fg3);
@@ -171,30 +199,6 @@ h1 {
   white-space: nowrap;
 }
 
-.tag-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.tag-btn {
-  background: var(--pill-bg);
-  color: var(--pill-fg);
-  font-size: 0.78rem;
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  padding: 4px 12px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-}
-.tag-btn:hover { opacity: 0.7; }
-.tag-btn.active {
-  background: var(--fg);
-  color: var(--bg);
-}
-
 .snippet {
   color: var(--fg2);
   font-size: 0.84rem;
@@ -226,7 +230,7 @@ h1 {
     <p class="subtitle">The most precious bits of the internet.</p>
   </header>
   <input class="search" type="text" placeholder="Search..." oninput="filter(this.value)">
-  <div class="tag-bar" id="tagBar"></div>
+  <div class="tag-filters" id="tag-filters"></div>
   <p class="count" id="count"></p>
   <ul class="links" id="links"><li class="loading">Loading…</li></ul>
 </div>
@@ -236,6 +240,7 @@ let enrichedMap = {};
 let slugMap = {};
 let currentQuery = '';
 let activeTags = new Set();
+let allTags = [];
 
 function toggleTheme() {
   const d = document.documentElement;
@@ -275,6 +280,31 @@ function normalizeUrl(url) {
   return url.split('?')[0];
 }
 
+function toggleTag(tag) {
+  if (activeTags.has(tag)) activeTags.delete(tag);
+  else activeTags.add(tag);
+  updateTagButtons();
+  applyFilters();
+  // Update URL
+  const url = new URL(window.location);
+  if (activeTags.size) url.searchParams.set('tag', [...activeTags].join(','));
+  else url.searchParams.delete('tag');
+  history.replaceState(null, '', url);
+}
+
+function updateTagButtons() {
+  document.querySelectorAll('.tag-btn').forEach(btn => {
+    btn.classList.toggle('active', activeTags.has(btn.dataset.tag));
+  });
+}
+
+function renderTagFilters() {
+  const el = document.getElementById('tag-filters');
+  el.innerHTML = allTags.map(t =>
+    `<button class="tag-btn${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${esc(t)}')">${esc(t)}</button>`
+  ).join('');
+}
+
 function getSnippet(summary, query) {
   if (!query || !summary) return '';
   const lower = summary.toLowerCase();
@@ -283,7 +313,6 @@ function getSnippet(summary, query) {
   const start = Math.max(0, idx - 60);
   const end = Math.min(summary.length, idx + query.length + 60);
   let snip = (start > 0 ? '…' : '') + summary.slice(start, end) + (end < summary.length ? '…' : '');
-  // Bold the matching part
   const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
   snip = esc(snip).replace(re, '<mark>$1</mark>');
   return snip;
@@ -292,13 +321,13 @@ function getSnippet(summary, query) {
 function renderItem(i) {
   const normUrl = normalizeUrl(i.url);
   const e = enrichedMap[i.url] || enrichedMap[normUrl];
-  const slug = slugMap[normUrl];
+  const sl = slugMap[normUrl];
 
   if (e) {
     const displayTitle = e.title || i.title;
-    const pills = (e.tags || []).map(k => `<span class="pill">${esc(k)}</span>`).join('');
-    const titleHref = slug ? `pages/${slug}.html` : i.url;
-    const titleTarget = slug ? '' : ' target="_blank" rel="noopener"';
+    const pills = (e.tags || []).map(t => `<span class="pill">${esc(t)}</span>`).join('');
+    const titleHref = sl ? `pages/${sl}.html` : i.url;
+    const titleTarget = sl ? '' : ' target="_blank" rel="noopener"';
 
     let snippetHtml = '';
     if (currentQuery) {
@@ -329,74 +358,38 @@ function render(items) {
   ul.innerHTML = items.map(renderItem).join('');
 }
 
-function matchesSearch(i, ql) {
-  if (!ql) return true;
-  if (i.title.toLowerCase().includes(ql)) return true;
+function getItemTags(i) {
   const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
-  if (e) {
-    if (e.summary && e.summary.toLowerCase().includes(ql)) return true;
-    if (e.tags && e.tags.some(k => k.toLowerCase().includes(ql))) return true;
-  }
-  return false;
-}
-
-function matchesTags(i) {
-  if (activeTags.size === 0) return true;
-  const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
-  const tags = e ? (e.tags || []) : [];
-  for (const t of activeTags) {
-    if (!tags.includes(t)) return false;
-  }
-  return true;
+  return e ? (e.tags || []) : [];
 }
 
 function applyFilters() {
   const ql = currentQuery.toLowerCase();
-  render(allItems.filter(i => matchesSearch(i, ql) && matchesTags(i)));
+  render(allItems.filter(i => {
+    // Tag filter (AND)
+    if (activeTags.size) {
+      const tags = getItemTags(i);
+      for (const t of activeTags) {
+        if (!tags.includes(t)) return false;
+      }
+    }
+    // Text search
+    if (ql) {
+      if (i.title.toLowerCase().includes(ql)) return true;
+      const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
+      if (e) {
+        if (e.summary && e.summary.toLowerCase().includes(ql)) return true;
+        if (e.tags && e.tags.some(k => k.toLowerCase().includes(ql))) return true;
+      }
+      return false;
+    }
+    return true;
+  }));
 }
 
 function filter(q) {
   currentQuery = q;
   applyFilters();
-}
-
-function toggleTag(tag) {
-  if (activeTags.has(tag)) activeTags.delete(tag);
-  else activeTags.add(tag);
-  updateTagBar();
-  updateUrlParams();
-  applyFilters();
-}
-
-function updateTagBar() {
-  document.querySelectorAll('.tag-btn').forEach(btn => {
-    btn.classList.toggle('active', activeTags.has(btn.dataset.tag));
-  });
-}
-
-function updateUrlParams() {
-  const url = new URL(window.location);
-  url.searchParams.delete('tag');
-  for (const t of activeTags) url.searchParams.append('tag', t);
-  history.replaceState(null, '', activeTags.size ? url.toString() : url.pathname);
-}
-
-function buildTagBar(items) {
-  const allTags = new Set();
-  items.forEach(i => {
-    const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
-    if (e && e.tags) e.tags.forEach(t => allTags.add(t));
-  });
-  const bar = document.getElementById('tagBar');
-  const sorted = [...allTags].sort();
-  bar.innerHTML = sorted.map(t =>
-    `<button class="tag-btn${activeTags.has(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="toggleTag('${t}')">${esc(t)}</button>`
-  ).join('');
-}
-
-function readTagsFromUrl() {
-  const params = new URLSearchParams(window.location.search);
-  params.getAll('tag').forEach(t => activeTags.add(t));
 }
 
 Promise.all([
@@ -405,10 +398,14 @@ Promise.all([
   fetch('./data/slugs.json').then(r => r.json()).catch(() => ({}))
 ]).then(([md, enriched, slugs]) => {
   slugMap = slugs;
+  const tagSet = new Set();
   enriched.forEach(e => {
     enrichedMap[e.url] = e;
     try { enrichedMap[normalizeUrl(e.url)] = e; } catch(x) {}
+    (e.tags || []).forEach(t => tagSet.add(t));
   });
+  allTags = [...tagSet].sort();
+
   const lines = md.split('\n').filter(l => l.startsWith('| ['));
   allItems = lines.map((l, idx) => {
     const m = l.match(/\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)/);
@@ -416,8 +413,13 @@ Promise.all([
     const d = parseDate(m[3]);
     return { title: m[1], url: m[2], date: d, dateStr: formatDate(d), idx };
   }).filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0));
-  readTagsFromUrl();
-  buildTagBar(allItems);
+
+  // Check URL for pre-selected tags
+  const params = new URLSearchParams(window.location.search);
+  const tagParam = params.get('tag');
+  if (tagParam) tagParam.split(',').forEach(t => { if (tagSet.has(t)) activeTags.add(t); });
+
+  renderTagFilters();
   applyFilters();
 });
 </script>
