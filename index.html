@@ -620,7 +620,7 @@ function filter(q) {
 }
 
 Promise.all([
-  fetch('./README.md').then(r => r.text()),
+  fetch('./links.md').then(r => r.text()),
   fetch('./data/links.json').then(r => r.json()).catch(() => []),
   fetch('./data/slugs.json').then(r => r.json()).catch(() => ({}))
 ]).then(([md, enriched, slugs]) => {
