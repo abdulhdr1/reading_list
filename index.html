@@ -118,7 +118,6 @@ h1 {
   font-weight: 500;
   line-height: 1.4;
   transition: opacity .2s;
-  cursor: pointer;
   flex: 1;
 }
 .link-title:hover { opacity: 0.6; }
@@ -132,7 +131,6 @@ h1 {
 }
 .link-external:hover { opacity: 0.6; color: var(--fg); }
 
-/* Plain links (no enriched data) */
 .links a.plain-link {
   color: var(--fg);
   text-decoration: none;
@@ -144,35 +142,23 @@ h1 {
 }
 .links a.plain-link:hover { opacity: 0.6; }
 
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
 .date {
   color: var(--fg2);
   font-size: 0.82rem;
-  margin-top: 4px;
-}
-
-.summary-preview {
-  color: var(--fg2);
-  font-size: 0.88rem;
-  margin-top: 6px;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.summary-full {
-  color: var(--fg2);
-  font-size: 0.88rem;
-  margin-top: 6px;
-  line-height: 1.5;
 }
 
 .keywords {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 8px;
 }
 
 .pill {
@@ -185,9 +171,17 @@ h1 {
   white-space: nowrap;
 }
 
-.expanded .summary-preview { display: none; }
-.expanded .summary-full { display: block; }
-:not(.expanded) .summary-full { display: none; }
+.snippet {
+  color: var(--fg2);
+  font-size: 0.84rem;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.snippet mark {
+  background: transparent;
+  color: var(--fg);
+  font-weight: 500;
+}
 
 .loading {
   color: var(--fg3);
@@ -214,6 +208,8 @@ h1 {
 <script>
 let allItems = [];
 let enrichedMap = {};
+let slugMap = {};
+let currentQuery = '';
 
 function toggleTheme() {
   const d = document.documentElement;
@@ -249,28 +245,54 @@ function esc(s) {
   return d.innerHTML;
 }
 
+function normalizeUrl(url) {
+  return url.split('?')[0];
+}
+
+function getSnippet(summary, query) {
+  if (!query || !summary) return '';
+  const lower = summary.toLowerCase();
+  const idx = lower.indexOf(query.toLowerCase());
+  if (idx === -1) return '';
+  const start = Math.max(0, idx - 60);
+  const end = Math.min(summary.length, idx + query.length + 60);
+  let snip = (start > 0 ? '…' : '') + summary.slice(start, end) + (end < summary.length ? '…' : '');
+  // Bold the matching part
+  const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  snip = esc(snip).replace(re, '<mark>$1</mark>');
+  return snip;
+}
+
 function renderItem(i) {
-  const e = enrichedMap[i.url] || enrichedMap[i.url.split('?')[0]];
+  const normUrl = normalizeUrl(i.url);
+  const e = enrichedMap[i.url] || enrichedMap[normUrl];
+  const slug = slugMap[normUrl];
+
   if (e) {
     const displayTitle = e.title || i.title;
     const pills = (e.keywords || []).map(k => `<span class="pill">${esc(k)}</span>`).join('');
-    return `<li id="item-${i.idx}">
+    const titleHref = slug ? `pages/${slug}.html` : i.url;
+    const titleTarget = slug ? '' : ' target="_blank" rel="noopener"';
+
+    let snippetHtml = '';
+    if (currentQuery) {
+      const snip = getSnippet(e.summary, currentQuery);
+      if (snip) snippetHtml = `<div class="snippet">${snip}</div>`;
+    }
+
+    return `<li>
       <div class="link-header">
-        <span class="link-title" onclick="toggle(${i.idx})">${esc(displayTitle)}</span>
-        <a class="link-external" href="${esc(i.url)}" target="_blank" rel="noopener" title="Open link">↗</a>
+        <a class="link-title" href="${esc(titleHref)}"${titleTarget}>${esc(displayTitle)}</a>
+        <a class="link-external" href="${esc(i.url)}" target="_blank" rel="noopener" title="Open original">↗</a>
       </div>
-      <div class="date">${i.dateStr}</div>
-      <div class="summary-preview">${esc(e.summary)}</div>
-      <div class="summary-full">${esc(e.summary)}</div>
-      ${pills ? `<div class="keywords">${pills}</div>` : ''}
+      <div class="meta-row">
+        <span class="date">${i.dateStr}</span>
+        ${pills ? `<div class="keywords">${pills}</div>` : ''}
+      </div>
+      ${snippetHtml}
     </li>`;
   }
-  return `<li><a class="plain-link" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a><div class="date">${i.dateStr}</div></li>`;
-}
-
-function toggle(idx) {
-  const el = document.getElementById('item-' + idx);
-  if (el) el.classList.toggle('expanded');
+  return `<li><a class="plain-link" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a><div class="meta-row"><span class="date">${i.dateStr}</span></div></li>`;
 }
 
 function render(items) {
@@ -282,13 +304,15 @@ function render(items) {
 }
 
 function filter(q) {
-  q = q.toLowerCase();
+  currentQuery = q;
+  const ql = q.toLowerCase();
+  if (!ql) { render(allItems); return; }
   render(allItems.filter(i => {
-    if (i.title.toLowerCase().includes(q)) return true;
-    const e = enrichedMap[i.url] || enrichedMap[i.url.split('?')[0]];
+    if (i.title.toLowerCase().includes(ql)) return true;
+    const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
     if (e) {
-      if (e.summary && e.summary.toLowerCase().includes(q)) return true;
-      if (e.keywords && e.keywords.some(k => k.toLowerCase().includes(q))) return true;
+      if (e.summary && e.summary.toLowerCase().includes(ql)) return true;
+      if (e.keywords && e.keywords.some(k => k.toLowerCase().includes(ql))) return true;
     }
     return false;
   }));
@@ -296,12 +320,13 @@ function filter(q) {
 
 Promise.all([
   fetch('./README.md').then(r => r.text()),
-  fetch('./data/links.json').then(r => r.json()).catch(() => [])
-]).then(([md, enriched]) => {
+  fetch('./data/links.json').then(r => r.json()).catch(() => []),
+  fetch('./data/slugs.json').then(r => r.json()).catch(() => ({}))
+]).then(([md, enriched, slugs]) => {
+  slugMap = slugs;
   enriched.forEach(e => {
     enrichedMap[e.url] = e;
-    // Also index without query params for fuzzy matching
-    try { enrichedMap[e.url.split('?')[0]] = e; } catch(x) {}
+    try { enrichedMap[normalizeUrl(e.url)] = e; } catch(x) {}
   });
   const lines = md.split('\n').filter(l => l.startsWith('| ['));
   allItems = lines.map((l, idx) => {
