@@ -60,8 +60,16 @@ h1 {
   <h1>Code Mode: the better way to use MCP</h1>
   <div class="date">12/10/2025 - 16:56</div>
   <a class="visit" href="https://blog.cloudflare.com/code-mode/" target="_blank" rel="noopener">Visit original ↗</a>
-  <p class="summary">Cloudflare discovers that converting MCP tools into a TypeScript API and letting LLMs write code against that API works dramatically better than exposing tools directly. LLMs handle more tools, more complex tools, and chain multiple calls more efficiently when working with TypeScript interfaces — likely because training data contains far more real TypeScript than tool-call examples.</p>
-  <div class="tags"><a class="pill" href="../index.html?tag=ai">ai</a><a class="pill" href="../index.html?tag=engineering">engineering</a></div>
+  <p class="summary">Cloudflare&#x27;s engineering team discovered that the standard way everyone uses MCP (Model Context Protocol) is suboptimal. Instead of exposing tools directly to the LLM for function calling, they convert MCP tools into a TypeScript API and ask the LLM to write code that calls that API.
+
+The results are striking for two reasons:
+
+1. LLMs handle far more tools, and more complex tools, when presented as TypeScript interfaces. This is likely because LLMs have trained on enormous amounts of real-world TypeScript code, but only on a small set of contrived tool-call examples. Tool calling uses special tokens the LLM has rarely seen in the wild.
+
+2. The approach dramatically improves multi-step workflows. With traditional tool calling, the output of each call feeds back through the LLM&#x27;s neural network just to be copied to the next call — wasting time, energy, and tokens. When the LLM writes code, it can chain calls directly and only read back the final results.
+
+The article dives deep into how tool calling actually works under the hood (special tokens, JSON payloads, harness pausing), why it&#x27;s inherently limited compared to code generation, and how &#x27;Code Mode&#x27; changes the game for building complex AI agents. In short: LLMs are better at writing code to call MCP than at calling MCP directly.</p>
+  <div class="tags"><a class="pill" href="../index.html?tag=ai">ai</a><a class="pill" href="../index.html?tag=engineering">engineering</a><a class="pill" href="../index.html?tag=frontend">frontend</a></div>
 </div>
 <script>
 function toggleTheme() {
