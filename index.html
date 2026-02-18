@@ -6,30 +6,28 @@
 <title>Abdul's Reading List</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #f5f5f5;
-  --bg2: #ffffff;
-  --fg: #111111;
-  --fg2: #888888;
-  --fg3: #aaaaaa;
-  --border: #e0e0e0;
-  --pill-bg: #e8e8e8;
-  --pill-fg: #666666;
+  --bg: #f7f5f2;
+  --fg: #1a1a1a;
+  --fg2: #8a8578;
+  --fg3: #b5ae9e;
+  --border: #e5e2dc;
+  --pill-bg: #eae7e1;
+  --pill-fg: #6b6560;
 }
 
 [data-theme="dark"] {
-  --bg: #111111;
-  --bg2: #1a1a1a;
-  --fg: #e8e8e8;
-  --fg2: #777777;
-  --fg3: #555555;
-  --border: #2a2a2a;
-  --pill-bg: #2a2a2a;
-  --pill-fg: #999999;
+  --bg: #1a1917;
+  --fg: #e8e6e2;
+  --fg2: #8a8578;
+  --fg3: #5a5650;
+  --border: #2e2c28;
+  --pill-bg: #2e2c28;
+  --pill-fg: #a09a90;
 }
 
 body {
@@ -38,28 +36,43 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   line-height: 1.6;
   transition: background .3s, color .3s;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 640px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 80px 24px 120px;
+  padding: 100px 24px 140px;
 }
 
-header { margin-bottom: 48px; }
+header {
+  margin-bottom: 64px;
+  text-align: center;
+}
 
 h1 {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 2.8rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.8rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 12px;
 }
 
 .subtitle {
   color: var(--fg2);
   font-size: 1.05rem;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+header::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--border);
+  margin: 32px auto 0;
 }
 
 .theme-toggle {
@@ -70,7 +83,7 @@ h1 {
   border: none;
   font-size: 1.3rem;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.4;
   transition: opacity .2s;
   z-index: 10;
 }
@@ -78,38 +91,42 @@ h1 {
 
 .search {
   width: 100%;
-  padding: 12px 0;
+  padding: 14px 0;
   border: none;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1.5px solid var(--border);
   background: transparent;
   color: var(--fg);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-family: inherit;
   outline: none;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   transition: border-color .2s;
+  letter-spacing: 0.01em;
 }
-.search::placeholder { color: var(--fg3); }
+.search::placeholder { color: var(--fg3); font-style: italic; }
 .search:focus { border-color: var(--fg2); }
 
 .tag-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 32px;
 }
 
 .tag-btn {
   background: var(--pill-bg);
   color: var(--pill-fg);
-  font-size: 0.75rem;
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  padding: 4px 12px;
-  border-radius: 12px;
+  font-size: 0.72rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
-  transition: background .2s, color .2s;
+  transition: all .2s;
   white-space: nowrap;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
 }
 .tag-btn:hover {
   background: var(--fg2);
@@ -122,65 +139,75 @@ h1 {
 
 .count {
   color: var(--fg3);
-  font-size: 0.85rem;
-  margin-bottom: 24px;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .links { list-style: none; }
 
 .links li {
-  padding: 16px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--border);
+}
+
+.links li:first-child {
+  border-top: 1px solid var(--border);
 }
 
 .link-header {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 10px;
 }
 
 .link-title {
   color: var(--fg);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
   line-height: 1.4;
   transition: opacity .2s;
   flex: 1;
 }
-.link-title:hover { opacity: 0.6; }
+.link-title:hover { opacity: 0.5; }
 
 .link-external {
   color: var(--fg3);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   flex-shrink: 0;
   transition: opacity .2s;
+  opacity: 0.5;
 }
-.link-external:hover { opacity: 0.6; color: var(--fg); }
+.link-external:hover { opacity: 1; color: var(--fg2); }
 
 .links a.plain-link {
   color: var(--fg);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
   line-height: 1.4;
   display: block;
   transition: opacity .2s;
 }
-.links a.plain-link:hover { opacity: 0.6; }
+.links a.plain-link:hover { opacity: 0.5; }
 
 .meta-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 10px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 
 .date {
   color: var(--fg2);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
 }
 
 .tags {
@@ -192,29 +219,31 @@ h1 {
 .pill {
   background: var(--pill-bg);
   color: var(--pill-fg);
-  font-size: 0.72rem;
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  padding: 2px 8px;
-  border-radius: 10px;
+  font-size: 0.68rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 12px;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .snippet {
   color: var(--fg2);
-  font-size: 0.84rem;
-  margin-top: 6px;
-  line-height: 1.5;
+  font-size: 0.88rem;
+  margin-top: 8px;
+  line-height: 1.6;
 }
 .snippet mark {
-  background: #faec6b;
-  color: #111;
+  background: #f5e6a3;
+  color: #1a1a1a;
   font-weight: 500;
-  padding: 1px 2px;
+  padding: 1px 3px;
   border-radius: 2px;
 }
 [data-theme="dark"] .snippet mark {
   background: #b8a900;
-  color: #111;
+  color: #1a1a1a;
 }
 
 .loading {
@@ -223,8 +252,8 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  .container { padding: 48px 20px 80px; }
-  h1 { font-size: 2.2rem; }
+  .container { padding: 60px 20px 100px; }
+  h1 { font-size: 2.6rem; }
 }
 </style>
 </head>
@@ -291,7 +320,6 @@ function toggleTag(tag) {
   else activeTags.add(tag);
   updateTagButtons();
   applyFilters();
-  // Update URL
   const url = new URL(window.location);
   if (activeTags.size) url.searchParams.set('tag', [...activeTags].join(','));
   else url.searchParams.delete('tag');
@@ -372,14 +400,12 @@ function getItemTags(i) {
 function applyFilters() {
   const ql = currentQuery.toLowerCase();
   render(allItems.filter(i => {
-    // Tag filter (AND)
     if (activeTags.size) {
       const tags = getItemTags(i);
       for (const t of activeTags) {
         if (!tags.includes(t)) return false;
       }
     }
-    // Text search
     if (ql) {
       if (i.title.toLowerCase().includes(ql)) return true;
       const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
@@ -420,7 +446,6 @@ Promise.all([
     return { title: m[1], url: m[2], date: d, dateStr: formatDate(d), idx };
   }).filter(Boolean).sort((a, b) => (b.date || 0) - (a.date || 0));
 
-  // Check URL for pre-selected tags
   const params = new URLSearchParams(window.location.search);
   const tagParam = params.get('tag');
   if (tagParam) tagParam.split(',').forEach(t => { if (tagSet.has(t)) activeTags.add(t); });
