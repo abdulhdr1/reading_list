@@ -37,12 +37,14 @@ h1 {
 }
 .visit:hover { background: var(--pill-bg); border-color: var(--fg3); }
 .summary { color: var(--fg2); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
-.keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .pill {
   background: var(--pill-bg); color: var(--pill-fg);
   font-size: 0.72rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+  text-decoration: none; transition: background .2s, color .2s;
 }
+.pill:hover { background: var(--fg); color: var(--bg); }
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; background: none; border: none;
   font-size: 1.3rem; cursor: pointer; opacity: 0.5; transition: opacity .2s; z-index: 10;
@@ -59,7 +61,7 @@ h1 {
   <div class="date">10/08/2025 - 23:06</div>
   <a class="visit" href="https://alexw.substack.com/p/do-too-much" target="_blank" rel="noopener">Visit original ↗</a>
   <p class="summary">Alex Wang (Scale AI CEO) argues that extraordinary results require extraordinary effort. What looks like overreacting is just reacting, overcommunicating is just communicating, micromanagement is just management. Scale shifted most of the team to LLM data work within 6 months of the 2022 AI boom — a move others called extreme but proved essential for 4X growth.</p>
-  <div class="keywords"><span class="pill">leadership</span><span class="pill">startup</span><span class="pill">scale-ai</span><span class="pill">hustle</span><span class="pill">execution</span><span class="pill">founder-mindset</span><span class="pill">management</span></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=leadership">leadership</a><a class="pill" href="../index.html?tag=startup">startup</a></div>
 </div>
 <script>
 function toggleTheme() {

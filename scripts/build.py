@@ -16,7 +16,10 @@ def build_page(item):
     summary = html.escape(item['summary'])
     date = html.escape(item.get('date', ''))
     url = html.escape(item['url'])
-    pills = ''.join(f'<span class="pill">{html.escape(k)}</span>' for k in item.get('keywords', []))
+    pills = ''.join(
+        f'<a class="pill" href="../index.html?tag={html.escape(t)}">{html.escape(t)}</a>'
+        for t in item.get('tags', [])
+    )
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -57,12 +60,14 @@ h1 {{
 }}
 .visit:hover {{ background: var(--pill-bg); border-color: var(--fg3); }}
 .summary {{ color: var(--fg2); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }}
-.keywords {{ display: flex; flex-wrap: wrap; gap: 6px; }}
+.tags {{ display: flex; flex-wrap: wrap; gap: 6px; }}
 .pill {{
   background: var(--pill-bg); color: var(--pill-fg);
   font-size: 0.72rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+  text-decoration: none; transition: background .2s, color .2s;
 }}
+.pill:hover {{ background: var(--fg); color: var(--bg); }}
 .theme-toggle {{
   position: fixed; top: 24px; right: 24px; background: none; border: none;
   font-size: 1.3rem; cursor: pointer; opacity: 0.5; transition: opacity .2s; z-index: 10;
@@ -79,7 +84,7 @@ h1 {{
   <div class="date">{date}</div>
   <a class="visit" href="{url}" target="_blank" rel="noopener">Visit original ↗</a>
   <p class="summary">{summary}</p>
-  <div class="keywords">{pills}</div>
+  <div class="tags">{pills}</div>
 </div>
 <script>
 function toggleTheme() {{
@@ -106,7 +111,6 @@ def main():
     with open(DATA) as f:
         items = json.load(f)
 
-    # Also write a slug map for index.html to consume
     slug_map = {}
     for item in items:
         s = slug(item['url'])

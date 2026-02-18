@@ -37,12 +37,14 @@ h1 {
 }
 .visit:hover { background: var(--pill-bg); border-color: var(--fg3); }
 .summary { color: var(--fg2); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
-.keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .pill {
   background: var(--pill-bg); color: var(--pill-fg);
   font-size: 0.72rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+  text-decoration: none; transition: background .2s, color .2s;
 }
+.pill:hover { background: var(--fg); color: var(--bg); }
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; background: none; border: none;
   font-size: 1.3rem; cursor: pointer; opacity: 0.5; transition: opacity .2s; z-index: 10;
@@ -59,7 +61,7 @@ h1 {
   <div class="date">11/08/2025 - 13:56</div>
   <a class="visit" href="https://www.kalzumeus.com/2009/12/31/engineering-your-way-to-marketing-success/" target="_blank" rel="noopener">Visit original ↗</a>
   <p class="summary">Patrick McKenzie (patio11) argues that engineers should use their coding skills for marketing: automated SEO, A/B testing, tracking, email automation. Instead of building marginal features nobody uses, deploy engineering resources to maximize sales. Real example: adding color to bingo cards (simple, high-impact) vs building client/server sync (complex, barely used).</p>
-  <div class="keywords"><span class="pill">marketing</span><span class="pill">engineering</span><span class="pill">seo</span><span class="pill">ab-testing</span><span class="pill">patio11</span><span class="pill">indie-hacker</span><span class="pill">growth</span></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=marketing">marketing</a><a class="pill" href="../index.html?tag=engineering">engineering</a><a class="pill" href="../index.html?tag=startup">startup</a></div>
 </div>
 <script>
 function toggleTheme() {

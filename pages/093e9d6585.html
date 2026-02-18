@@ -37,12 +37,14 @@ h1 {
 }
 .visit:hover { background: var(--pill-bg); border-color: var(--fg3); }
 .summary { color: var(--fg2); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
-.keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .pill {
   background: var(--pill-bg); color: var(--pill-fg);
   font-size: 0.72rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+  text-decoration: none; transition: background .2s, color .2s;
 }
+.pill:hover { background: var(--fg); color: var(--bg); }
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; background: none; border: none;
   font-size: 1.3rem; cursor: pointer; opacity: 0.5; transition: opacity .2s; z-index: 10;
@@ -59,7 +61,7 @@ h1 {
   <div class="date">13/10/2025 - 01:00</div>
   <a class="visit" href="https://ideas.fin.ai/p/a-tale-of-two-agent-builders" target="_blank" rel="noopener">Visit original ↗</a>
   <p class="summary">Compares OpenAI&#x27;s canvas-based Agent Builder with Fin&#x27;s document-based Procedures. Explores the fundamental UI design challenge of the AI era: combining deterministic and probabilistic interfaces. Canvas approaches favor visual workflows while document approaches leverage natural language — each reflecting different philosophies on how humans should configure AI agents.</p>
-  <div class="keywords"><span class="pill">ai-agents</span><span class="pill">ui-design</span><span class="pill">openai</span><span class="pill">intercom</span><span class="pill">fin</span><span class="pill">deterministic-vs-probabilistic</span><span class="pill">product-design</span></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=ai">ai</a><a class="pill" href="../index.html?tag=design">design</a><a class="pill" href="../index.html?tag=product">product</a></div>
 </div>
 <script>
 function toggleTheme() {

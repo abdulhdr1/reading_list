@@ -37,12 +37,14 @@ h1 {
 }
 .visit:hover { background: var(--pill-bg); border-color: var(--fg3); }
 .summary { color: var(--fg2); font-size: 1rem; line-height: 1.7; margin-bottom: 24px; }
-.keywords { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .pill {
   background: var(--pill-bg); color: var(--pill-fg);
   font-size: 0.72rem; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
   padding: 2px 8px; border-radius: 10px; white-space: nowrap;
+  text-decoration: none; transition: background .2s, color .2s;
 }
+.pill:hover { background: var(--fg); color: var(--bg); }
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; background: none; border: none;
   font-size: 1.3rem; cursor: pointer; opacity: 0.5; transition: opacity .2s; z-index: 10;
@@ -59,7 +61,7 @@ h1 {
   <div class="date">10/08/2025 - 22:35</div>
   <a class="visit" href="https://buka.studio/" target="_blank" rel="noopener">Visit original ↗</a>
   <p class="summary">Design-development duo (Marijana &amp; Robert) based in Croatia. They help founders turn ideas into products and brands, working where design and code move together so nothing gets lost in translation. Focus on early-stage products, production refinement, and brand cohesion.</p>
-  <div class="keywords"><span class="pill">design-studio</span><span class="pill">product-design</span><span class="pill">development</span><span class="pill">founders</span><span class="pill">branding</span><span class="pill">agency</span></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=design">design</a><a class="pill" href="../index.html?tag=startup">startup</a></div>
 </div>
 <script>
 function toggleTheme() {
