@@ -7,37 +7,26 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #fafaf9; --text: #1a1a1a; --text-secondary: #6b6b6b;
-  --border: #e8e5e1; --hover: #f0efed; --active-tag: #e5e3df;
-  --badge-bg: #f0efed; --badge-text: #6b6b6b;
-  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.08);
-  --card-bg: #ffffff;
+  --bg: #ffffff; --sidebar-bg: #f9f8f7;
+  --text: #1a1a1a; --text-secondary: #6b6b6b;
+  --border: #e8e5e1; --hover: #f5f4f2; --active-tag: #eeebe7;
+  --badge: #c5c0b8; --focus: #a8a29e;
 }
 [data-theme="dark"] {
-  --bg: #111110; --text: #e8e6e2; --text-secondary: #8a8680;
-  --border: #2a2826; --hover: #1c1b19; --active-tag: #2a2826;
-  --badge-bg: #1f1e1c; --badge-text: #8a8680;
-  --accent: #c8a96e; --accent-light: rgba(200, 169, 110, 0.06);
-  --card-bg: #181715;
+  --bg: #141312; --sidebar-bg: #1c1b1a;
+  --text: #e8e6e2; --text-secondary: #8a8680;
+  --border: #2a2826; --hover: #1f1e1c; --active-tag: #2a2826;
+  --badge: #5a5650; --focus: #6b6560;
 }
 body {
   background: var(--bg); color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  line-height: 1.6;
+  line-height: 1.5; letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* Accent top line */
-body::before {
-  content: '';
-  position: fixed; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent 80%);
-  z-index: 100;
 }
 .container {
   max-width: 640px; margin: 0 auto;
-  padding: 72px 24px 120px;
+  padding: 64px 24px 120px;
 }
 /* Header */
 .header {
@@ -47,58 +36,53 @@ body::before {
 .back {
   color: var(--text-secondary); text-decoration: none; font-size: 13px;
   display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px; border-radius: 6px;
-  transition: color 180ms, background 180ms;
-  letter-spacing: -0.01em;
+  padding: 5px 8px; border-radius: 5px;
+  transition: color 150ms, background 150ms;
+  letter-spacing: -0.01em; font-weight: 450;
 }
 .back:hover { color: var(--text); background: var(--hover); }
+.header-right {
+  display: flex; align-items: center; gap: 10px;
+}
 .domain-badge {
-  font-size: 12px; color: var(--badge-text);
-  background: var(--badge-bg); padding: 4px 10px;
-  border-radius: 20px; letter-spacing: -0.01em;
+  font-size: 12px; color: var(--text-secondary);
+  background: var(--hover); padding: 4px 10px;
+  border-radius: 5px; letter-spacing: -0.01em;
   font-weight: 450;
 }
 /* Title */
 h1 {
-  font-size: 32px; font-weight: 700; letter-spacing: -0.03em;
-  line-height: 1.2; margin-bottom: 16px;
+  font-size: 28px; font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.25; margin-bottom: 12px;
   color: var(--text);
 }
 /* Meta line */
 .meta {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  color: var(--text-secondary); font-size: 13px; margin-bottom: 28px;
+  color: var(--text-secondary); font-size: 12px; margin-bottom: 28px;
   letter-spacing: -0.01em;
 }
-.meta-dot { opacity: 0.4; }
+.meta-dot { color: var(--badge); }
 /* Visit button */
 .visit-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 24px;
-  background: var(--accent-light);
-  border: 1px solid var(--accent);
-  border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
   color: var(--text); text-decoration: none;
-  font-size: 14px; font-weight: 550;
+  font-size: 13px; font-weight: 450;
   font-family: inherit; letter-spacing: -0.01em;
-  transition: all 200ms ease;
-  margin-bottom: 40px;
+  transition: background 150ms, border-color 150ms;
+  margin-bottom: 36px;
 }
 .visit-btn:hover {
-  background: var(--accent);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(200, 169, 110, 0.25);
-}
-.visit-btn .arrow {
-  transition: transform 200ms;
-}
-.visit-btn:hover .arrow {
-  transform: translate(2px, -2px);
+  background: var(--hover);
+  border-color: var(--badge);
 }
 /* Summary / Article body */
 .summary {
-  font-size: 17px; line-height: 1.8; letter-spacing: -0.01em;
+  font-size: 15px; line-height: 1.8; letter-spacing: -0.01em;
   margin-bottom: 48px;
 }
 .summary p {
@@ -110,57 +94,54 @@ h1 {
 }
 /* Divider */
 .divider {
-  width: 40px; height: 1px; background: var(--border);
-  margin-bottom: 24px;
+  width: 32px; height: 1px; background: var(--border);
+  margin-bottom: 20px;
 }
 /* Tags */
 .tags {
-  display: flex; flex-wrap: wrap; gap: 8px;
+  display: flex; flex-wrap: wrap; gap: 6px;
 }
 .pill {
-  background: var(--badge-bg); color: var(--badge-text);
-  font-size: 12px; font-weight: 500; padding: 5px 14px;
-  border-radius: 20px; text-decoration: none;
-  transition: all 180ms; letter-spacing: -0.01em;
-  border: 1px solid transparent;
+  background: var(--hover); color: var(--text-secondary);
+  font-size: 12px; font-weight: 450; padding: 4px 10px;
+  border-radius: 4px; text-decoration: none;
+  transition: background 150ms; letter-spacing: -0.01em;
 }
 .pill:hover {
   background: var(--active-tag); color: var(--text);
-  border-color: var(--border);
 }
 /* Theme toggle */
 .theme-toggle {
-  background: var(--badge-bg); border: none;
-  width: 32px; height: 32px; border-radius: 50%;
-  font-size: 14px; cursor: pointer; color: var(--text-secondary);
-  transition: all 180ms; display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none;
+  font-size: 13px; cursor: pointer; color: var(--text-secondary);
+  padding: 5px 8px; border-radius: 5px;
+  transition: background 150ms, color 150ms;
 }
-.theme-toggle:hover { background: var(--active-tag); color: var(--text); }
+.theme-toggle:hover { background: var(--hover); color: var(--text); }
 /* Responsive */
 @media (max-width: 480px) {
-  .container { padding: 56px 16px 80px; }
-  h1 { font-size: 26px; }
-  .summary { font-size: 16px; line-height: 1.75; }
+  .container { padding: 48px 16px 80px; }
+  h1 { font-size: 22px; }
+  .summary { font-size: 14px; line-height: 1.75; }
   .header { margin-bottom: 36px; }
-}
-/* Smooth transitions for theme */
-body, .container, h1, p, a, .pill, .visit-btn, .domain-badge, .theme-toggle {
-  transition: color 250ms, background 250ms, border-color 250ms;
 }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <a class="back" href="../index.html">← Back to list</a>
-    <span class="domain-badge">simedw.com</span>
+    <a class="back" href="../index.html">← Reading List</a>
+    <div class="header-right">
+      <span class="domain-badge">simedw.com</span>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+    </div>
   </div>
   <h1>Spegel — A Terminal Browser That Uses LLMs to Rewrite Webpages</h1>
   <div class="meta">
     <span>01/07/2025 - 20:27</span>
     <span class="meta-dot">·</span>
     <span>1 min read</span>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
   </div>
   <a class="visit-btn" href="https://simedw.com/2025/06/23/introducing-spegel/" target="_blank" rel="noopener">
     Visit original <span class="arrow">↗</span>
