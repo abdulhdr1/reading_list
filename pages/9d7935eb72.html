@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Marques — The Age of Stars Has Arrived</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #ffffff; --sidebar-bg: #f9f8f7;
+  --text: #1a1a1a; --text-secondary: #6b6b6b;
+  --border: #e8e5e1; --hover: #f5f4f2; --active-tag: #eeebe7;
+  --badge: #c5c0b8; --focus: #a8a29e;
+}
+[data-theme="dark"] {
+  --bg: #141312; --sidebar-bg: #1c1b1a;
+  --text: #e8e6e2; --text-secondary: #8a8680;
+  --border: #2a2826; --hover: #1f1e1c; --active-tag: #2a2826;
+  --badge: #5a5650; --focus: #6b6560;
+}
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5; letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 640px; margin: 0 auto;
+  padding: 64px 24px 120px;
+}
+/* Header */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 48px;
+}
+.back {
+  color: var(--text-secondary); text-decoration: none; font-size: 13px;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 8px; border-radius: 5px;
+  transition: color 150ms, background 150ms;
+  letter-spacing: -0.01em; font-weight: 450;
+}
+.back:hover { color: var(--text); background: var(--hover); }
+.header-right {
+  display: flex; align-items: center; gap: 10px;
+}
+.domain-badge {
+  font-size: 12px; color: var(--text-secondary);
+  background: var(--hover); padding: 4px 10px;
+  border-radius: 5px; letter-spacing: -0.01em;
+  font-weight: 450;
+}
+/* Title */
+h1 {
+  font-size: 28px; font-weight: 600; letter-spacing: -0.02em;
+  line-height: 1.25; margin-bottom: 12px;
+  color: var(--text);
+}
+/* Meta line */
+.meta {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  color: var(--text-secondary); font-size: 12px; margin-bottom: 28px;
+  letter-spacing: -0.01em;
+}
+.meta-dot { color: var(--badge); }
+/* Cover image */
+.cover {
+  width: 100%; border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 32px; display: block;
+}
+/* Visit button */
+.visit-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text); text-decoration: none;
+  font-size: 13px; font-weight: 450;
+  font-family: inherit; letter-spacing: -0.01em;
+  transition: background 150ms, border-color 150ms;
+  margin-bottom: 36px;
+}
+.visit-btn:hover {
+  background: var(--hover);
+  border-color: var(--badge);
+}
+/* Summary / Article body */
+.summary {
+  font-size: 15px; line-height: 1.8; letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+.summary p {
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.summary p:last-child {
+  margin-bottom: 0;
+}
+/* Divider */
+.divider {
+  width: 32px; height: 1px; background: var(--border);
+  margin-bottom: 20px;
+}
+/* Tags */
+.tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.pill {
+  background: var(--hover); color: var(--text-secondary);
+  font-size: 12px; font-weight: 450; padding: 4px 10px;
+  border-radius: 4px; text-decoration: none;
+  transition: background 150ms; letter-spacing: -0.01em;
+}
+.pill:hover {
+  background: var(--active-tag); color: var(--text);
+}
+/* Theme toggle */
+.theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: none;
+  font-size: 13px; cursor: pointer; color: var(--text-secondary);
+  padding: 5px 8px; border-radius: 5px;
+  transition: background 150ms, color 150ms;
+}
+.theme-toggle:hover { background: var(--hover); color: var(--text); }
+/* Responsive */
+@media (max-width: 480px) {
+  .container { padding: 48px 16px 80px; }
+  h1 { font-size: 22px; }
+  .summary { font-size: 14px; line-height: 1.75; }
+  .header { margin-bottom: 36px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <a class="back" href="../index.html">← Reading List</a>
+    <div class="header-right">
+      <span class="domain-badge">linkedin.com</span>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+    </div>
+  </div>
+  <h1>Lucas Marques — The Age of Stars Has Arrived</h1>
+  <div class="meta">
+    <span>01/03/2026 - 21:49</span>
+    <span class="meta-dot">·</span>
+    <span>1 min read</span>
+  </div>
+
+  <a class="visit-btn" href="https://www.linkedin.com/pulse/age-stars-has-arrived-lucas-marques-eruef/" target="_blank" rel="noopener">
+    Visit original <span class="arrow">↗</span>
+  </a>
+  <div class="summary">
+  <p>Lucas Marques define &quot;Stars&quot; como startups radicalmente enxutas (até 3 pessoas) com IA no core operacional. A tese: o custo de construir software colapsou, e um novo tipo de empresa está surgindo — escala via orquestração de sistemas inteligentes, não contratação.</p>
+  <p>Pontos centrais:
+- O papel do founder muda de builder para orquestrador de sistemas (modelos + agentes + ferramentas substituindo departamentos inteiros)
+- Barreira técnica cai, barreira cognitiva sobe — vantagem competitiva está em usar IA eficientemente e antecipar demanda
+- Poucos ou zero funcionários CLT; trabalho humano é ocasional e focado onde IA ainda não entrega
+- Comunidades substituem times internos — founders aprendem uns com os outros mais rápido que com mentores/investidores
+- Nichos globais viáveis: com IA facilitando multi-idioma/moeda, Stars podem servir nichos específicos globalmente desde o dia 1
+- Morte do &quot;foco absoluto&quot;: com custo de execução perto de zero, founders viram portfolio managers — lançam múltiplos produtos, matam o que não funciona, dobram no que funciona
+- Menos capital necessário: breakeven muito mais rápido, exits de -50M viram outcomes legítimos
+- Moats técnicos morrem; distribuição ainda resiste mas sob ameaça (AI agents como compradores). Único moat durável: velocidade de antecipar demanda do cliente.</p>
+  </div>
+  <div class="divider"></div>
+  <div class="tags"><a class="pill" href="../index.html?tag=ai">ai</a><a class="pill" href="../index.html?tag=startup">startup</a><a class="pill" href="../index.html?tag=solo-founder">solo-founder</a><a class="pill" href="../index.html?tag=strategy">strategy</a></div>
+</div>
+<script>
+function toggleTheme() {
+  const d = document.documentElement;
+  const next = d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  d.setAttribute('data-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('theme', next);
+}
+(function() {
+  const saved = localStorage.getItem('theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '🌙';
+  }
+})();
+</script>
+</body>
+</html>

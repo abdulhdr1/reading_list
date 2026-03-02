@@ -1,4 +1,5 @@
 |Name|Updated at|
+| [Lucas Marques — The Age of Stars Has Arrived](https://www.linkedin.com/pulse/age-stars-has-arrived-lucas-marques-eruef/) | 01/03/2026 - 21:49|
 | [@levelsio — Outrunning my todo list with Claude Code on bypass mode](https://x.com/levelsio/status/2027566773814403448) | 01/03/2026 - 00:00|
 | [Michael Truell — The third era of AI software development](https://x.com/mntruell/status/2026736314272591924) | 01/03/2026 - 11:30|
 | [Giovanni Salvador — IA no GTM: mercado investe em topo de funil mas ignora retenção](https://www.linkedin.com/posts/giovannibsalvador_se-voc%C3%AA-%C3%A9-cro-e-quer-saber-como-as-100-empresas-share-7433594563094749184-hDEZ) | 01/03/2026 - 00:05|
