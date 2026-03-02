@@ -1,4 +1,6 @@
 |Name|Updated at|
+| [Michael Truell — The third era of AI software development](https://x.com/mntruell/status/2026736314272591924) | 01/03/2026 - 11:30|
+| [Giovanni Salvador — IA no GTM: mercado investe em topo de funil mas ignora retenção](https://www.linkedin.com/posts/giovannibsalvador_se-voc%C3%AA-%C3%A9-cro-e-quer-saber-como-as-100-empresas-share-7433594563094749184-hDEZ) | 01/03/2026 - 00:05|
 | [@garrytan on X](https://x.com/garrytan/status/2023518514120937672?s=48) | 17/02/2026 - 13:14|
 | [LinkedIn Post](https://www.linkedin.com/posts/vibegui_the-most-productive-thing-i-did-today-was-activity-7429359346947497984-UjXQ?utm_source=share&utm_medium=member_ios&rcm=ACoAAC6Ijo0BUm6Jo8k2K9JoxRvbQ3nmmdN2Smc) | 17/02/2026 - 13:14|
 | [@amirmxt on X](https://x.com/amirmxt/status/2023459550767288594?s=48) | 17/02/2026 - 13:14|

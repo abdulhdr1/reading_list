@@ -1,5 +1,28 @@
 [
   {
+    "url": "https://www.linkedin.com/posts/giovannibsalvador_se-voc%C3%AA-%C3%A9-cro-e-quer-saber-como-as-100-empresas-share-7433594563094749184-hDEZ",
+    "title": "Giovanni Salvador — IA no GTM: mercado investe em topo de funil mas ignora retenção",
+    "date": "01/03/2026 - 00:05",
+    "summary": "Giovanni Salvador analisa o relatório da ICONIQ Growth (investidores da Figma, Canva, Notion, Airbnb) sobre como as 100 empresas que mais crescem no Vale do Silício usam IA no go-to-market.\n\nDados principais: 71% usam IA para transcrição/análise de calls (maior índice), 61% para lead generation, 58% para criação de conteúdo/campanhas. Mas no pós-venda os números despencam: apenas 25% para churn prediction, 19% para contract management, 11% para product recommendations.\n\nA tese central: o mercado está investindo pesado em IA para encher o funil de vendas, mas quase ninguém está usando para proteger e expandir receita existente. Isso num contexto onde CAC está subindo, ciclos de venda estão mais longos, e a maior parte do LTV vem de retenção e expansão, não de aquisição.\n\nFrase marcante: \"IA amplifica o que você já tem. Se seu pós-venda é fraco, IA vai te ajudar a perder clientes mais rápido.\" O maior ROI de IA deveria estar em NRR (net revenue retention), mas o mercado continua hipnotizado por topo de funil.",
+    "tags": [
+      "ai",
+      "saas",
+      "growth",
+      "retention"
+    ]
+  },
+  {
+    "url": "https://x.com/mntruell/status/2026736314272591924",
+    "title": "Michael Truell — The third era of AI software development",
+    "date": "01/03/2026 - 11:30",
+    "summary": "Michael Truell, CEO do Cursor, descreve a transição para a terceira era do desenvolvimento de software com IA. Quando começaram a construir o Cursor há alguns anos, a maioria do código era escrita uma tecla por vez. O post marca a visão do Cursor sobre como a interação entre desenvolvedores e IA está evoluindo fundamentalmente — de autocompletar para colaboração ativa na escrita de código.",
+    "tags": [
+      "ai",
+      "dev-tools",
+      "cursor"
+    ]
+  },
+  {
     "url": "https://x.com/garrytan/status/2023518514120937672",
     "title": "@garrytan — Personal agent software is the new meta of 2026",
     "date": "17/02/2026 - 13:14",
