@@ -1,5 +1,17 @@
 [
   {
+    "url": "https://x.com/levelsio/status/2027566773814403448",
+    "title": "@levelsio — Outrunning my todo list with Claude Code on bypass mode",
+    "date": "01/03/2026 - 00:00",
+    "summary": "Levelsio (Pieter Levels) conta que decidiu rodar Claude Code no servidor em produção no modo bypass permissions permanentemente, e pela primeira vez na vida conseguiu zerar seu backlog de features e bugs.\n\nPontos principais:\n- Ele roda Claude Code direto no servidor de produção, sem esperar deploy. O loop é: Claude codifica, ele dá refresh e testa.\n- Em 99% dos casos, a feature simplesmente funciona de primeira.\n- O bottleneck agora não é mais velocidade de implementação, mas sim criatividade e \"context window mental\" — quantos projetos ele consegue manter na cabeça ao mesmo tempo.\n- Ele nota que outros devs são lentos com Claude Code porque ficam checando tudo. A abordagem dele: cria testes, solta o modelo, e vê se passa.\n- Menciona que desde dezembro do ano passado os modelos ficaram bons o suficiente pra realmente codar junto (citando Karpathy).\n\nNa segunda parte lista tudo que shipou na semana (Photo AI, Interior AI, Nomads, Hoodmaps) — algo como 10x seu output normal. Inclui features novas, migrações de segurança, revivals de features antigas, e integrações com APIs novas.",
+    "tags": [
+      "ai",
+      "dev-tools",
+      "indie-hacker",
+      "claude"
+    ]
+  },
+  {
     "url": "https://www.linkedin.com/posts/giovannibsalvador_se-voc%C3%AA-%C3%A9-cro-e-quer-saber-como-as-100-empresas-share-7433594563094749184-hDEZ",
     "title": "Giovanni Salvador — IA no GTM: mercado investe em topo de funil mas ignora retenção",
     "date": "01/03/2026 - 00:05",
