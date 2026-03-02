@@ -105,10 +105,66 @@ body {
 
 .tag-list {
   list-style: none;
-  flex: 1;
   overflow-y: auto;
 }
 
+.date-list {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+.date-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 450;
+  color: var(--text-secondary);
+  transition: background 150ms, color 150ms;
+  user-select: none;
+}
+.date-item:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.date-item.active {
+  background: var(--active-tag);
+  color: var(--text);
+}
+.date-item-toggle {
+  font-size: 10px;
+  color: var(--badge);
+  margin-right: 4px;
+  transition: transform 150ms;
+  display: inline-block;
+}
+.date-months {
+  list-style: none;
+  padding-left: 16px;
+}
+.date-month-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: background 150ms, color 150ms;
+  user-select: none;
+}
+.date-month-item:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.date-month-item.active {
+  background: var(--active-tag);
+  color: var(--text);
+}
 .tag-item {
   display: flex;
   align-items: center;
@@ -294,6 +350,7 @@ body {
   flex-shrink: 0;
   margin-left: 16px;
   white-space: nowrap;
+  align-self: center;
 }
 
 .snippet {
@@ -424,6 +481,8 @@ body {
     <input class="sidebar-search" id="search" type="text" placeholder="Search…" oninput="filter(this.value)">
     <div class="sidebar-section-label">Tags</div>
     <ul class="tag-list" id="tag-list"></ul>
+    <div class="sidebar-section-label" style="margin-top:16px">Date</div>
+    <ul class="date-list" id="date-list"></ul>
     <div class="sidebar-footer">
       <button class="theme-toggle" onclick="toggleTheme()">
         <span id="theme-icon">☀️</span>
@@ -456,6 +515,8 @@ let currentQuery = '';
 let activeTags = new Set();
 let allTags = [];
 let tagCounts = {};
+let activeDateFilter = null; // null | 'YYYY' | 'YYYY-MM'
+let expandedYears = new Set();
 
 function toggleTheme() {
   const d = document.documentElement;
@@ -494,7 +555,7 @@ function parseDate(s) {
 
 function formatDate(d) {
   if (!d) return '';
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 function esc(s) {
@@ -507,6 +568,76 @@ function normalizeUrl(url) { return url.split('?')[0]; }
 
 function getDomain(url) {
   try { return new URL(url).hostname.replace('www.', ''); } catch(e) { return ''; }
+}
+
+function getYearMonth(d) {
+  if (!d) return null;
+  const y = d.getFullYear();
+  const mo = String(d.getMonth() + 1).padStart(2, '0');
+  return { year: String(y), month: `${y}-${mo}` };
+}
+
+function toggleDateFilter(key, e) {
+  if (e) e.stopPropagation();
+  if (activeDateFilter === key) {
+    activeDateFilter = null;
+  } else {
+    activeDateFilter = key;
+  }
+  renderDateFilters();
+  applyFilters();
+  const url = new URL(window.location);
+  if (activeDateFilter) url.searchParams.set('date', activeDateFilter);
+  else url.searchParams.delete('date');
+  history.replaceState(null, '', url);
+}
+
+function toggleYearExpand(year, e) {
+  e.stopPropagation();
+  if (expandedYears.has(year)) expandedYears.delete(year);
+  else expandedYears.add(year);
+  renderDateFilters();
+}
+
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function renderDateFilters() {
+  const list = document.getElementById('date-list');
+  // Build year → months → count structure
+  const yearMap = {};
+  allItems.forEach(i => {
+    const ym = getYearMonth(i.date);
+    if (!ym) return;
+    if (!yearMap[ym.year]) yearMap[ym.year] = {};
+    yearMap[ym.year][ym.month] = (yearMap[ym.year][ym.month] || 0) + 1;
+  });
+  const years = Object.keys(yearMap).sort((a, b) => b - a);
+  let html = '';
+  years.forEach(year => {
+    const months = Object.keys(yearMap[year]).sort((a, b) => b.localeCompare(a));
+    const yearCount = Object.values(yearMap[year]).reduce((s, c) => s + c, 0);
+    const isYearActive = activeDateFilter === year;
+    const isExpanded = expandedYears.has(year) || months.some(m => m === activeDateFilter);
+    const toggle = isExpanded ? '▾' : '▸';
+    html += `<li class="date-item${isYearActive ? ' active' : ''}" onclick="toggleDateFilter('${year}', event)">
+      <span><span class="date-item-toggle" onclick="toggleYearExpand('${year}', event)">${toggle}</span>${year}</span>
+      <span class="tag-count">${yearCount}</span>
+    </li>`;
+    if (isExpanded) {
+      html += '<ul class="date-months">';
+      months.forEach(monthKey => {
+        const [y, mo] = monthKey.split('-');
+        const name = MONTH_NAMES[parseInt(mo, 10) - 1];
+        const isMonthActive = activeDateFilter === monthKey;
+        html += `<li class="date-month-item${isMonthActive ? ' active' : ''}" onclick="toggleDateFilter('${monthKey}', event)">
+          <span>${name}</span>
+          <span class="tag-count">${yearMap[y][monthKey]}</span>
+        </li>`;
+      });
+      html += '</ul>';
+    }
+  });
+  list.innerHTML = html || '<li style="padding:5px 8px;font-size:12px;color:var(--badge)">No dates</li>';
 }
 
 function toggleTag(tag) {
@@ -644,6 +775,15 @@ function applyFilters() {
         if (!tags.includes(t)) return false;
       }
     }
+    if (activeDateFilter) {
+      const ym = getYearMonth(i.date);
+      if (!ym) return false;
+      if (activeDateFilter.includes('-')) {
+        if (ym.month !== activeDateFilter) return false;
+      } else {
+        if (ym.year !== activeDateFilter) return false;
+      }
+    }
     if (ql) {
       if (i.title.toLowerCase().includes(ql)) return true;
       const e = enrichedMap[i.url] || enrichedMap[normalizeUrl(i.url)];
@@ -689,8 +829,11 @@ Promise.all([
   const params = new URLSearchParams(window.location.search);
   const tagParam = params.get('tag');
   if (tagParam) tagParam.split(',').forEach(t => { if (tagSet.has(t)) activeTags.add(t); });
+  const dateParam = params.get('date');
+  if (dateParam) activeDateFilter = dateParam;
 
   renderTagFilters();
+  renderDateFilters();
   applyFilters();
 });
 </script>
