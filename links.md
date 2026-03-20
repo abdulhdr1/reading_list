@@ -1,4 +1,5 @@
 |Name|Updated at|
+| [Ben Lang — I often re-read @natfriedman's personal website (former Github CEO)](https://x.com/benln/status/2034995792272851006/photo/1) | 20/03/2026 - 15:10|
 | [2 ingredient dessert? @good.food.gang. #shorts - YouTube](https://youtube.com/shorts/sczUaXGf6ss?si=gQQxUVoRQUo8weRq) | 18/03/2026 - 22:15|
 | [AI and the Rosetta Stone](https://yannglt.com/writing/ai-and-the-rosetta-stone#fn-1) | 18/03/2026 - 14:55|
 | [Lucas Marques — The Age of Stars Has Arrived](https://www.linkedin.com/pulse/age-stars-has-arrived-lucas-marques-eruef/) | 01/03/2026 - 21:49|
