@@ -1,4 +1,6 @@
 |Name|Updated at|
+| [Aakash Gupta — Cursor is raising at a $50 billion valuation...](https://x.com/aakashgupta/status/2035003184192630985) | 20/03/2026 - 15:39|
+| [JC (@shiftj) — I raised over $3m in 2 weeks. Here’s why you should never take advice from VCs.](https://x.com/shiftj/status/2035000430842061073) | 20/03/2026 - 15:39|
 | [Ben Lang — I often re-read @natfriedman's personal website (former Github CEO)](https://x.com/benln/status/2034995792272851006/photo/1) | 20/03/2026 - 15:10|
 | [2 ingredient dessert? @good.food.gang. #shorts - YouTube](https://youtube.com/shorts/sczUaXGf6ss?si=gQQxUVoRQUo8weRq) | 18/03/2026 - 22:15|
 | [AI and the Rosetta Stone](https://yannglt.com/writing/ai-and-the-rosetta-stone#fn-1) | 18/03/2026 - 14:55|
