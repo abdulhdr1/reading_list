@@ -1,4 +1,5 @@
 |Name|Updated at|
+| [Eric Gilliam — Feynman’s feelings on the IAS](https://x.com/eric_is_weird/status/2035457761023062150/photo/1) | 23/03/2026 - 09:29|
 | [Aakash Gupta — Cursor is raising at a $50 billion valuation...](https://x.com/aakashgupta/status/2035003184192630985) | 20/03/2026 - 15:39|
 | [JC (@shiftj) — I raised over $3m in 2 weeks. Here’s why you should never take advice from VCs.](https://x.com/shiftj/status/2035000430842061073) | 20/03/2026 - 15:39|
 | [Ben Lang — I often re-read @natfriedman's personal website (former Github CEO)](https://x.com/benln/status/2034995792272851006/photo/1) | 20/03/2026 - 15:10|
